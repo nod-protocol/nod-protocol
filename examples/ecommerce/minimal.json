@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
+  "nod_version": "0.1",
+  "generated_at": "2026-03-23T12:00:00Z",
+  "business": {
+    "name": "Acme Running Co.",
+    "legal_name": "Acme Running Company LLC",
+    "type": "ecommerce",
+    "description": "Premium running shoes and gear for athletes of all levels",
+    "url": "https://acmerunning.com",
+    "locations": [
+      {
+        "type": "physical",
+        "name": "Flagship Store",
+        "address": {
+          "street": "123 Main St",
+          "city": "Portland",
+          "state": "OR",
+          "postal_code": "97201",
+          "country": "US"
+        },
+        "hours": {
+          "timezone": "America/Los_Angeles",
+          "regular": {
+            "monday": { "open": "09:00", "close": "20:00" },
+            "tuesday": { "open": "09:00", "close": "20:00" },
+            "wednesday": { "open": "09:00", "close": "20:00" },
+            "thursday": { "open": "09:00", "close": "20:00" },
+            "friday": { "open": "09:00", "close": "21:00" },
+            "saturday": { "open": "10:00", "close": "21:00" },
+            "sunday": { "open": "10:00", "close": "18:00" }
+          }
+        },
+        "phone": "+1-503-555-0100"
+      }
+    ],
+    "contacts": {
+      "general": { "email": "hello@acmerunning.com", "phone": "+1-800-555-0100" }
+    }
+  },
+  "agent_policies": {
+    "human_fallback": {
+      "url": "https://acmerunning.com",
+      "description": "Visit our website for browsing and purchasing running shoes and gear"
+    }
+  }
+}

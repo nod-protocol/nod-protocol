@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
+  "nod_version": "0.1",
+  "generated_at": "2026-03-23T12:00:00Z",
+  "business": {
+    "name": "Whitfield & Associates",
+    "legal_name": "Whitfield & Associates LLP",
+    "type": "professional_services",
+    "description": "Full-service law firm specializing in corporate law, intellectual property, and employment law in Chicago",
+    "url": "https://whitfieldlaw.com",
+    "locations": [
+      {
+        "type": "physical",
+        "name": "Chicago Office",
+        "address": {
+          "street": "200 S Wacker Dr, Suite 3100",
+          "city": "Chicago",
+          "state": "IL",
+          "postal_code": "60606",
+          "country": "US"
+        },
+        "hours": {
+          "timezone": "America/Chicago",
+          "regular": {
+            "monday": { "open": "08:30", "close": "18:00" },
+            "tuesday": { "open": "08:30", "close": "18:00" },
+            "wednesday": { "open": "08:30", "close": "18:00" },
+            "thursday": { "open": "08:30", "close": "18:00" },
+            "friday": { "open": "08:30", "close": "17:00" },
+            "saturday": { "status": "closed" },
+            "sunday": { "status": "closed" }
+          }
+        },
+        "phone": "+1-312-555-0700"
+      }
+    ],
+    "contacts": {
+      "general": { "email": "info@whitfieldlaw.com", "phone": "+1-312-555-0700" }
+    }
+  },
+  "agent_policies": {
+    "human_fallback": {
+      "url": "https://whitfieldlaw.com",
+      "description": "Visit our website or call to schedule a consultation, learn about our practice areas, or contact an attorney"
+    }
+  }
+}

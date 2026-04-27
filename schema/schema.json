@@ -1,0 +1,885 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opennod.ai/schema/nod/v0.1.json",
+  "title": "NOD Protocol Manifest v0.1",
+  "description": "JSON Schema for validating NOD (Notarized Object Declaration) Protocol manifests. See: https://opennod.ai/spec/nod-protocol-v0.1",
+  "type": "object",
+  "required": ["nod_version", "generated_at", "business"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the JSON Schema for validation (Spec §3.1)"
+    },
+    "nod_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "Protocol version — must match a published protocol version (Spec §3.1, §5.1)"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime of when this manifest was last generated/updated (Spec §3.1, §5.1)"
+    },
+    "business": {
+      "$ref": "#/$defs/business"
+    },
+    "discovery": {
+      "$ref": "#/$defs/discovery"
+    },
+    "transactions": {
+      "$ref": "#/$defs/transactions"
+    },
+    "information": {
+      "$ref": "#/$defs/information"
+    },
+    "support": {
+      "$ref": "#/$defs/support"
+    },
+    "agent_policies": {
+      "$ref": "#/$defs/agent_policies"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Industry-specific extensions using reverse-domain namespacing (Spec §8)",
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "business": {
+      "type": "object",
+      "description": "Core business identity and metadata (Spec §3.2)",
+      "required": ["name", "type", "url"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Business name — non-empty string (Spec §5.1)"
+        },
+        "legal_name": {
+          "type": "string",
+          "description": "Legal entity name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the business"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "ecommerce",
+            "saas",
+            "restaurant",
+            "hotel",
+            "healthcare",
+            "professional_services",
+            "marketplace",
+            "media",
+            "education",
+            "nonprofit",
+            "government",
+            "other"
+          ],
+          "description": "Business type enum (Spec §3.2.1)"
+        },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Business category tags"
+        },
+        "naics_codes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "NAICS industry classification codes"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Primary business URL — must match the serving domain (Spec §5.1, §5.3)"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to business logo image"
+        },
+        "founded": {
+          "type": "string",
+          "description": "Year the business was founded"
+        },
+        "locations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/location" },
+          "description": "Physical and/or virtual business locations"
+        },
+        "contacts": {
+          "$ref": "#/$defs/contacts"
+        },
+        "social": {
+          "type": "object",
+          "description": "Social media profile URLs",
+          "additionalProperties": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "schema_org": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to schema.org JSON-LD for this business"
+        },
+        "identifiers": {
+          "type": "object",
+          "description": "Business identifiers (DUNS, EIN, LEI, etc.)",
+          "properties": {
+            "duns": { "type": "string" },
+            "ein": { "type": "string" },
+            "lei": { "type": "string" }
+          },
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "location": {
+      "type": "object",
+      "description": "A business location (Spec §3.2)",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["physical", "virtual", "headquarters", "warehouse", "office"],
+          "description": "Location type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Location name"
+        },
+        "address": {
+          "$ref": "#/$defs/address"
+        },
+        "coordinates": {
+          "type": "object",
+          "properties": {
+            "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+            "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+          },
+          "required": ["latitude", "longitude"]
+        },
+        "hours": {
+          "$ref": "#/$defs/hours"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number in E.164 format (Spec §4.1)"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Contact email for this location"
+        }
+      },
+      "additionalProperties": true
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "postal_code": { "type": "string" },
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code (Spec §4.1)"
+        }
+      },
+      "additionalProperties": true
+    },
+    "hours": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone identifier"
+        },
+        "regular": {
+          "type": "object",
+          "description": "Regular weekly hours",
+          "properties": {
+            "monday": { "$ref": "#/$defs/day_hours" },
+            "tuesday": { "$ref": "#/$defs/day_hours" },
+            "wednesday": { "$ref": "#/$defs/day_hours" },
+            "thursday": { "$ref": "#/$defs/day_hours" },
+            "friday": { "$ref": "#/$defs/day_hours" },
+            "saturday": { "$ref": "#/$defs/day_hours" },
+            "sunday": { "$ref": "#/$defs/day_hours" }
+          },
+          "additionalProperties": false
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "status": {
+                "type": "string",
+                "enum": ["closed", "modified"]
+              },
+              "reason": { "type": "string" },
+              "open": { "type": "string" },
+              "close": { "type": "string" }
+            },
+            "required": ["date", "status"]
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "day_hours": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "open": {
+              "type": "string",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+              "description": "Opening time in HH:MM 24-hour format (Spec §4.1)"
+            },
+            "close": {
+              "type": "string",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+              "description": "Closing time in HH:MM 24-hour format (Spec §4.1)"
+            }
+          },
+          "required": ["open", "close"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "open": { "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$" },
+              "close": { "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$" },
+              "label": { "type": "string" }
+            },
+            "required": ["open", "close"]
+          },
+          "description": "Split hours (e.g., lunch and dinner service)"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "const": "closed"
+            }
+          },
+          "required": ["status"]
+        },
+        {
+          "type": "string",
+          "const": "closed"
+        }
+      ]
+    },
+    "contacts": {
+      "type": "object",
+      "description": "Business contact information (Spec §3.2)",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "format": "email" },
+          "phone": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "description": "How agents find what the business offers (Spec §3.3)",
+      "properties": {
+        "catalog": {
+          "$ref": "#/$defs/catalog"
+        },
+        "search": {
+          "$ref": "#/$defs/search"
+        },
+        "categories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/category" },
+          "description": "Category taxonomy"
+        },
+        "sitemap": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to sitemap.xml"
+        },
+        "openapi": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to OpenAPI/Swagger spec"
+        },
+        "graphql": {
+          "type": "string",
+          "format": "uri",
+          "description": "GraphQL endpoint URL"
+        },
+        "mcp_server": {
+          "$ref": "#/$defs/mcp_server"
+        },
+        "feeds": {
+          "type": "object",
+          "description": "Named data feeds",
+          "additionalProperties": {
+            "$ref": "#/$defs/feed"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "catalog": {
+      "type": "object",
+      "description": "Catalog/product feed configuration (Spec §3.3.1)",
+      "required": ["type", "format", "url"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["product_feed", "service_list", "menu", "inventory", "custom"],
+          "description": "Catalog type (Spec §3.3.1)"
+        },
+        "format": {
+          "type": "string",
+          "enum": ["json", "xml", "csv", "jsonld"],
+          "description": "Feed data format (Spec §3.3.1)"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the catalog feed (Spec §3.3.1)"
+        },
+        "total_items": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of items in catalog"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        },
+        "schema": {
+          "type": "string",
+          "format": "uri",
+          "description": "Schema used for item descriptions"
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "page_size": { "type": "integer", "minimum": 1 }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "search": {
+      "type": "object",
+      "description": "Search API configuration (Spec §3.3.2)",
+      "required": ["endpoint", "method", "parameters", "response_format", "authentication"],
+      "properties": {
+        "endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Search API endpoint (Spec §3.3.2)"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST"],
+          "description": "HTTP method (Spec §3.3.2)"
+        },
+        "parameters": {
+          "type": "object",
+          "description": "Map of parameter names to their specs (Spec §3.3.2)",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "required": { "type": "boolean" },
+              "description": { "type": "string" },
+              "enum": { "type": "array" },
+              "default": {},
+              "min": {},
+              "max": {}
+            }
+          }
+        },
+        "response_format": {
+          "type": "string",
+          "description": "MIME type of response (Spec §3.3.2)"
+        },
+        "rate_limit": {
+          "$ref": "#/$defs/rate_limit"
+        },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"],
+          "description": "Authentication method (Spec §3.3.2)"
+        }
+      },
+      "additionalProperties": true
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "item_count": { "type": "integer", "minimum": 0 },
+        "subcategories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/category" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "mcp_server": {
+      "type": "object",
+      "description": "MCP (Model Context Protocol) server configuration (Spec §3.3)",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "MCP server endpoint URL"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of MCP capabilities"
+        },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": true
+    },
+    "feed": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "format": {
+          "type": "string",
+          "enum": ["json", "xml", "csv", "jsonld"]
+        },
+        "update_frequency": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "rate_limit": {
+      "type": "object",
+      "properties": {
+        "requests": { "type": "integer", "minimum": 1 },
+        "period": { "type": "string" }
+      }
+    },
+    "transactions": {
+      "type": "object",
+      "description": "How agents can transact with this business (Spec §3.4)",
+      "properties": {
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["purchase", "booking", "subscription", "quote", "auction", "donation", "custom"]
+          },
+          "description": "Supported transaction types (Spec §3.4.1)"
+        },
+        "purchase": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "booking": {
+          "$ref": "#/$defs/transaction_config_nullable"
+        },
+        "subscription": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "quote": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "auction": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "donation": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "custom": {
+          "$ref": "#/$defs/transaction_config"
+        },
+        "promotions": {
+          "type": "object",
+          "properties": {
+            "coupon_validation": {
+              "type": "object",
+              "properties": {
+                "endpoint": { "type": "string" },
+                "method": { "type": "string" }
+              }
+            },
+            "active_promotions_feed": { "type": "string", "format": "uri" }
+          },
+          "additionalProperties": true
+        },
+        "policies": {
+          "$ref": "#/$defs/policies"
+        },
+        "terms_of_service": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to terms of service"
+        },
+        "privacy_policy": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to privacy policy"
+        }
+      },
+      "additionalProperties": true
+    },
+    "transaction_config": {
+      "type": "object",
+      "description": "Configuration for a transaction type (Spec §3.4)",
+      "properties": {
+        "type": { "type": "string" },
+        "endpoint": { "type": "string", "format": "uri" },
+        "method": { "type": "string" },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "oauth2": {
+          "type": "object",
+          "properties": {
+            "authorization_url": { "type": "string", "format": "uri" },
+            "token_url": { "type": "string", "format": "uri" },
+            "scopes": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "required": ["authorization_url", "token_url", "scopes"]
+        },
+        "documentation": { "type": "string", "format": "uri" },
+        "cart_api": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "method": { "type": "string" },
+              "endpoint": { "type": "string" }
+            }
+          }
+        },
+        "payment_methods": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "currencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tax_handling": { "type": "string" },
+        "shipping": {
+          "type": "object",
+          "properties": {
+            "methods_endpoint": { "type": "string" },
+            "estimate_endpoint": { "type": "string" },
+            "regions": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "plans_endpoint": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": true
+    },
+    "transaction_config_nullable": {
+      "oneOf": [
+        { "$ref": "#/$defs/transaction_config" },
+        { "type": "null" }
+      ]
+    },
+    "policies": {
+      "type": "object",
+      "description": "Business policies for transactions (Spec §3.4)",
+      "properties": {
+        "returns": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "window_days": { "type": "integer", "minimum": 0 },
+            "conditions": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "refund_method": { "type": "string" },
+            "restocking_fee_percent": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "additionalProperties": true
+        },
+        "cancellation": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "window_minutes": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": true
+        },
+        "price_match": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "information": {
+      "type": "object",
+      "description": "Real-time data endpoints for agents (Spec §3.5)",
+      "properties": {
+        "inventory": {
+          "$ref": "#/$defs/info_endpoint"
+        },
+        "pricing": {
+          "$ref": "#/$defs/info_endpoint"
+        },
+        "hours": {
+          "$ref": "#/$defs/info_endpoint"
+        },
+        "reviews": {
+          "type": "object",
+          "properties": {
+            "endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "aggregation": {
+              "type": "object",
+              "properties": {
+                "average_rating": { "type": "number" },
+                "total_reviews": { "type": "integer" },
+                "rating_distribution": { "type": "object" }
+              }
+            },
+            "third_party": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "platform": { "type": "string" },
+                  "url": { "type": "string", "format": "uri" },
+                  "rating": { "type": "number" }
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "faq": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "format": { "type": "string" },
+            "topics": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "structured_content": {
+          "type": "object",
+          "properties": {
+            "schema_org": { "type": "string", "format": "uri" },
+            "json_ld_pages": {
+              "type": "array",
+              "items": { "type": "string", "format": "uri" }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "info_endpoint": {
+      "type": "object",
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri" },
+        "method": { "type": "string" },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "freshness": { "type": "string" },
+        "response_schema": { "type": "object" },
+        "includes_tax": { "type": "boolean" },
+        "currency": { "type": "string" },
+        "response_includes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "support": {
+      "type": "object",
+      "description": "Post-transaction and customer support interfaces (Spec §3.6)",
+      "properties": {
+        "order_tracking": {
+          "type": "object",
+          "properties": {
+            "endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "authentication": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "returns": {
+          "type": "object",
+          "properties": {
+            "initiate_endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "authentication": { "type": "string" },
+            "required_fields": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": true
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "channels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "type": "string"
+                  },
+                  "url": { "type": "string", "format": "uri" },
+                  "address": { "type": "string" },
+                  "number": { "type": "string" },
+                  "protocol": { "type": "string" },
+                  "hours": {},
+                  "expected_response_time": { "type": "string" },
+                  "agent_compatible": { "type": "boolean" }
+                },
+                "additionalProperties": true
+              }
+            },
+            "mcp_server": {
+              "$ref": "#/$defs/mcp_server"
+            }
+          },
+          "additionalProperties": true
+        },
+        "webhooks": {
+          "type": "object",
+          "properties": {
+            "available_events": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "registration_endpoint": { "type": "string", "format": "uri" },
+            "documentation": { "type": "string", "format": "uri" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "agent_policies": {
+      "type": "object",
+      "description": "Rules governing how agents may interact with the business (Spec §3.7)",
+      "properties": {
+        "allow_automated_purchases": {
+          "type": "boolean"
+        },
+        "require_human_confirmation": {
+          "type": "object",
+          "properties": {
+            "purchases_above": { "type": "number", "minimum": 0 },
+            "currency": { "type": "string" },
+            "subscription_signups": { "type": "boolean" },
+            "account_changes": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        },
+        "rate_limits": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/rate_limit"
+          }
+        },
+        "authentication": {
+          "type": "object",
+          "properties": {
+            "methods": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["none", "api_key", "oauth2", "bearer"]
+              }
+            },
+            "registration_url": { "type": "string", "format": "uri" },
+            "documentation": { "type": "string", "format": "uri" }
+          },
+          "additionalProperties": true
+        },
+        "data_usage": {
+          "type": "object",
+          "properties": {
+            "allow_caching": { "type": "boolean" },
+            "cache_ttl_seconds": { "type": "integer", "minimum": 0 },
+            "allow_comparison": { "type": "boolean" },
+            "allow_price_tracking": { "type": "boolean" },
+            "allow_training": { "type": "boolean" }
+          },
+          "additionalProperties": true
+        },
+        "preferred_agent_identification": {
+          "type": "object",
+          "properties": {
+            "header": { "type": "string" },
+            "user_agent_prefix": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "human_fallback": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "description": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

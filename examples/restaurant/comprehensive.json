@@ -1,0 +1,360 @@
+{
+  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
+  "nod_version": "0.1",
+  "generated_at": "2026-03-23T12:00:00Z",
+  "business": {
+    "name": "Sakura Sushi",
+    "legal_name": "Sakura Sushi LLC",
+    "description": "Authentic Japanese sushi and omakase dining featuring daily fish sourced from Tsukiji Market and Pacific Northwest waters",
+    "type": "restaurant",
+    "categories": ["restaurant", "japanese", "sushi", "fine_dining"],
+    "naics_codes": ["722511"],
+    "url": "https://sakurasushi.com",
+    "logo": "https://sakurasushi.com/assets/logo.png",
+    "founded": "2019",
+    "locations": [
+      {
+        "type": "physical",
+        "name": "Downtown Seattle",
+        "address": {
+          "street": "742 Pike St",
+          "city": "Seattle",
+          "state": "WA",
+          "postal_code": "98101",
+          "country": "US"
+        },
+        "coordinates": {
+          "latitude": 47.6131,
+          "longitude": -122.3360
+        },
+        "hours": {
+          "timezone": "America/Los_Angeles",
+          "regular": {
+            "monday": { "status": "closed" },
+            "tuesday": [
+              { "open": "11:30", "close": "14:00", "label": "lunch" },
+              { "open": "17:00", "close": "22:00", "label": "dinner" }
+            ],
+            "wednesday": [
+              { "open": "11:30", "close": "14:00", "label": "lunch" },
+              { "open": "17:00", "close": "22:00", "label": "dinner" }
+            ],
+            "thursday": [
+              { "open": "11:30", "close": "14:00", "label": "lunch" },
+              { "open": "17:00", "close": "22:00", "label": "dinner" }
+            ],
+            "friday": [
+              { "open": "11:30", "close": "14:30", "label": "lunch" },
+              { "open": "17:00", "close": "23:00", "label": "dinner" }
+            ],
+            "saturday": [
+              { "open": "12:00", "close": "15:00", "label": "lunch" },
+              { "open": "17:00", "close": "23:00", "label": "dinner" }
+            ],
+            "sunday": [
+              { "open": "12:00", "close": "14:00", "label": "lunch" },
+              { "open": "17:00", "close": "21:00", "label": "dinner" }
+            ]
+          },
+          "exceptions": [
+            { "date": "2026-12-25", "status": "closed", "reason": "Christmas Day" },
+            { "date": "2026-01-01", "status": "closed", "reason": "New Year's Day" }
+          ]
+        },
+        "phone": "+1-206-555-0400",
+        "email": "info@sakurasushi.com"
+      }
+    ],
+    "contacts": {
+      "general": { "email": "info@sakurasushi.com", "phone": "+1-206-555-0400" },
+      "reservations": { "email": "reservations@sakurasushi.com", "phone": "+1-206-555-0401" },
+      "events": { "email": "events@sakurasushi.com" },
+      "press": { "email": "press@sakurasushi.com" }
+    },
+    "social": {
+      "instagram": "https://instagram.com/sakurasushi_seattle",
+      "x": "https://x.com/sakurasushi",
+      "facebook": "https://facebook.com/sakurasushiseattle"
+    },
+    "schema_org": "https://sakurasushi.com/schema/restaurant.jsonld"
+  },
+  "discovery": {
+    "catalog": {
+      "type": "menu",
+      "format": "json",
+      "url": "https://sakurasushi.com/api/v1/menu",
+      "total_items": 68,
+      "updated_at": "2026-03-22T10:00:00Z",
+      "schema": "https://schema.org/Menu"
+    },
+    "search": {
+      "endpoint": "https://sakurasushi.com/api/v1/menu/search",
+      "method": "GET",
+      "parameters": {
+        "q": { "type": "string", "required": true, "description": "Search menu items by name or ingredient" },
+        "category": { "type": "string", "required": false, "enum": ["nigiri", "sashimi", "rolls", "appetizers", "entrees", "desserts", "drinks"], "description": "Menu section" },
+        "dietary": { "type": "string", "required": false, "enum": ["vegetarian", "vegan", "gluten_free", "nut_free"], "description": "Dietary filter" },
+        "max_price": { "type": "number", "required": false },
+        "spice_level": { "type": "string", "required": false, "enum": ["mild", "medium", "hot"] }
+      },
+      "response_format": "application/json",
+      "rate_limit": { "requests": 30, "period": "minute" },
+      "authentication": "none"
+    },
+    "categories": [
+      {
+        "name": "Nigiri",
+        "slug": "nigiri",
+        "url": "https://sakurasushi.com/menu#nigiri",
+        "item_count": 16
+      },
+      {
+        "name": "Sashimi",
+        "slug": "sashimi",
+        "url": "https://sakurasushi.com/menu#sashimi",
+        "item_count": 12
+      },
+      {
+        "name": "Signature Rolls",
+        "slug": "rolls",
+        "url": "https://sakurasushi.com/menu#rolls",
+        "item_count": 14
+      },
+      {
+        "name": "Appetizers",
+        "slug": "appetizers",
+        "url": "https://sakurasushi.com/menu#appetizers",
+        "item_count": 10
+      },
+      {
+        "name": "Entrees",
+        "slug": "entrees",
+        "url": "https://sakurasushi.com/menu#entrees",
+        "item_count": 8
+      },
+      {
+        "name": "Omakase",
+        "slug": "omakase",
+        "url": "https://sakurasushi.com/menu#omakase",
+        "item_count": 3
+      },
+      {
+        "name": "Drinks",
+        "slug": "drinks",
+        "url": "https://sakurasushi.com/menu#drinks",
+        "item_count": 5
+      }
+    ],
+    "sitemap": "https://sakurasushi.com/sitemap.xml",
+    "mcp_server": {
+      "url": "https://sakurasushi.com/mcp",
+      "capabilities": ["menu_browse", "reservation_check", "dietary_filter", "daily_specials"],
+      "authentication": "api_key",
+      "documentation": "https://sakurasushi.com/developers/mcp"
+    },
+    "feeds": {
+      "daily_specials": {
+        "url": "https://sakurasushi.com/feeds/daily-specials.json",
+        "format": "json",
+        "update_frequency": "daily"
+      }
+    },
+    "llms_txt": {
+      "url": "https://bellacucina.com/.well-known/llms.txt",
+      "full_url": "https://bellacucina.com/llms-full.txt",
+      "description": "Menu, hours, reservation policies, and dietary information for AI systems"
+    }
+  },
+  "transactions": {
+    "capabilities": ["booking", "purchase"],
+    "booking": {
+      "type": "api",
+      "endpoint": "https://sakurasushi.com/api/v1/reservations",
+      "method": "POST",
+      "authentication": "api_key",
+      "documentation": "https://sakurasushi.com/developers/api/reservations",
+      "required_fields": ["date", "time", "party_size", "guest_name", "phone", "email"],
+      "optional_fields": ["seating_preference", "special_requests", "occasion", "dietary_notes"],
+      "availability_endpoint": {
+        "url": "https://sakurasushi.com/api/v1/reservations/availability",
+        "method": "GET",
+        "parameters": {
+          "date": { "type": "date", "required": true },
+          "party_size": { "type": "integer", "required": true, "min": 1, "max": 12 },
+          "time_preference": { "type": "string", "required": false, "enum": ["lunch", "early_dinner", "dinner", "late_dinner"] }
+        }
+      },
+      "cancellation_endpoint": {
+        "url": "https://sakurasushi.com/api/v1/reservations/{reservation_id}",
+        "method": "DELETE"
+      },
+      "max_party_size": 12,
+      "advance_booking_days": 30,
+      "cancellation_policy": "Free cancellation up to 4 hours before reservation. Late cancellations may incur a $25 per person fee."
+    },
+    "purchase": {
+      "type": "api",
+      "endpoint": "https://sakurasushi.com/api/v1/orders",
+      "method": "POST",
+      "authentication": "api_key",
+      "documentation": "https://sakurasushi.com/developers/api/orders",
+      "cart_api": {
+        "add": { "method": "POST", "endpoint": "/api/v1/orders/cart/items" },
+        "remove": { "method": "DELETE", "endpoint": "/api/v1/orders/cart/items/{item_id}" },
+        "view": { "method": "GET", "endpoint": "/api/v1/orders/cart" },
+        "checkout": { "method": "POST", "endpoint": "/api/v1/orders/cart/checkout" }
+      },
+      "payment_methods": ["credit_card", "apple_pay", "google_pay"],
+      "currencies": ["USD"],
+      "tax_handling": "calculated_at_checkout",
+      "order_types": ["pickup", "delivery"],
+      "delivery": {
+        "provider": "in_house",
+        "radius_miles": 5,
+        "fee": { "amount": 5.00, "currency": "USD" },
+        "free_delivery_threshold": { "amount": 75.00, "currency": "USD" },
+        "estimated_time_minutes": { "min": 30, "max": 50 }
+      }
+    },
+    "policies": {
+      "cancellation": {
+        "url": "https://sakurasushi.com/policies/cancellation",
+        "summary": "Free cancellation up to 4 hours before reservation. $25/person for late cancellations or no-shows."
+      }
+    },
+    "terms_of_service": "https://sakurasushi.com/terms",
+    "privacy_policy": "https://sakurasushi.com/privacy"
+  },
+  "information": {
+    "pricing": {
+      "endpoint": "https://sakurasushi.com/api/v1/menu/{item_id}/price",
+      "method": "GET",
+      "authentication": "none",
+      "includes_tax": false,
+      "currency": "USD"
+    },
+    "hours": {
+      "endpoint": "https://sakurasushi.com/api/v1/hours",
+      "method": "GET",
+      "response_includes": ["regular_hours", "holiday_hours", "current_status", "next_open"]
+    },
+    "reviews": {
+      "endpoint": "https://sakurasushi.com/api/v1/reviews",
+      "method": "GET",
+      "aggregation": {
+        "average_rating": 4.8,
+        "total_reviews": 1847
+      },
+      "third_party": [
+        { "platform": "google", "rating": 4.7, "total_reviews": 1203 },
+        { "platform": "yelp", "url": "https://yelp.com/biz/sakura-sushi-seattle", "rating": 4.5 },
+        { "platform": "tripadvisor", "url": "https://tripadvisor.com/sakura-sushi-seattle", "rating": 4.8 }
+      ]
+    },
+    "faq": {
+      "url": "https://sakurasushi.com/api/v1/faq",
+      "format": "json",
+      "topics": ["reservations", "dietary", "parking", "dress_code", "private_dining", "delivery"]
+    },
+    "structured_content": {
+      "schema_org": "https://sakurasushi.com/schema/restaurant.jsonld",
+      "json_ld_pages": [
+        "https://sakurasushi.com/about",
+        "https://sakurasushi.com/menu"
+      ]
+    }
+  },
+  "support": {
+    "contact": {
+      "channels": [
+        {
+          "type": "phone",
+          "number": "+1-206-555-0400",
+          "hours": { "timezone": "America/Los_Angeles", "weekdays": "10:00-22:00", "weekends": "11:00-23:00" },
+          "agent_compatible": false
+        },
+        {
+          "type": "email",
+          "address": "info@sakurasushi.com",
+          "expected_response_time": "24_hours"
+        },
+        {
+          "type": "chat",
+          "url": "https://sakurasushi.com/api/v1/support/chat",
+          "protocol": "websocket",
+          "hours": { "timezone": "America/Los_Angeles", "daily": "10:00-22:00" },
+          "agent_compatible": true
+        }
+      ],
+      "mcp_server": {
+        "url": "https://sakurasushi.com/mcp/support",
+        "capabilities": ["reservation_status", "order_status", "menu_inquiry", "dietary_inquiry"]
+      }
+    },
+    "webhooks": {
+      "available_events": ["reservation.confirmed", "reservation.cancelled", "order.confirmed", "order.ready", "order.delivered"],
+      "registration_endpoint": "https://sakurasushi.com/api/v1/webhooks",
+      "documentation": "https://sakurasushi.com/developers/webhooks"
+    }
+  },
+  "agent_policies": {
+    "allow_automated_purchases": true,
+    "require_human_confirmation": {
+      "purchases_above": 200.00,
+      "currency": "USD",
+      "reservation_changes": true,
+      "account_changes": true
+    },
+    "rate_limits": {
+      "search": { "requests": 30, "period": "minute" },
+      "menu_details": { "requests": 60, "period": "minute" },
+      "transactions": { "requests": 10, "period": "minute" }
+    },
+    "authentication": {
+      "methods": ["api_key"],
+      "registration_url": "https://sakurasushi.com/developers/register",
+      "documentation": "https://sakurasushi.com/developers/auth"
+    },
+    "data_usage": {
+      "allow_caching": true,
+      "cache_ttl_seconds": 1800,
+      "allow_comparison": true,
+      "allow_price_tracking": false,
+      "allow_training": false
+    },
+    "preferred_agent_identification": {
+      "header": "X-Agent-Id",
+      "user_agent_prefix": "NOD-Agent/"
+    },
+    "human_fallback": {
+      "url": "https://sakurasushi.com",
+      "description": "Visit our website or call for reservations, private dining inquiries, or special requests"
+    }
+  },
+  "extensions": {
+    "ai.opennod.restaurant": {
+      "cuisine_types": ["japanese", "sushi", "omakase"],
+      "dietary_options": ["vegetarian", "vegan", "gluten_free", "nut_free", "shellfish_free"],
+      "menu_url": "https://sakurasushi.com/api/v1/menu",
+      "reservation_system": "in_house",
+      "delivery_platforms": ["doordash", "ubereats", "in_house"],
+      "average_meal_price": { "amount": 45.00, "currency": "USD" },
+      "price_range": "$$$$",
+      "seating_capacity": 65,
+      "private_dining": {
+        "available": true,
+        "max_guests": 20,
+        "inquiry_email": "events@sakurasushi.com"
+      },
+      "alcohol_served": true,
+      "license_type": "full_bar",
+      "parking": "street_and_garage",
+      "dress_code": "smart_casual",
+      "accessibility": {
+        "wheelchair_accessible": true,
+        "braille_menu": false,
+        "large_print_menu": true
+      }
+    }
+  }
+}

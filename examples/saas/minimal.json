@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
+  "nod_version": "0.1",
+  "generated_at": "2026-03-23T12:00:00Z",
+  "business": {
+    "name": "CloudMetrics",
+    "legal_name": "CloudMetrics Inc.",
+    "type": "saas",
+    "description": "Real-time analytics platform for web and mobile applications",
+    "url": "https://cloudmetrics.io",
+    "contacts": {
+      "general": { "email": "hello@cloudmetrics.io" },
+      "support": { "email": "support@cloudmetrics.io" }
+    }
+  },
+  "agent_policies": {
+    "human_fallback": {
+      "url": "https://cloudmetrics.io",
+      "description": "Visit our website to explore plans, request a demo, or contact sales"
+    }
+  }
+}
