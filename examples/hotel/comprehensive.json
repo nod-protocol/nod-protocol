@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "The Grand Portland",
+    "naics_code": "721110",
+    "gbp_primary_category": "Hotel",
+    "url": "https://thegrandportland.com",
     "legal_name": "Grand Portland Hospitality LLC",
     "description": "Boutique luxury hotel in Portland's historic Pearl District featuring 92 individually designed rooms, rooftop restaurant, spa, and curated local art throughout",
     "categories": [
@@ -11,7 +14,6 @@
       "boutique_hotel",
       "luxury"
     ],
-    "url": "https://thegrandportland.com",
     "logo": "https://thegrandportland.com/assets/logo.svg",
     "founded": "2020",
     "locations": [
@@ -97,9 +99,7 @@
     "schema_org": "https://thegrandportland.com/schema/hotel.jsonld",
     "identifiers": {
       "duns": "345678901"
-    },
-    "naics_code": "721110",
-    "gbp_primary_category": "Hotel"
+    }
   },
   "extensions": {
     "ai.opennod.hotel": {

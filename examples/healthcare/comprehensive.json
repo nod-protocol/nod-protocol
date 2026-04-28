@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CityHealth Clinic",
+    "naics_code": "621111",
+    "gbp_primary_category": "Medical Clinic",
+    "url": "https://cityhealthclinic.com",
     "legal_name": "CityHealth Medical Group PLLC",
     "description": "Primary care, urgent care, and preventive medicine clinic serving families in Austin, TX. Same-day appointments, telehealth visits, and comprehensive lab services on-site.",
     "categories": [
@@ -12,7 +15,6 @@
       "urgent_care",
       "family_medicine"
     ],
-    "url": "https://cityhealthclinic.com",
     "logo": "https://cityhealthclinic.com/assets/logo.svg",
     "founded": "2017",
     "locations": [
@@ -160,9 +162,7 @@
     "schema_org": "https://cityhealthclinic.com/schema/medicalbusiness.jsonld",
     "identifiers": {
       "npi": "1234567890"
-    },
-    "naics_code": "621111",
-    "gbp_primary_category": "Medical Clinic"
+    }
   },
   "extensions": {
     "ai.opennod.healthcare": {

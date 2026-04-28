@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Whitfield & Associates",
+    "naics_code": "541110",
+    "gbp_primary_category": "Law Firm",
+    "url": "https://whitfieldlaw.com",
     "legal_name": "Whitfield & Associates LLP",
     "description": "Full-service law firm specializing in corporate law, intellectual property, employment law, and startup advisory. Serving businesses from formation through IPO across the Midwest and nationally.",
     "categories": [
@@ -12,7 +15,6 @@
       "intellectual_property",
       "employment_law"
     ],
-    "url": "https://whitfieldlaw.com",
     "logo": "https://whitfieldlaw.com/assets/logo.svg",
     "founded": "2008",
     "locations": [
@@ -164,9 +166,7 @@
     "schema_org": "https://whitfieldlaw.com/schema/organization.jsonld",
     "identifiers": {
       "duns": "456789012"
-    },
-    "naics_code": "541110",
-    "gbp_primary_category": "Law Firm"
+    }
   },
   "extensions": {
     "ai.opennod.professional": {

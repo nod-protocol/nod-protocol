@@ -4,9 +4,11 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CityHealth Clinic",
+    "naics_code": "621111",
+    "gbp_primary_category": "Medical Clinic",
+    "url": "https://cityhealthclinic.com",
     "legal_name": "CityHealth Medical Group PLLC",
     "description": "Primary care and urgent care clinic serving families in Austin, TX with same-day appointments and telehealth",
-    "url": "https://cityhealthclinic.com",
     "locations": [
       {
         "type": "physical",
@@ -61,9 +63,7 @@
       "appointments": {
         "phone": "+1-512-555-0601"
       }
-    },
-    "naics_code": "621111",
-    "gbp_primary_category": "Medical Clinic"
+    }
   },
   "extensions": {
     "ai.opennod.agent-commerce": {

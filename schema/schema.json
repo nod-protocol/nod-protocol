@@ -41,19 +41,6 @@
           "minLength": 1,
           "description": "Business name as it appears to customers."
         },
-        "legal_name": {
-          "type": "string",
-          "description": "Legal entity name. Often differs from `name`."
-        },
-        "dba_names": {
-          "type": "array",
-          "items": { "type": "string", "minLength": 1 },
-          "description": "Doing-business-as names this entity also operates under."
-        },
-        "description": {
-          "type": "string",
-          "description": "Plain-language description of what the business does."
-        },
         "naics_code": {
           "type": "string",
           "pattern": "^(\\d{2,6}|31-33|44-45|48-49)$",
@@ -69,15 +56,28 @@
           "items": { "type": "string", "minLength": 1 },
           "description": "Additional GBP categories, in priority order. Same free-string semantics as gbp_primary_category for v0.2."
         },
-        "categories": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Free-form business category tags. Distinct from naics_code (industry classification) and gbp_primary_category (Google's taxonomy)."
-        },
         "url": {
           "type": "string",
           "format": "uri",
           "description": "Primary business URL — must match the serving domain."
+        },
+        "legal_name": {
+          "type": "string",
+          "description": "Legal entity name. Often differs from `name`."
+        },
+        "dba_names": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Doing-business-as names this entity also operates under."
+        },
+        "description": {
+          "type": "string",
+          "description": "Plain-language description of what the business does."
+        },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Free-form business category tags. Distinct from naics_code (industry classification) and gbp_primary_category (Google's taxonomy)."
         },
         "logo": {
           "type": "string",

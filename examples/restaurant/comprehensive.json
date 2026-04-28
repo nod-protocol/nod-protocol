@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Sakura Sushi",
+    "naics_code": "722511",
+    "gbp_primary_category": "Sushi Restaurant",
+    "url": "https://sakurasushi.com",
     "legal_name": "Sakura Sushi LLC",
     "description": "Authentic Japanese sushi and omakase dining featuring daily fish sourced from Tsukiji Market and Pacific Northwest waters",
     "categories": [
@@ -12,7 +15,6 @@
       "sushi",
       "fine_dining"
     ],
-    "url": "https://sakurasushi.com",
     "logo": "https://sakurasushi.com/assets/logo.png",
     "founded": "2019",
     "locations": [
@@ -147,9 +149,7 @@
       "x": "https://x.com/sakurasushi",
       "facebook": "https://facebook.com/sakurasushiseattle"
     },
-    "schema_org": "https://sakurasushi.com/schema/restaurant.jsonld",
-    "naics_code": "722511",
-    "gbp_primary_category": "Sushi Restaurant"
+    "schema_org": "https://sakurasushi.com/schema/restaurant.jsonld"
   },
   "extensions": {
     "ai.opennod.restaurant": {

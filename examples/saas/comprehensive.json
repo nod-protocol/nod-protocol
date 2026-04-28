@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CloudMetrics",
+    "naics_code": "513210",
+    "gbp_primary_category": "Software Company",
+    "url": "https://cloudmetrics.io",
     "legal_name": "CloudMetrics Inc.",
     "description": "Real-time analytics platform for web and mobile applications with AI-powered insights, custom dashboards, and enterprise-grade data pipelines",
     "categories": [
@@ -11,7 +14,6 @@
       "business_intelligence",
       "developer_tools"
     ],
-    "url": "https://cloudmetrics.io",
     "logo": "https://cloudmetrics.io/assets/logo.svg",
     "founded": "2021",
     "locations": [
@@ -61,9 +63,7 @@
     "identifiers": {
       "duns": "234567890",
       "ein": "94-7654321"
-    },
-    "naics_code": "513210",
-    "gbp_primary_category": "Software Company"
+    }
   },
   "extensions": {
     "ai.opennod.saas": {

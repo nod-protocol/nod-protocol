@@ -4,6 +4,9 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Acme Running Co.",
+    "naics_code": "458210",
+    "gbp_primary_category": "Shoe Store",
+    "url": "https://acmerunning.com",
     "legal_name": "Acme Running Company LLC",
     "description": "Premium running shoes and gear for athletes of all levels",
     "categories": [
@@ -11,7 +14,6 @@
       "sporting_goods",
       "footwear"
     ],
-    "url": "https://acmerunning.com",
     "logo": "https://acmerunning.com/assets/logo.png",
     "founded": "2018",
     "locations": [
@@ -159,9 +161,7 @@
     "identifiers": {
       "duns": "987654321",
       "ein": "93-1234567"
-    },
-    "naics_code": "458210",
-    "gbp_primary_category": "Shoe Store"
+    }
   },
   "extensions": {
     "ai.opennod.ecommerce": {

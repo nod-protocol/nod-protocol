@@ -4,9 +4,11 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CloudMetrics",
+    "naics_code": "513210",
+    "gbp_primary_category": "Software Company",
+    "url": "https://cloudmetrics.io",
     "legal_name": "CloudMetrics Inc.",
     "description": "Real-time analytics platform for web and mobile applications",
-    "url": "https://cloudmetrics.io",
     "contacts": {
       "general": {
         "email": "hello@cloudmetrics.io"
@@ -14,9 +16,7 @@
       "support": {
         "email": "support@cloudmetrics.io"
       }
-    },
-    "naics_code": "513210",
-    "gbp_primary_category": "Software Company"
+    }
   },
   "extensions": {
     "ai.opennod.agent-commerce": {

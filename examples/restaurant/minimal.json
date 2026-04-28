@@ -4,8 +4,10 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Sakura Sushi",
-    "description": "Authentic Japanese sushi and omakase dining in downtown Seattle",
+    "naics_code": "722511",
+    "gbp_primary_category": "Sushi Restaurant",
     "url": "https://sakurasushi.com",
+    "description": "Authentic Japanese sushi and omakase dining in downtown Seattle",
     "locations": [
       {
         "type": "physical",
@@ -57,9 +59,7 @@
         "email": "info@sakurasushi.com",
         "phone": "+1-206-555-0400"
       }
-    },
-    "naics_code": "722511",
-    "gbp_primary_category": "Sushi Restaurant"
+    }
   },
   "extensions": {
     "ai.opennod.agent-commerce": {

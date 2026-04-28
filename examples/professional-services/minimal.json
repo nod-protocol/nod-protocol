@@ -4,9 +4,11 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Whitfield & Associates",
+    "naics_code": "541110",
+    "gbp_primary_category": "Law Firm",
+    "url": "https://whitfieldlaw.com",
     "legal_name": "Whitfield & Associates LLP",
     "description": "Full-service law firm specializing in corporate law, intellectual property, and employment law in Chicago",
-    "url": "https://whitfieldlaw.com",
     "locations": [
       {
         "type": "physical",
@@ -57,9 +59,7 @@
         "email": "info@whitfieldlaw.com",
         "phone": "+1-312-555-0700"
       }
-    },
-    "naics_code": "541110",
-    "gbp_primary_category": "Law Firm"
+    }
   },
   "extensions": {
     "ai.opennod.agent-commerce": {

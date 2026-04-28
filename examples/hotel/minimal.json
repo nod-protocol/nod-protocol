@@ -4,8 +4,10 @@
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "The Grand Portland",
-    "description": "Boutique luxury hotel in Portland's historic Pearl District with 92 rooms and rooftop dining",
+    "naics_code": "721110",
+    "gbp_primary_category": "Hotel",
     "url": "https://thegrandportland.com",
+    "description": "Boutique luxury hotel in Portland's historic Pearl District with 92 rooms and rooftop dining",
     "locations": [
       {
         "type": "physical",
@@ -62,9 +64,7 @@
         "email": "reservations@thegrandportland.com",
         "phone": "+1-503-555-0501"
       }
-    },
-    "naics_code": "721110",
-    "gbp_primary_category": "Hotel"
+    }
   },
   "extensions": {
     "ai.opennod.agent-commerce": {
