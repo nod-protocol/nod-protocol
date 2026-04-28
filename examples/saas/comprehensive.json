@@ -1,14 +1,16 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CloudMetrics",
     "legal_name": "CloudMetrics Inc.",
     "description": "Real-time analytics platform for web and mobile applications with AI-powered insights, custom dashboards, and enterprise-grade data pipelines",
-    "type": "saas",
-    "categories": ["analytics", "business_intelligence", "developer_tools"],
-    "naics_codes": ["511210"],
+    "categories": [
+      "analytics",
+      "business_intelligence",
+      "developer_tools"
+    ],
     "url": "https://cloudmetrics.io",
     "logo": "https://cloudmetrics.io/assets/logo.svg",
     "founded": "2021",
@@ -24,7 +26,7 @@
           "country": "US"
         },
         "coordinates": {
-          "latitude": 37.7900,
+          "latitude": 37.79,
           "longitude": -122.4005
         },
         "phone": "+1-415-555-0300",
@@ -32,11 +34,23 @@
       }
     ],
     "contacts": {
-      "general": { "email": "hello@cloudmetrics.io", "phone": "+1-415-555-0300" },
-      "support": { "email": "support@cloudmetrics.io", "phone": "+1-415-555-0301" },
-      "sales": { "email": "sales@cloudmetrics.io" },
-      "security": { "email": "security@cloudmetrics.io" },
-      "press": { "email": "press@cloudmetrics.io" }
+      "general": {
+        "email": "hello@cloudmetrics.io",
+        "phone": "+1-415-555-0300"
+      },
+      "support": {
+        "email": "support@cloudmetrics.io",
+        "phone": "+1-415-555-0301"
+      },
+      "sales": {
+        "email": "sales@cloudmetrics.io"
+      },
+      "security": {
+        "email": "security@cloudmetrics.io"
+      },
+      "press": {
+        "email": "press@cloudmetrics.io"
+      }
     },
     "social": {
       "x": "https://x.com/cloudmetrics",
@@ -47,251 +61,27 @@
     "identifiers": {
       "duns": "234567890",
       "ein": "94-7654321"
-    }
-  },
-  "discovery": {
-    "catalog": {
-      "type": "service_list",
-      "format": "json",
-      "url": "https://cloudmetrics.io/api/v1/plans",
-      "total_items": 4,
-      "updated_at": "2026-03-01T00:00:00Z",
-      "schema": "https://schema.org/Service"
     },
-    "search": {
-      "endpoint": "https://cloudmetrics.io/api/v1/docs/search",
-      "method": "GET",
-      "parameters": {
-        "q": { "type": "string", "required": true, "description": "Search query across docs, guides, and API reference" },
-        "section": { "type": "string", "required": false, "enum": ["guides", "api_reference", "integrations", "changelog"], "description": "Filter by documentation section" },
-        "page": { "type": "integer", "default": 1 },
-        "per_page": { "type": "integer", "default": 20, "max": 50 }
-      },
-      "response_format": "application/json",
-      "rate_limit": { "requests": 30, "period": "minute" },
-      "authentication": "none"
-    },
-    "categories": [
-      {
-        "name": "Plans",
-        "slug": "plans",
-        "url": "https://cloudmetrics.io/pricing",
-        "item_count": 4,
-        "subcategories": [
-          { "name": "Free", "slug": "free", "item_count": 1 },
-          { "name": "Pro", "slug": "pro", "item_count": 1 },
-          { "name": "Business", "slug": "business", "item_count": 1 },
-          { "name": "Enterprise", "slug": "enterprise", "item_count": 1 }
-        ]
-      },
-      {
-        "name": "Integrations",
-        "slug": "integrations",
-        "url": "https://cloudmetrics.io/integrations",
-        "item_count": 85,
-        "subcategories": [
-          { "name": "Data Sources", "slug": "data-sources", "item_count": 35 },
-          { "name": "Destinations", "slug": "destinations", "item_count": 20 },
-          { "name": "Frameworks", "slug": "frameworks", "item_count": 30 }
-        ]
-      }
-    ],
-    "sitemap": "https://cloudmetrics.io/sitemap.xml",
-    "openapi": "https://cloudmetrics.io/api/openapi.yaml",
-    "mcp_server": {
-      "url": "https://cloudmetrics.io/mcp",
-      "capabilities": ["plan_comparison", "feature_lookup", "integration_check", "usage_estimate"],
-      "authentication": "api_key",
-      "documentation": "https://docs.cloudmetrics.io/mcp"
-    },
-    "feeds": {
-      "changelog": {
-        "url": "https://cloudmetrics.io/feeds/changelog.json",
-        "format": "json",
-        "update_frequency": "weekly"
-      },
-      "status": {
-        "url": "https://status.cloudmetrics.io/api/v1/status.json",
-        "format": "json",
-        "update_frequency": "real_time"
-      }
-    },
-    "llms_txt": {
-      "url": "https://taskflow.io/.well-known/llms.txt",
-      "full_url": "https://taskflow.io/llms-full.txt",
-      "description": "API documentation, integration guides, and platform capabilities for AI systems"
-    }
-  },
-  "transactions": {
-    "capabilities": ["subscription", "quote"],
-    "subscription": {
-      "type": "api",
-      "endpoint": "https://cloudmetrics.io/api/v1/subscriptions",
-      "method": "POST",
-      "authentication": "oauth2",
-      "oauth2": {
-        "authorization_url": "https://cloudmetrics.io/oauth/authorize",
-        "token_url": "https://cloudmetrics.io/oauth/token",
-        "scopes": ["read:account", "write:subscription", "read:usage"]
-      },
-      "plans_endpoint": "https://cloudmetrics.io/api/v1/plans",
-      "documentation": "https://docs.cloudmetrics.io/api/subscriptions",
-      "payment_methods": ["credit_card", "invoice"],
-      "currencies": ["USD", "EUR", "GBP"],
-      "billing_periods": ["monthly", "annual"],
-      "trial": {
-        "available": true,
-        "duration_days": 14,
-        "requires_payment_method": false
-      }
-    },
-    "quote": {
-      "type": "api",
-      "endpoint": "https://cloudmetrics.io/api/v1/quotes",
-      "method": "POST",
-      "authentication": "none",
-      "required_fields": ["company_name", "email", "estimated_events_per_month", "plan_interest"],
-      "documentation": "https://docs.cloudmetrics.io/api/quotes"
-    },
-    "promotions": {
-      "coupon_validation": {
-        "endpoint": "/api/v1/coupons/validate",
-        "method": "POST"
-      }
-    },
-    "policies": {
-      "cancellation": {
-        "url": "https://cloudmetrics.io/policies/cancellation",
-        "summary": "Cancel anytime. Annual plans refunded pro-rata for remaining months.",
-        "notice_period_days": 0
-      },
-      "returns": {
-        "url": "https://cloudmetrics.io/policies/refund",
-        "summary": "Full refund within 30 days of initial subscription. Pro-rata refund for annual plans thereafter.",
-        "window_days": 30,
-        "refund_method": "original_payment",
-        "restocking_fee_percent": 0
-      }
-    },
-    "terms_of_service": "https://cloudmetrics.io/legal/terms",
-    "privacy_policy": "https://cloudmetrics.io/legal/privacy"
-  },
-  "information": {
-    "pricing": {
-      "endpoint": "https://cloudmetrics.io/api/v1/plans/{plan_id}/pricing",
-      "method": "GET",
-      "authentication": "none",
-      "includes_tax": false,
-      "currency": "USD"
-    },
-    "hours": {
-      "endpoint": "https://cloudmetrics.io/api/v1/support/hours",
-      "method": "GET",
-      "response_includes": ["support_hours_by_plan", "current_status"]
-    },
-    "reviews": {
-      "endpoint": "https://cloudmetrics.io/api/v1/testimonials",
-      "method": "GET",
-      "aggregation": {
-        "average_rating": 4.7,
-        "total_reviews": 2340
-      },
-      "third_party": [
-        { "platform": "g2", "url": "https://g2.com/products/cloudmetrics/reviews", "rating": 4.6 },
-        { "platform": "capterra", "url": "https://capterra.com/p/cloudmetrics/reviews", "rating": 4.8 }
-      ]
-    },
-    "faq": {
-      "url": "https://cloudmetrics.io/api/v1/faq",
-      "format": "json",
-      "topics": ["pricing", "data_retention", "security", "integrations", "migration", "compliance"]
-    },
-    "structured_content": {
-      "schema_org": "https://cloudmetrics.io/schema/organization.jsonld",
-      "json_ld_pages": [
-        "https://cloudmetrics.io/about",
-        "https://cloudmetrics.io/pricing",
-        "https://cloudmetrics.io/security"
-      ]
-    }
-  },
-  "support": {
-    "contact": {
-      "channels": [
-        {
-          "type": "chat",
-          "url": "https://cloudmetrics.io/api/v1/support/chat",
-          "protocol": "websocket",
-          "hours": "24/7",
-          "agent_compatible": true,
-          "plan_requirement": "pro"
-        },
-        {
-          "type": "email",
-          "address": "support@cloudmetrics.io",
-          "expected_response_time": "2_hours"
-        },
-        {
-          "type": "phone",
-          "number": "+1-415-555-0301",
-          "hours": { "timezone": "America/Los_Angeles", "weekdays": "06:00-18:00" },
-          "agent_compatible": false,
-          "plan_requirement": "business"
-        }
-      ],
-      "mcp_server": {
-        "url": "https://cloudmetrics.io/mcp/support",
-        "capabilities": ["account_status", "billing_inquiry", "feature_request", "bug_report"]
-      }
-    },
-    "webhooks": {
-      "available_events": ["subscription.created", "subscription.upgraded", "subscription.cancelled", "invoice.paid", "invoice.failed", "usage.threshold_reached"],
-      "registration_endpoint": "https://cloudmetrics.io/api/v1/webhooks",
-      "documentation": "https://docs.cloudmetrics.io/webhooks"
-    }
-  },
-  "agent_policies": {
-    "allow_automated_purchases": true,
-    "require_human_confirmation": {
-      "purchases_above": 1000.00,
-      "currency": "USD",
-      "subscription_signups": true,
-      "account_changes": true,
-      "plan_downgrades": true
-    },
-    "rate_limits": {
-      "search": { "requests": 30, "period": "minute" },
-      "plan_details": { "requests": 60, "period": "minute" },
-      "transactions": { "requests": 5, "period": "minute" }
-    },
-    "authentication": {
-      "methods": ["api_key", "oauth2"],
-      "registration_url": "https://developers.cloudmetrics.io/register",
-      "documentation": "https://docs.cloudmetrics.io/auth"
-    },
-    "data_usage": {
-      "allow_caching": true,
-      "cache_ttl_seconds": 86400,
-      "allow_comparison": true,
-      "allow_price_tracking": true,
-      "allow_training": false
-    },
-    "preferred_agent_identification": {
-      "header": "X-Agent-Id",
-      "user_agent_prefix": "NOD-Agent/"
-    },
-    "human_fallback": {
-      "url": "https://cloudmetrics.io",
-      "description": "Visit our website for demos, custom enterprise pricing, or to speak with sales"
-    }
+    "naics_code": "513210",
+    "gbp_primary_category": "Software Company"
   },
   "extensions": {
     "ai.opennod.saas": {
       "deployment_model": "cloud",
-      "regions": ["us-east-1", "us-west-2", "eu-west-1", "ap-southeast-1"],
+      "regions": [
+        "us-east-1",
+        "us-west-2",
+        "eu-west-1",
+        "ap-southeast-1"
+      ],
       "uptime_sla": "99.95%",
       "status_page": "https://status.cloudmetrics.io",
-      "security_certifications": ["SOC2_Type_II", "GDPR", "CCPA", "ISO_27001"],
+      "security_certifications": [
+        "SOC2_Type_II",
+        "GDPR",
+        "CCPA",
+        "ISO_27001"
+      ],
       "data_retention": {
         "free": "30_days",
         "pro": "1_year",
@@ -299,17 +89,417 @@
         "enterprise": "custom"
       },
       "api_rate_limits_by_plan": {
-        "free": { "requests": 1000, "period": "day" },
-        "pro": { "requests": 50000, "period": "day" },
-        "business": { "requests": 500000, "period": "day" },
+        "free": {
+          "requests": 1000,
+          "period": "day"
+        },
+        "pro": {
+          "requests": 50000,
+          "period": "day"
+        },
+        "business": {
+          "requests": 500000,
+          "period": "day"
+        },
         "enterprise": "unlimited"
       },
-      "sdk_languages": ["javascript", "python", "ruby", "go", "java", "php", "swift", "kotlin"],
+      "sdk_languages": [
+        "javascript",
+        "python",
+        "ruby",
+        "go",
+        "java",
+        "php",
+        "swift",
+        "kotlin"
+      ],
       "single_sign_on": {
         "supported": true,
-        "providers": ["saml", "oidc", "google", "okta", "azure_ad"],
+        "providers": [
+          "saml",
+          "oidc",
+          "google",
+          "okta",
+          "azure_ad"
+        ],
         "plan_requirement": "business"
       }
+    },
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "allow_automated_purchases": true,
+        "rate_limits": {
+          "search": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "plan_details": {
+            "requests": 60,
+            "period": "minute"
+          },
+          "transactions": {
+            "requests": 5,
+            "period": "minute"
+          }
+        },
+        "authentication": {
+          "methods": [
+            "api_key",
+            "oauth2"
+          ],
+          "registration_url": "https://developers.cloudmetrics.io/register",
+          "documentation": "https://docs.cloudmetrics.io/auth"
+        },
+        "data_usage": {
+          "allow_caching": true,
+          "cache_ttl_seconds": 86400,
+          "allow_comparison": true,
+          "allow_price_tracking": true,
+          "allow_training": false
+        },
+        "preferred_agent_identification": {
+          "header": "X-Agent-Id",
+          "user_agent_prefix": "NOD-Agent/"
+        },
+        "human_fallback": {
+          "url": "https://cloudmetrics.io",
+          "description": "Visit our website for demos, custom enterprise pricing, or to speak with sales"
+        },
+        "confirmation_requirements": {
+          "purchases_above": 1000.0,
+          "currency": "USD",
+          "subscription_signups": true,
+          "account_changes": true,
+          "plan_downgrades": true
+        }
+      },
+      "discovery": {
+        "catalog": {
+          "type": "service_list",
+          "format": "json",
+          "url": "https://cloudmetrics.io/api/v1/plans",
+          "total_items": 4,
+          "updated_at": "2026-03-01T00:00:00Z",
+          "schema": "https://schema.org/Service"
+        },
+        "search": {
+          "endpoint": "https://cloudmetrics.io/api/v1/docs/search",
+          "method": "GET",
+          "parameters": {
+            "q": {
+              "type": "string",
+              "required": true,
+              "description": "Search query across docs, guides, and API reference"
+            },
+            "section": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "guides",
+                "api_reference",
+                "integrations",
+                "changelog"
+              ],
+              "description": "Filter by documentation section"
+            },
+            "page": {
+              "type": "integer",
+              "default": 1
+            },
+            "per_page": {
+              "type": "integer",
+              "default": 20,
+              "max": 50
+            }
+          },
+          "response_format": "application/json",
+          "rate_limit": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "authentication": "none"
+        },
+        "categories": [
+          {
+            "name": "Plans",
+            "slug": "plans",
+            "url": "https://cloudmetrics.io/pricing",
+            "item_count": 4,
+            "subcategories": [
+              {
+                "name": "Free",
+                "slug": "free",
+                "item_count": 1
+              },
+              {
+                "name": "Pro",
+                "slug": "pro",
+                "item_count": 1
+              },
+              {
+                "name": "Business",
+                "slug": "business",
+                "item_count": 1
+              },
+              {
+                "name": "Enterprise",
+                "slug": "enterprise",
+                "item_count": 1
+              }
+            ]
+          },
+          {
+            "name": "Integrations",
+            "slug": "integrations",
+            "url": "https://cloudmetrics.io/integrations",
+            "item_count": 85,
+            "subcategories": [
+              {
+                "name": "Data Sources",
+                "slug": "data-sources",
+                "item_count": 35
+              },
+              {
+                "name": "Destinations",
+                "slug": "destinations",
+                "item_count": 20
+              },
+              {
+                "name": "Frameworks",
+                "slug": "frameworks",
+                "item_count": 30
+              }
+            ]
+          }
+        ],
+        "sitemap": "https://cloudmetrics.io/sitemap.xml",
+        "openapi": "https://cloudmetrics.io/api/openapi.yaml",
+        "mcp_server": {
+          "url": "https://cloudmetrics.io/mcp",
+          "capabilities": [
+            "plan_comparison",
+            "feature_lookup",
+            "integration_check",
+            "usage_estimate"
+          ],
+          "authentication": "api_key",
+          "documentation": "https://docs.cloudmetrics.io/mcp"
+        },
+        "feeds": {
+          "changelog": {
+            "url": "https://cloudmetrics.io/feeds/changelog.json",
+            "format": "json",
+            "update_frequency": "weekly"
+          },
+          "status": {
+            "url": "https://status.cloudmetrics.io/api/v1/status.json",
+            "format": "json",
+            "update_frequency": "real_time"
+          }
+        },
+        "llms_txt": {
+          "url": "https://taskflow.io/.well-known/llms.txt",
+          "full_url": "https://taskflow.io/llms-full.txt",
+          "description": "API documentation, integration guides, and platform capabilities for AI systems"
+        }
+      },
+      "information": {
+        "pricing": {
+          "endpoint": "https://cloudmetrics.io/api/v1/plans/{plan_id}/pricing",
+          "method": "GET",
+          "authentication": "none",
+          "includes_tax": false,
+          "currency": "USD"
+        },
+        "hours": {
+          "endpoint": "https://cloudmetrics.io/api/v1/support/hours",
+          "method": "GET",
+          "response_includes": [
+            "support_hours_by_plan",
+            "current_status"
+          ]
+        },
+        "reviews": {
+          "endpoint": "https://cloudmetrics.io/api/v1/testimonials",
+          "method": "GET",
+          "aggregation": {
+            "average_rating": 4.7,
+            "total_reviews": 2340
+          },
+          "third_party": [
+            {
+              "platform": "g2",
+              "url": "https://g2.com/products/cloudmetrics/reviews",
+              "rating": 4.6
+            },
+            {
+              "platform": "capterra",
+              "url": "https://capterra.com/p/cloudmetrics/reviews",
+              "rating": 4.8
+            }
+          ]
+        },
+        "faq": {
+          "url": "https://cloudmetrics.io/api/v1/faq",
+          "format": "json",
+          "topics": [
+            "pricing",
+            "data_retention",
+            "security",
+            "integrations",
+            "migration",
+            "compliance"
+          ]
+        },
+        "structured_content": {
+          "schema_org": "https://cloudmetrics.io/schema/organization.jsonld",
+          "json_ld_pages": [
+            "https://cloudmetrics.io/about",
+            "https://cloudmetrics.io/pricing",
+            "https://cloudmetrics.io/security"
+          ]
+        }
+      },
+      "support": {
+        "contact": {
+          "channels": [
+            {
+              "type": "chat",
+              "url": "https://cloudmetrics.io/api/v1/support/chat",
+              "protocol": "websocket",
+              "hours": "24/7",
+              "agent_compatible": true,
+              "plan_requirement": "pro"
+            },
+            {
+              "type": "email",
+              "address": "support@cloudmetrics.io",
+              "expected_response_time": "2_hours"
+            },
+            {
+              "type": "phone",
+              "number": "+1-415-555-0301",
+              "hours": {
+                "timezone": "America/Los_Angeles",
+                "weekdays": "06:00-18:00"
+              },
+              "agent_compatible": false,
+              "plan_requirement": "business"
+            }
+          ],
+          "mcp_server": {
+            "url": "https://cloudmetrics.io/mcp/support",
+            "capabilities": [
+              "account_status",
+              "billing_inquiry",
+              "feature_request",
+              "bug_report"
+            ]
+          }
+        },
+        "webhooks": {
+          "available_events": [
+            "subscription.created",
+            "subscription.upgraded",
+            "subscription.cancelled",
+            "invoice.paid",
+            "invoice.failed",
+            "usage.threshold_reached"
+          ],
+          "registration_endpoint": "https://cloudmetrics.io/api/v1/webhooks",
+          "documentation": "https://docs.cloudmetrics.io/webhooks"
+        }
+      },
+      "transactions": {
+        "capabilities": [
+          "subscription",
+          "quote"
+        ],
+        "subscription": {
+          "type": "api",
+          "endpoint": "https://cloudmetrics.io/api/v1/subscriptions",
+          "method": "POST",
+          "authentication": "oauth2",
+          "oauth2": {
+            "authorization_url": "https://cloudmetrics.io/oauth/authorize",
+            "token_url": "https://cloudmetrics.io/oauth/token",
+            "scopes": [
+              "read:account",
+              "write:subscription",
+              "read:usage"
+            ]
+          },
+          "plans_endpoint": "https://cloudmetrics.io/api/v1/plans",
+          "documentation": "https://docs.cloudmetrics.io/api/subscriptions",
+          "payment_methods": [
+            {
+              "rail": "card"
+            },
+            {
+              "rail": "invoice"
+            }
+          ],
+          "currencies": [
+            "USD",
+            "EUR",
+            "GBP"
+          ],
+          "billing_periods": [
+            "monthly",
+            "annual"
+          ],
+          "trial": {
+            "available": true,
+            "duration_days": 14,
+            "requires_payment_method": false
+          }
+        },
+        "quote": {
+          "type": "api",
+          "endpoint": "https://cloudmetrics.io/api/v1/quotes",
+          "method": "POST",
+          "authentication": "none",
+          "required_fields": [
+            "company_name",
+            "email",
+            "estimated_events_per_month",
+            "plan_interest"
+          ],
+          "documentation": "https://docs.cloudmetrics.io/api/quotes"
+        },
+        "promotions": {
+          "coupon_validation": {
+            "endpoint": "/api/v1/coupons/validate",
+            "method": "POST"
+          }
+        },
+        "terms_of_service": "https://cloudmetrics.io/legal/terms",
+        "privacy_policy": "https://cloudmetrics.io/legal/privacy",
+        "transaction_policies": {
+          "cancellation": {
+            "url": "https://cloudmetrics.io/policies/cancellation",
+            "summary": "Cancel anytime. Annual plans refunded pro-rata for remaining months.",
+            "notice_period_days": 0
+          },
+          "returns": {
+            "url": "https://cloudmetrics.io/policies/refund",
+            "summary": "Full refund within 30 days of initial subscription. Pro-rata refund for annual plans thereafter.",
+            "window_days": 30,
+            "refund_method": "original_payment",
+            "restocking_fee_percent": 0
+          }
+        }
+      }
+    },
+    "ai.opennod.merchant-voice": {
+      "positioning_statement": "Real-time analytics for teams who want answers in seconds, not dashboards in days.",
+      "ideal_customer": "Product and growth teams at SaaS companies between Series A and Series C.",
+      "specialties": [
+        "funnel analysis",
+        "session replay",
+        "AI-powered anomaly detection",
+        "self-serve SQL"
+      ]
     }
   }
 }

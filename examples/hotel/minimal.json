@@ -1,10 +1,9 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "The Grand Portland",
-    "type": "hotel",
     "description": "Boutique luxury hotel in Portland's historic Pearl District with 92 rooms and rooftop dining",
     "url": "https://thegrandportland.com",
     "locations": [
@@ -20,13 +19,34 @@
         "hours": {
           "timezone": "America/Los_Angeles",
           "regular": {
-            "monday": { "open": "00:00", "close": "23:59" },
-            "tuesday": { "open": "00:00", "close": "23:59" },
-            "wednesday": { "open": "00:00", "close": "23:59" },
-            "thursday": { "open": "00:00", "close": "23:59" },
-            "friday": { "open": "00:00", "close": "23:59" },
-            "saturday": { "open": "00:00", "close": "23:59" },
-            "sunday": { "open": "00:00", "close": "23:59" }
+            "monday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "tuesday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "wednesday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "thursday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "friday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "saturday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "sunday": {
+              "open": "00:00",
+              "close": "23:59"
+            }
           },
           "notes": "Front desk open 24/7"
         },
@@ -34,14 +54,26 @@
       }
     ],
     "contacts": {
-      "general": { "email": "info@thegrandportland.com", "phone": "+1-503-555-0500" },
-      "reservations": { "email": "reservations@thegrandportland.com", "phone": "+1-503-555-0501" }
-    }
+      "general": {
+        "email": "info@thegrandportland.com",
+        "phone": "+1-503-555-0500"
+      },
+      "reservations": {
+        "email": "reservations@thegrandportland.com",
+        "phone": "+1-503-555-0501"
+      }
+    },
+    "naics_code": "721110",
+    "gbp_primary_category": "Hotel"
   },
-  "agent_policies": {
-    "human_fallback": {
-      "url": "https://thegrandportland.com",
-      "description": "Visit our website or call to book rooms, check availability, or inquire about events"
+  "extensions": {
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "human_fallback": {
+          "url": "https://thegrandportland.com",
+          "description": "Visit our website or call to book rooms, check availability, or inquire about events"
+        }
+      }
     }
   }
 }

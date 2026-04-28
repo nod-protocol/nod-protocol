@@ -1,14 +1,17 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CityHealth Clinic",
     "legal_name": "CityHealth Medical Group PLLC",
     "description": "Primary care, urgent care, and preventive medicine clinic serving families in Austin, TX. Same-day appointments, telehealth visits, and comprehensive lab services on-site.",
-    "type": "healthcare",
-    "categories": ["healthcare", "primary_care", "urgent_care", "family_medicine"],
-    "naics_codes": ["621111"],
+    "categories": [
+      "healthcare",
+      "primary_care",
+      "urgent_care",
+      "family_medicine"
+    ],
     "url": "https://cityhealthclinic.com",
     "logo": "https://cityhealthclinic.com/assets/logo.svg",
     "founded": "2017",
@@ -24,24 +27,56 @@
           "country": "US"
         },
         "coordinates": {
-          "latitude": 30.2300,
-          "longitude": -97.7920
+          "latitude": 30.23,
+          "longitude": -97.792
         },
         "hours": {
           "timezone": "America/Chicago",
           "regular": {
-            "monday": { "open": "07:00", "close": "19:00" },
-            "tuesday": { "open": "07:00", "close": "19:00" },
-            "wednesday": { "open": "07:00", "close": "19:00" },
-            "thursday": { "open": "07:00", "close": "19:00" },
-            "friday": { "open": "07:00", "close": "17:00" },
-            "saturday": { "open": "08:00", "close": "14:00" },
-            "sunday": { "status": "closed" }
+            "monday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "tuesday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "wednesday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "thursday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "friday": {
+              "open": "07:00",
+              "close": "17:00"
+            },
+            "saturday": {
+              "open": "08:00",
+              "close": "14:00"
+            },
+            "sunday": {
+              "status": "closed"
+            }
           },
           "exceptions": [
-            { "date": "2026-12-25", "status": "closed", "reason": "Christmas Day" },
-            { "date": "2026-11-26", "status": "closed", "reason": "Thanksgiving" },
-            { "date": "2026-07-04", "status": "closed", "reason": "Independence Day" }
+            {
+              "date": "2026-12-25",
+              "status": "closed",
+              "reason": "Christmas Day"
+            },
+            {
+              "date": "2026-11-26",
+              "status": "closed",
+              "reason": "Thanksgiving"
+            },
+            {
+              "date": "2026-07-04",
+              "status": "closed",
+              "reason": "Independence Day"
+            }
           ]
         },
         "phone": "+1-512-555-0600",
@@ -58,19 +93,39 @@
           "country": "US"
         },
         "coordinates": {
-          "latitude": 30.3970,
-          "longitude": -97.7420
+          "latitude": 30.397,
+          "longitude": -97.742
         },
         "hours": {
           "timezone": "America/Chicago",
           "regular": {
-            "monday": { "open": "08:00", "close": "18:00" },
-            "tuesday": { "open": "08:00", "close": "18:00" },
-            "wednesday": { "open": "08:00", "close": "18:00" },
-            "thursday": { "open": "08:00", "close": "18:00" },
-            "friday": { "open": "08:00", "close": "17:00" },
-            "saturday": { "open": "09:00", "close": "13:00" },
-            "sunday": { "status": "closed" }
+            "monday": {
+              "open": "08:00",
+              "close": "18:00"
+            },
+            "tuesday": {
+              "open": "08:00",
+              "close": "18:00"
+            },
+            "wednesday": {
+              "open": "08:00",
+              "close": "18:00"
+            },
+            "thursday": {
+              "open": "08:00",
+              "close": "18:00"
+            },
+            "friday": {
+              "open": "08:00",
+              "close": "17:00"
+            },
+            "saturday": {
+              "open": "09:00",
+              "close": "13:00"
+            },
+            "sunday": {
+              "status": "closed"
+            }
           }
         },
         "phone": "+1-512-555-0610",
@@ -78,11 +133,24 @@
       }
     ],
     "contacts": {
-      "general": { "email": "info@cityhealthclinic.com", "phone": "+1-512-555-0600" },
-      "appointments": { "email": "appointments@cityhealthclinic.com", "phone": "+1-512-555-0601" },
-      "billing": { "email": "billing@cityhealthclinic.com", "phone": "+1-512-555-0602" },
-      "records": { "email": "records@cityhealthclinic.com" },
-      "press": { "email": "press@cityhealthclinic.com" }
+      "general": {
+        "email": "info@cityhealthclinic.com",
+        "phone": "+1-512-555-0600"
+      },
+      "appointments": {
+        "email": "appointments@cityhealthclinic.com",
+        "phone": "+1-512-555-0601"
+      },
+      "billing": {
+        "email": "billing@cityhealthclinic.com",
+        "phone": "+1-512-555-0602"
+      },
+      "records": {
+        "email": "records@cityhealthclinic.com"
+      },
+      "press": {
+        "email": "press@cityhealthclinic.com"
+      }
     },
     "social": {
       "facebook": "https://facebook.com/cityhealthclinic",
@@ -92,251 +160,20 @@
     "schema_org": "https://cityhealthclinic.com/schema/medicalbusiness.jsonld",
     "identifiers": {
       "npi": "1234567890"
-    }
-  },
-  "discovery": {
-    "catalog": {
-      "type": "service_list",
-      "format": "json",
-      "url": "https://cityhealthclinic.com/api/v1/services",
-      "total_items": 42,
-      "updated_at": "2026-03-15T00:00:00Z",
-      "schema": "https://schema.org/MedicalProcedure"
     },
-    "search": {
-      "endpoint": "https://cityhealthclinic.com/api/v1/services/search",
-      "method": "GET",
-      "parameters": {
-        "q": { "type": "string", "required": true, "description": "Search by service name, condition, or symptom" },
-        "category": { "type": "string", "required": false, "enum": ["primary_care", "urgent_care", "preventive", "lab", "telehealth", "pediatric"], "description": "Service category" },
-        "insurance": { "type": "string", "required": false, "description": "Insurance provider name to check coverage" },
-        "location": { "type": "string", "required": false, "enum": ["south_lamar", "north_austin", "telehealth"] }
-      },
-      "response_format": "application/json",
-      "rate_limit": { "requests": 30, "period": "minute" },
-      "authentication": "none"
-    },
-    "categories": [
-      {
-        "name": "Primary Care",
-        "slug": "primary-care",
-        "url": "https://cityhealthclinic.com/services/primary-care",
-        "item_count": 12,
-        "subcategories": [
-          { "name": "Annual Physicals", "slug": "annual-physicals", "item_count": 3 },
-          { "name": "Chronic Disease Management", "slug": "chronic-disease", "item_count": 5 },
-          { "name": "Wellness Visits", "slug": "wellness-visits", "item_count": 4 }
-        ]
-      },
-      {
-        "name": "Urgent Care",
-        "slug": "urgent-care",
-        "url": "https://cityhealthclinic.com/services/urgent-care",
-        "item_count": 10
-      },
-      {
-        "name": "Preventive Care",
-        "slug": "preventive-care",
-        "url": "https://cityhealthclinic.com/services/preventive",
-        "item_count": 8
-      },
-      {
-        "name": "Lab Services",
-        "slug": "lab-services",
-        "url": "https://cityhealthclinic.com/services/lab",
-        "item_count": 6
-      },
-      {
-        "name": "Telehealth",
-        "slug": "telehealth",
-        "url": "https://cityhealthclinic.com/services/telehealth",
-        "item_count": 6
-      }
-    ],
-    "sitemap": "https://cityhealthclinic.com/sitemap.xml",
-    "mcp_server": {
-      "url": "https://cityhealthclinic.com/mcp",
-      "capabilities": ["service_lookup", "provider_search", "appointment_availability", "insurance_verification"],
-      "authentication": "api_key",
-      "documentation": "https://cityhealthclinic.com/developers/mcp"
-    },
-    "feeds": {
-      "accepted_insurance": {
-        "url": "https://cityhealthclinic.com/feeds/insurance.json",
-        "format": "json",
-        "update_frequency": "monthly"
-      },
-      "providers": {
-        "url": "https://cityhealthclinic.com/feeds/providers.json",
-        "format": "json",
-        "update_frequency": "monthly"
-      }
-    },
-    "llms_txt": {
-      "url": "https://metromedical.com/.well-known/llms.txt",
-      "full_url": "https://metromedical.com/llms-full.txt",
-      "description": "Services, provider information, insurance accepted, and patient resources for AI systems"
-    }
-  },
-  "transactions": {
-    "capabilities": ["booking"],
-    "booking": {
-      "type": "api",
-      "endpoint": "https://cityhealthclinic.com/api/v1/appointments",
-      "method": "POST",
-      "authentication": "oauth2",
-      "oauth2": {
-        "authorization_url": "https://cityhealthclinic.com/oauth/authorize",
-        "token_url": "https://cityhealthclinic.com/oauth/token",
-        "scopes": ["read:services", "write:appointments", "read:appointments", "read:providers"]
-      },
-      "documentation": "https://cityhealthclinic.com/developers/api/appointments",
-      "required_fields": ["patient_name", "date_of_birth", "phone", "email", "service_type", "preferred_date", "preferred_time", "location"],
-      "optional_fields": ["preferred_provider", "insurance_info", "reason_for_visit", "new_patient"],
-      "availability_endpoint": {
-        "url": "https://cityhealthclinic.com/api/v1/appointments/availability",
-        "method": "GET",
-        "parameters": {
-          "service_type": { "type": "string", "required": true },
-          "location": { "type": "string", "required": true, "enum": ["south_lamar", "north_austin", "telehealth"] },
-          "date_from": { "type": "date", "required": true },
-          "date_to": { "type": "date", "required": false },
-          "provider_id": { "type": "string", "required": false }
-        }
-      },
-      "cancellation_endpoint": {
-        "url": "https://cityhealthclinic.com/api/v1/appointments/{appointment_id}",
-        "method": "DELETE"
-      },
-      "payment_methods": ["insurance", "credit_card", "hsa", "fsa"],
-      "currencies": ["USD"]
-    },
-    "policies": {
-      "cancellation": {
-        "url": "https://cityhealthclinic.com/policies/cancellation",
-        "summary": "Please cancel or reschedule at least 24 hours in advance. Late cancellations may incur a $50 fee.",
-        "window_hours": 24
-      }
-    },
-    "terms_of_service": "https://cityhealthclinic.com/terms",
-    "privacy_policy": "https://cityhealthclinic.com/privacy"
-  },
-  "information": {
-    "pricing": {
-      "endpoint": "https://cityhealthclinic.com/api/v1/services/{service_id}/pricing",
-      "method": "GET",
-      "authentication": "none",
-      "includes_tax": false,
-      "currency": "USD"
-    },
-    "hours": {
-      "endpoint": "https://cityhealthclinic.com/api/v1/locations/{id}/hours",
-      "method": "GET",
-      "response_includes": ["regular_hours", "holiday_hours", "current_status", "current_wait_time"]
-    },
-    "reviews": {
-      "endpoint": "https://cityhealthclinic.com/api/v1/reviews",
-      "method": "GET",
-      "aggregation": {
-        "average_rating": 4.8,
-        "total_reviews": 2156
-      },
-      "third_party": [
-        { "platform": "google", "rating": 4.7, "total_reviews": 1540 },
-        { "platform": "healthgrades", "url": "https://healthgrades.com/group-directory/cityhealth-clinic", "rating": 4.9 },
-        { "platform": "zocdoc", "url": "https://zocdoc.com/practice/cityhealth-clinic", "rating": 4.8 }
-      ]
-    },
-    "faq": {
-      "url": "https://cityhealthclinic.com/api/v1/faq",
-      "format": "json",
-      "topics": ["insurance", "appointments", "new_patients", "telehealth", "lab_results", "prescriptions", "billing", "medical_records"]
-    },
-    "structured_content": {
-      "schema_org": "https://cityhealthclinic.com/schema/medicalbusiness.jsonld",
-      "json_ld_pages": [
-        "https://cityhealthclinic.com/about",
-        "https://cityhealthclinic.com/providers",
-        "https://cityhealthclinic.com/services"
-      ]
-    }
-  },
-  "support": {
-    "contact": {
-      "channels": [
-        {
-          "type": "phone",
-          "number": "+1-512-555-0600",
-          "hours": { "timezone": "America/Chicago", "weekdays": "07:00-19:00", "saturday": "08:00-14:00" },
-          "agent_compatible": false
-        },
-        {
-          "type": "chat",
-          "url": "https://cityhealthclinic.com/api/v1/support/chat",
-          "protocol": "websocket",
-          "hours": { "timezone": "America/Chicago", "weekdays": "07:00-19:00", "saturday": "08:00-14:00" },
-          "agent_compatible": true
-        },
-        {
-          "type": "email",
-          "address": "info@cityhealthclinic.com",
-          "expected_response_time": "24_hours"
-        },
-        {
-          "type": "patient_portal",
-          "url": "https://portal.cityhealthclinic.com",
-          "capabilities": ["messaging", "lab_results", "appointment_management", "prescription_refills"],
-          "agent_compatible": false
-        }
-      ],
-      "mcp_server": {
-        "url": "https://cityhealthclinic.com/mcp/support",
-        "capabilities": ["appointment_status", "insurance_inquiry", "billing_inquiry", "service_info"]
-      }
-    },
-    "webhooks": {
-      "available_events": ["appointment.confirmed", "appointment.reminder", "appointment.cancelled", "lab_results.available"],
-      "registration_endpoint": "https://cityhealthclinic.com/api/v1/webhooks",
-      "documentation": "https://cityhealthclinic.com/developers/webhooks"
-    }
-  },
-  "agent_policies": {
-    "allow_automated_purchases": false,
-    "require_human_confirmation": {
-      "all_bookings": true,
-      "account_changes": true,
-      "medical_record_access": true
-    },
-    "rate_limits": {
-      "search": { "requests": 30, "period": "minute" },
-      "service_details": { "requests": 60, "period": "minute" },
-      "transactions": { "requests": 5, "period": "minute" }
-    },
-    "authentication": {
-      "methods": ["api_key", "oauth2"],
-      "registration_url": "https://cityhealthclinic.com/developers/register",
-      "documentation": "https://cityhealthclinic.com/developers/auth"
-    },
-    "data_usage": {
-      "allow_caching": true,
-      "cache_ttl_seconds": 3600,
-      "allow_comparison": true,
-      "allow_price_tracking": false,
-      "allow_training": false
-    },
-    "preferred_agent_identification": {
-      "header": "X-Agent-Id",
-      "user_agent_prefix": "NOD-Agent/"
-    },
-    "human_fallback": {
-      "url": "https://cityhealthclinic.com",
-      "description": "Visit our website, use the patient portal, or call for appointments and medical inquiries"
-    }
+    "naics_code": "621111",
+    "gbp_primary_category": "Medical Clinic"
   },
   "extensions": {
     "ai.opennod.healthcare": {
       "facility_type": "outpatient_clinic",
-      "specialties": ["family_medicine", "internal_medicine", "pediatrics", "urgent_care", "preventive_medicine"],
+      "specialties": [
+        "family_medicine",
+        "internal_medicine",
+        "pediatrics",
+        "urgent_care",
+        "preventive_medicine"
+      ],
       "providers": {
         "feed_url": "https://cityhealthclinic.com/feeds/providers.json",
         "total_providers": 12,
@@ -344,21 +181,41 @@
       },
       "insurance_accepted": {
         "feed_url": "https://cityhealthclinic.com/feeds/insurance.json",
-        "major_providers": ["aetna", "blue_cross_blue_shield", "cigna", "united_healthcare", "humana", "medicare", "medicaid"],
+        "major_providers": [
+          "aetna",
+          "blue_cross_blue_shield",
+          "cigna",
+          "united_healthcare",
+          "humana",
+          "medicare",
+          "medicaid"
+        ],
         "verification_endpoint": "https://cityhealthclinic.com/api/v1/insurance/verify"
       },
       "telehealth": {
         "available": true,
         "platform": "proprietary",
-        "states_licensed": ["TX"],
+        "states_licensed": [
+          "TX"
+        ],
         "booking_url": "https://cityhealthclinic.com/telehealth"
       },
       "lab_services": {
         "on_site": true,
-        "services": ["blood_work", "urinalysis", "rapid_strep", "rapid_flu", "covid_testing", "a1c"],
+        "services": [
+          "blood_work",
+          "urinalysis",
+          "rapid_strep",
+          "rapid_flu",
+          "covid_testing",
+          "a1c"
+        ],
         "results_turnaround": "1-3 business days for standard panels"
       },
-      "languages_spoken": ["english", "spanish"],
+      "languages_spoken": [
+        "english",
+        "spanish"
+      ],
       "accessibility": {
         "wheelchair_accessible": true,
         "interpreter_services": true,
@@ -371,6 +228,444 @@
       "same_day_appointments": true,
       "walk_ins_accepted": true,
       "wait_time_endpoint": "https://cityhealthclinic.com/api/v1/locations/{id}/wait-time"
+    },
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "allow_automated_purchases": false,
+        "rate_limits": {
+          "search": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "service_details": {
+            "requests": 60,
+            "period": "minute"
+          },
+          "transactions": {
+            "requests": 5,
+            "period": "minute"
+          }
+        },
+        "authentication": {
+          "methods": [
+            "api_key",
+            "oauth2"
+          ],
+          "registration_url": "https://cityhealthclinic.com/developers/register",
+          "documentation": "https://cityhealthclinic.com/developers/auth"
+        },
+        "data_usage": {
+          "allow_caching": true,
+          "cache_ttl_seconds": 3600,
+          "allow_comparison": true,
+          "allow_price_tracking": false,
+          "allow_training": false
+        },
+        "preferred_agent_identification": {
+          "header": "X-Agent-Id",
+          "user_agent_prefix": "NOD-Agent/"
+        },
+        "human_fallback": {
+          "url": "https://cityhealthclinic.com",
+          "description": "Visit our website, use the patient portal, or call for appointments and medical inquiries"
+        },
+        "confirmation_requirements": {
+          "all_bookings": true,
+          "account_changes": true,
+          "medical_record_access": true
+        }
+      },
+      "discovery": {
+        "catalog": {
+          "type": "service_list",
+          "format": "json",
+          "url": "https://cityhealthclinic.com/api/v1/services",
+          "total_items": 42,
+          "updated_at": "2026-03-15T00:00:00Z",
+          "schema": "https://schema.org/MedicalProcedure"
+        },
+        "search": {
+          "endpoint": "https://cityhealthclinic.com/api/v1/services/search",
+          "method": "GET",
+          "parameters": {
+            "q": {
+              "type": "string",
+              "required": true,
+              "description": "Search by service name, condition, or symptom"
+            },
+            "category": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "primary_care",
+                "urgent_care",
+                "preventive",
+                "lab",
+                "telehealth",
+                "pediatric"
+              ],
+              "description": "Service category"
+            },
+            "insurance": {
+              "type": "string",
+              "required": false,
+              "description": "Insurance provider name to check coverage"
+            },
+            "location": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "south_lamar",
+                "north_austin",
+                "telehealth"
+              ]
+            }
+          },
+          "response_format": "application/json",
+          "rate_limit": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "authentication": "none"
+        },
+        "categories": [
+          {
+            "name": "Primary Care",
+            "slug": "primary-care",
+            "url": "https://cityhealthclinic.com/services/primary-care",
+            "item_count": 12,
+            "subcategories": [
+              {
+                "name": "Annual Physicals",
+                "slug": "annual-physicals",
+                "item_count": 3
+              },
+              {
+                "name": "Chronic Disease Management",
+                "slug": "chronic-disease",
+                "item_count": 5
+              },
+              {
+                "name": "Wellness Visits",
+                "slug": "wellness-visits",
+                "item_count": 4
+              }
+            ]
+          },
+          {
+            "name": "Urgent Care",
+            "slug": "urgent-care",
+            "url": "https://cityhealthclinic.com/services/urgent-care",
+            "item_count": 10
+          },
+          {
+            "name": "Preventive Care",
+            "slug": "preventive-care",
+            "url": "https://cityhealthclinic.com/services/preventive",
+            "item_count": 8
+          },
+          {
+            "name": "Lab Services",
+            "slug": "lab-services",
+            "url": "https://cityhealthclinic.com/services/lab",
+            "item_count": 6
+          },
+          {
+            "name": "Telehealth",
+            "slug": "telehealth",
+            "url": "https://cityhealthclinic.com/services/telehealth",
+            "item_count": 6
+          }
+        ],
+        "sitemap": "https://cityhealthclinic.com/sitemap.xml",
+        "mcp_server": {
+          "url": "https://cityhealthclinic.com/mcp",
+          "capabilities": [
+            "service_lookup",
+            "provider_search",
+            "appointment_availability",
+            "insurance_verification"
+          ],
+          "authentication": "api_key",
+          "documentation": "https://cityhealthclinic.com/developers/mcp"
+        },
+        "feeds": {
+          "accepted_insurance": {
+            "url": "https://cityhealthclinic.com/feeds/insurance.json",
+            "format": "json",
+            "update_frequency": "monthly"
+          },
+          "providers": {
+            "url": "https://cityhealthclinic.com/feeds/providers.json",
+            "format": "json",
+            "update_frequency": "monthly"
+          }
+        },
+        "llms_txt": {
+          "url": "https://metromedical.com/.well-known/llms.txt",
+          "full_url": "https://metromedical.com/llms-full.txt",
+          "description": "Services, provider information, insurance accepted, and patient resources for AI systems"
+        }
+      },
+      "information": {
+        "pricing": {
+          "endpoint": "https://cityhealthclinic.com/api/v1/services/{service_id}/pricing",
+          "method": "GET",
+          "authentication": "none",
+          "includes_tax": false,
+          "currency": "USD"
+        },
+        "hours": {
+          "endpoint": "https://cityhealthclinic.com/api/v1/locations/{id}/hours",
+          "method": "GET",
+          "response_includes": [
+            "regular_hours",
+            "holiday_hours",
+            "current_status",
+            "current_wait_time"
+          ]
+        },
+        "reviews": {
+          "endpoint": "https://cityhealthclinic.com/api/v1/reviews",
+          "method": "GET",
+          "aggregation": {
+            "average_rating": 4.8,
+            "total_reviews": 2156
+          },
+          "third_party": [
+            {
+              "platform": "google",
+              "rating": 4.7,
+              "total_reviews": 1540
+            },
+            {
+              "platform": "healthgrades",
+              "url": "https://healthgrades.com/group-directory/cityhealth-clinic",
+              "rating": 4.9
+            },
+            {
+              "platform": "zocdoc",
+              "url": "https://zocdoc.com/practice/cityhealth-clinic",
+              "rating": 4.8
+            }
+          ]
+        },
+        "faq": {
+          "url": "https://cityhealthclinic.com/api/v1/faq",
+          "format": "json",
+          "topics": [
+            "insurance",
+            "appointments",
+            "new_patients",
+            "telehealth",
+            "lab_results",
+            "prescriptions",
+            "billing",
+            "medical_records"
+          ]
+        },
+        "structured_content": {
+          "schema_org": "https://cityhealthclinic.com/schema/medicalbusiness.jsonld",
+          "json_ld_pages": [
+            "https://cityhealthclinic.com/about",
+            "https://cityhealthclinic.com/providers",
+            "https://cityhealthclinic.com/services"
+          ]
+        }
+      },
+      "support": {
+        "contact": {
+          "channels": [
+            {
+              "type": "phone",
+              "number": "+1-512-555-0600",
+              "hours": {
+                "timezone": "America/Chicago",
+                "weekdays": "07:00-19:00",
+                "saturday": "08:00-14:00"
+              },
+              "agent_compatible": false
+            },
+            {
+              "type": "chat",
+              "url": "https://cityhealthclinic.com/api/v1/support/chat",
+              "protocol": "websocket",
+              "hours": {
+                "timezone": "America/Chicago",
+                "weekdays": "07:00-19:00",
+                "saturday": "08:00-14:00"
+              },
+              "agent_compatible": true
+            },
+            {
+              "type": "email",
+              "address": "info@cityhealthclinic.com",
+              "expected_response_time": "24_hours"
+            },
+            {
+              "type": "patient_portal",
+              "url": "https://portal.cityhealthclinic.com",
+              "capabilities": [
+                "messaging",
+                "lab_results",
+                "appointment_management",
+                "prescription_refills"
+              ],
+              "agent_compatible": false
+            }
+          ],
+          "mcp_server": {
+            "url": "https://cityhealthclinic.com/mcp/support",
+            "capabilities": [
+              "appointment_status",
+              "insurance_inquiry",
+              "billing_inquiry",
+              "service_info"
+            ]
+          }
+        },
+        "webhooks": {
+          "available_events": [
+            "appointment.confirmed",
+            "appointment.reminder",
+            "appointment.cancelled",
+            "lab_results.available"
+          ],
+          "registration_endpoint": "https://cityhealthclinic.com/api/v1/webhooks",
+          "documentation": "https://cityhealthclinic.com/developers/webhooks"
+        }
+      },
+      "transactions": {
+        "capabilities": [
+          "booking"
+        ],
+        "booking": {
+          "type": "api",
+          "endpoint": "https://cityhealthclinic.com/api/v1/appointments",
+          "method": "POST",
+          "authentication": "oauth2",
+          "oauth2": {
+            "authorization_url": "https://cityhealthclinic.com/oauth/authorize",
+            "token_url": "https://cityhealthclinic.com/oauth/token",
+            "scopes": [
+              "read:services",
+              "write:appointments",
+              "read:appointments",
+              "read:providers"
+            ]
+          },
+          "documentation": "https://cityhealthclinic.com/developers/api/appointments",
+          "required_fields": [
+            "patient_name",
+            "date_of_birth",
+            "phone",
+            "email",
+            "service_type",
+            "preferred_date",
+            "preferred_time",
+            "location"
+          ],
+          "optional_fields": [
+            "preferred_provider",
+            "insurance_info",
+            "reason_for_visit",
+            "new_patient"
+          ],
+          "availability_endpoint": {
+            "url": "https://cityhealthclinic.com/api/v1/appointments/availability",
+            "method": "GET",
+            "parameters": {
+              "service_type": {
+                "type": "string",
+                "required": true
+              },
+              "location": {
+                "type": "string",
+                "required": true,
+                "enum": [
+                  "south_lamar",
+                  "north_austin",
+                  "telehealth"
+                ]
+              },
+              "date_from": {
+                "type": "date",
+                "required": true
+              },
+              "date_to": {
+                "type": "date",
+                "required": false
+              },
+              "provider_id": {
+                "type": "string",
+                "required": false
+              }
+            }
+          },
+          "cancellation_endpoint": {
+            "url": "https://cityhealthclinic.com/api/v1/appointments/{appointment_id}",
+            "method": "DELETE"
+          },
+          "payment_methods": [
+            {
+              "rail": "insurance"
+            },
+            {
+              "rail": "card"
+            },
+            {
+              "rail": "hsa"
+            },
+            {
+              "rail": "fsa"
+            }
+          ],
+          "currencies": [
+            "USD"
+          ]
+        },
+        "terms_of_service": "https://cityhealthclinic.com/terms",
+        "privacy_policy": "https://cityhealthclinic.com/privacy",
+        "transaction_policies": {
+          "cancellation": {
+            "url": "https://cityhealthclinic.com/policies/cancellation",
+            "summary": "Please cancel or reschedule at least 24 hours in advance. Late cancellations may incur a $50 fee.",
+            "window_hours": 24
+          }
+        }
+      }
+    },
+    "ai.opennod.merchant-voice": {
+      "positioning_statement": "Same-day primary and urgent care for Austin families, with telemedicine when you can't make it in.",
+      "ideal_customer": "Families and individuals who want a primary care home but also need on-demand urgent care for the unexpected.",
+      "specialties": [
+        "same-day appointments",
+        "telemedicine",
+        "pediatric care",
+        "preventive medicine"
+      ],
+      "accommodations": [
+        "wheelchair accessible",
+        "Spanish-speaking providers on staff",
+        "evening and weekend appointments"
+      ]
+    },
+    "ai.opennod.schema-org-extension": {
+      "schema_org_type": "MedicalClinic",
+      "properties": {
+        "medicalSpecialty": [
+          "family_medicine",
+          "internal_medicine",
+          "pediatrics",
+          "urgent_care",
+          "preventive_medicine"
+        ],
+        "isAcceptingNewPatients": true,
+        "availableService": [
+          "UrgentCare",
+          "Telemedicine"
+        ]
+      }
     }
   }
 }

@@ -1,10 +1,9 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Sakura Sushi",
-    "type": "restaurant",
     "description": "Authentic Japanese sushi and omakase dining in downtown Seattle",
     "url": "https://sakurasushi.com",
     "locations": [
@@ -20,13 +19,33 @@
         "hours": {
           "timezone": "America/Los_Angeles",
           "regular": {
-            "monday": { "status": "closed" },
-            "tuesday": { "open": "11:30", "close": "14:00" },
-            "wednesday": { "open": "11:30", "close": "14:00" },
-            "thursday": { "open": "11:30", "close": "14:00" },
-            "friday": { "open": "11:30", "close": "14:30" },
-            "saturday": { "open": "12:00", "close": "15:00" },
-            "sunday": { "open": "12:00", "close": "14:00" }
+            "monday": {
+              "status": "closed"
+            },
+            "tuesday": {
+              "open": "11:30",
+              "close": "14:00"
+            },
+            "wednesday": {
+              "open": "11:30",
+              "close": "14:00"
+            },
+            "thursday": {
+              "open": "11:30",
+              "close": "14:00"
+            },
+            "friday": {
+              "open": "11:30",
+              "close": "14:30"
+            },
+            "saturday": {
+              "open": "12:00",
+              "close": "15:00"
+            },
+            "sunday": {
+              "open": "12:00",
+              "close": "14:00"
+            }
           },
           "notes": "Dinner service Tuesday-Saturday 17:00-22:00, Sunday 17:00-21:00"
         },
@@ -34,13 +53,22 @@
       }
     ],
     "contacts": {
-      "general": { "email": "info@sakurasushi.com", "phone": "+1-206-555-0400" }
-    }
+      "general": {
+        "email": "info@sakurasushi.com",
+        "phone": "+1-206-555-0400"
+      }
+    },
+    "naics_code": "722511",
+    "gbp_primary_category": "Sushi Restaurant"
   },
-  "agent_policies": {
-    "human_fallback": {
-      "url": "https://sakurasushi.com",
-      "description": "Visit our website or call to make reservations and view our menu"
+  "extensions": {
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "human_fallback": {
+          "url": "https://sakurasushi.com",
+          "description": "Visit our website or call to make reservations and view our menu"
+        }
+      }
     }
   }
 }

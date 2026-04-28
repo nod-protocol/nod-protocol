@@ -1,14 +1,16 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Acme Running Co.",
     "legal_name": "Acme Running Company LLC",
     "description": "Premium running shoes and gear for athletes of all levels",
-    "type": "ecommerce",
-    "categories": ["retail", "sporting_goods", "footwear"],
-    "naics_codes": ["448210"],
+    "categories": [
+      "retail",
+      "sporting_goods",
+      "footwear"
+    ],
     "url": "https://acmerunning.com",
     "logo": "https://acmerunning.com/assets/logo.png",
     "founded": "2018",
@@ -30,18 +32,51 @@
         "hours": {
           "timezone": "America/Los_Angeles",
           "regular": {
-            "monday": { "open": "09:00", "close": "20:00" },
-            "tuesday": { "open": "09:00", "close": "20:00" },
-            "wednesday": { "open": "09:00", "close": "20:00" },
-            "thursday": { "open": "09:00", "close": "20:00" },
-            "friday": { "open": "09:00", "close": "21:00" },
-            "saturday": { "open": "10:00", "close": "21:00" },
-            "sunday": { "open": "10:00", "close": "18:00" }
+            "monday": {
+              "open": "09:00",
+              "close": "20:00"
+            },
+            "tuesday": {
+              "open": "09:00",
+              "close": "20:00"
+            },
+            "wednesday": {
+              "open": "09:00",
+              "close": "20:00"
+            },
+            "thursday": {
+              "open": "09:00",
+              "close": "20:00"
+            },
+            "friday": {
+              "open": "09:00",
+              "close": "21:00"
+            },
+            "saturday": {
+              "open": "10:00",
+              "close": "21:00"
+            },
+            "sunday": {
+              "open": "10:00",
+              "close": "18:00"
+            }
           },
           "exceptions": [
-            { "date": "2026-12-25", "status": "closed", "reason": "Christmas Day" },
-            { "date": "2026-11-26", "status": "closed", "reason": "Thanksgiving" },
-            { "date": "2026-07-04", "status": "closed", "reason": "Independence Day" }
+            {
+              "date": "2026-12-25",
+              "status": "closed",
+              "reason": "Christmas Day"
+            },
+            {
+              "date": "2026-11-26",
+              "status": "closed",
+              "reason": "Thanksgiving"
+            },
+            {
+              "date": "2026-07-04",
+              "status": "closed",
+              "reason": "Independence Day"
+            }
           ]
         },
         "phone": "+1-503-555-0100",
@@ -64,13 +99,34 @@
         "hours": {
           "timezone": "America/Los_Angeles",
           "regular": {
-            "monday": { "open": "10:00", "close": "19:00" },
-            "tuesday": { "open": "10:00", "close": "19:00" },
-            "wednesday": { "open": "10:00", "close": "19:00" },
-            "thursday": { "open": "10:00", "close": "19:00" },
-            "friday": { "open": "10:00", "close": "20:00" },
-            "saturday": { "open": "10:00", "close": "20:00" },
-            "sunday": { "open": "11:00", "close": "17:00" }
+            "monday": {
+              "open": "10:00",
+              "close": "19:00"
+            },
+            "tuesday": {
+              "open": "10:00",
+              "close": "19:00"
+            },
+            "wednesday": {
+              "open": "10:00",
+              "close": "19:00"
+            },
+            "thursday": {
+              "open": "10:00",
+              "close": "19:00"
+            },
+            "friday": {
+              "open": "10:00",
+              "close": "20:00"
+            },
+            "saturday": {
+              "open": "10:00",
+              "close": "20:00"
+            },
+            "sunday": {
+              "open": "11:00",
+              "close": "17:00"
+            }
           }
         },
         "phone": "+1-503-555-0102",
@@ -78,10 +134,20 @@
       }
     ],
     "contacts": {
-      "general": { "email": "hello@acmerunning.com", "phone": "+1-800-555-0100" },
-      "support": { "email": "support@acmerunning.com", "phone": "+1-800-555-0101" },
-      "press": { "email": "press@acmerunning.com" },
-      "wholesale": { "email": "wholesale@acmerunning.com" }
+      "general": {
+        "email": "hello@acmerunning.com",
+        "phone": "+1-800-555-0100"
+      },
+      "support": {
+        "email": "support@acmerunning.com",
+        "phone": "+1-800-555-0101"
+      },
+      "press": {
+        "email": "press@acmerunning.com"
+      },
+      "wholesale": {
+        "email": "wholesale@acmerunning.com"
+      }
     },
     "social": {
       "x": "https://x.com/acmerunning",
@@ -93,310 +159,9 @@
     "identifiers": {
       "duns": "987654321",
       "ein": "93-1234567"
-    }
-  },
-  "discovery": {
-    "catalog": {
-      "type": "product_feed",
-      "format": "json",
-      "url": "https://acmerunning.com/feeds/products.json",
-      "total_items": 1250,
-      "updated_at": "2026-03-23T06:00:00Z",
-      "schema": "https://schema.org/Product",
-      "pagination": {
-        "type": "cursor",
-        "page_size": 100
-      }
     },
-    "search": {
-      "endpoint": "https://acmerunning.com/api/v1/search",
-      "method": "GET",
-      "parameters": {
-        "q": { "type": "string", "required": true, "description": "Search query" },
-        "category": { "type": "string", "required": false, "description": "Filter by category slug" },
-        "brand": { "type": "string", "required": false, "description": "Filter by brand name" },
-        "min_price": { "type": "number", "required": false },
-        "max_price": { "type": "number", "required": false },
-        "size": { "type": "string", "required": false, "description": "Shoe size (e.g., '10', '10.5')" },
-        "width": { "type": "string", "required": false, "enum": ["narrow", "standard", "wide", "extra_wide"] },
-        "gender": { "type": "string", "required": false, "enum": ["mens", "womens", "unisex"] },
-        "in_stock": { "type": "boolean", "required": false, "default": true },
-        "sort": { "type": "string", "enum": ["relevance", "price_asc", "price_desc", "newest", "best_selling", "top_rated"], "default": "relevance" },
-        "page": { "type": "integer", "default": 1 },
-        "per_page": { "type": "integer", "default": 20, "max": 100 }
-      },
-      "response_format": "application/json",
-      "rate_limit": { "requests": 60, "period": "minute" },
-      "authentication": "none"
-    },
-    "categories": [
-      {
-        "name": "Running Shoes",
-        "slug": "running-shoes",
-        "url": "https://acmerunning.com/category/running-shoes",
-        "item_count": 340,
-        "subcategories": [
-          { "name": "Road Running", "slug": "road-running", "item_count": 180 },
-          { "name": "Trail Running", "slug": "trail-running", "item_count": 95 },
-          { "name": "Racing", "slug": "racing", "item_count": 65 }
-        ]
-      },
-      {
-        "name": "Apparel",
-        "slug": "apparel",
-        "url": "https://acmerunning.com/category/apparel",
-        "item_count": 580,
-        "subcategories": [
-          { "name": "Tops", "slug": "tops", "item_count": 210 },
-          { "name": "Bottoms", "slug": "bottoms", "item_count": 175 },
-          { "name": "Outerwear", "slug": "outerwear", "item_count": 95 },
-          { "name": "Accessories", "slug": "accessories", "item_count": 100 }
-        ]
-      },
-      {
-        "name": "Gear",
-        "slug": "gear",
-        "url": "https://acmerunning.com/category/gear",
-        "item_count": 330,
-        "subcategories": [
-          { "name": "Watches & GPS", "slug": "watches-gps", "item_count": 45 },
-          { "name": "Hydration", "slug": "hydration", "item_count": 80 },
-          { "name": "Recovery", "slug": "recovery", "item_count": 65 },
-          { "name": "Bags & Packs", "slug": "bags-packs", "item_count": 140 }
-        ]
-      }
-    ],
-    "sitemap": "https://acmerunning.com/sitemap.xml",
-    "openapi": "https://acmerunning.com/api/openapi.yaml",
-    "mcp_server": {
-      "url": "https://acmerunning.com/mcp",
-      "capabilities": ["search", "product_details", "inventory_check", "size_recommendation"],
-      "authentication": "api_key",
-      "documentation": "https://docs.acmerunning.com/mcp"
-    },
-    "feeds": {
-      "new_arrivals": {
-        "url": "https://acmerunning.com/feeds/new-arrivals.json",
-        "format": "json",
-        "update_frequency": "daily"
-      },
-      "deals": {
-        "url": "https://acmerunning.com/feeds/deals.json",
-        "format": "json",
-        "update_frequency": "hourly"
-      },
-      "bestsellers": {
-        "url": "https://acmerunning.com/feeds/bestsellers.json",
-        "format": "json",
-        "update_frequency": "daily"
-      }
-    },
-    "llms_txt": {
-      "url": "https://acmewidgets.com/.well-known/llms.txt",
-      "full_url": "https://acmewidgets.com/llms-full.txt",
-      "description": "Product catalog, ordering policies, and return information for AI systems"
-    }
-  },
-  "transactions": {
-    "capabilities": ["purchase", "subscription"],
-    "purchase": {
-      "type": "api",
-      "endpoint": "https://acmerunning.com/api/v1/orders",
-      "method": "POST",
-      "authentication": "oauth2",
-      "oauth2": {
-        "authorization_url": "https://acmerunning.com/oauth/authorize",
-        "token_url": "https://acmerunning.com/oauth/token",
-        "scopes": ["read:products", "write:orders", "read:orders", "write:cart"]
-      },
-      "documentation": "https://docs.acmerunning.com/api/orders",
-      "cart_api": {
-        "add": { "method": "POST", "endpoint": "/api/v1/cart/items" },
-        "remove": { "method": "DELETE", "endpoint": "/api/v1/cart/items/{item_id}" },
-        "update": { "method": "PATCH", "endpoint": "/api/v1/cart/items/{item_id}" },
-        "view": { "method": "GET", "endpoint": "/api/v1/cart" },
-        "checkout": { "method": "POST", "endpoint": "/api/v1/cart/checkout" }
-      },
-      "payment_methods": ["credit_card", "paypal", "apple_pay", "google_pay", "shop_pay"],
-      "currencies": ["USD"],
-      "tax_handling": "calculated_at_checkout",
-      "shipping": {
-        "methods_endpoint": "/api/v1/shipping/methods",
-        "estimate_endpoint": "/api/v1/shipping/estimate",
-        "regions": ["US", "CA"],
-        "free_shipping_threshold": { "amount": 75.00, "currency": "USD" }
-      }
-    },
-    "subscription": {
-      "type": "api",
-      "endpoint": "https://acmerunning.com/api/v1/subscriptions",
-      "plans_endpoint": "https://acmerunning.com/api/v1/subscriptions/plans",
-      "authentication": "oauth2",
-      "oauth2": {
-        "authorization_url": "https://acmerunning.com/oauth/authorize",
-        "token_url": "https://acmerunning.com/oauth/token",
-        "scopes": ["read:subscriptions", "write:subscriptions"]
-      }
-    },
-    "promotions": {
-      "coupon_validation": {
-        "endpoint": "/api/v1/coupons/validate",
-        "method": "POST"
-      },
-      "active_promotions_feed": "https://acmerunning.com/feeds/promotions.json"
-    },
-    "policies": {
-      "returns": {
-        "url": "https://acmerunning.com/policies/returns",
-        "summary": "30-day returns on unworn items with tags attached",
-        "window_days": 30,
-        "conditions": ["unworn", "tags_attached", "original_packaging"],
-        "refund_method": "original_payment",
-        "restocking_fee_percent": 0
-      },
-      "cancellation": {
-        "url": "https://acmerunning.com/policies/cancellation",
-        "summary": "Orders can be cancelled within 1 hour of placement",
-        "window_minutes": 60
-      },
-      "price_match": {
-        "available": true,
-        "url": "https://acmerunning.com/policies/price-match",
-        "summary": "We match verified lower prices from authorized retailers"
-      }
-    },
-    "terms_of_service": "https://acmerunning.com/terms",
-    "privacy_policy": "https://acmerunning.com/privacy"
-  },
-  "information": {
-    "inventory": {
-      "endpoint": "https://acmerunning.com/api/v1/inventory/{sku}",
-      "method": "GET",
-      "authentication": "none",
-      "freshness": "real_time",
-      "response_schema": {
-        "sku": "string",
-        "in_stock": "boolean",
-        "quantity": "integer",
-        "sizes_available": "array",
-        "estimated_restock": "string|null"
-      }
-    },
-    "pricing": {
-      "endpoint": "https://acmerunning.com/api/v1/products/{id}/price",
-      "method": "GET",
-      "authentication": "none",
-      "includes_tax": false,
-      "currency": "USD"
-    },
-    "hours": {
-      "endpoint": "https://acmerunning.com/api/v1/locations/{id}/hours",
-      "method": "GET",
-      "response_includes": ["regular_hours", "holiday_hours", "current_status"]
-    },
-    "reviews": {
-      "endpoint": "https://acmerunning.com/api/v1/products/{id}/reviews",
-      "method": "GET",
-      "aggregation": {
-        "average_rating": 4.6,
-        "total_reviews": 12847,
-        "rating_distribution": { "5": 8234, "4": 2891, "3": 1102, "2": 387, "1": 233 }
-      },
-      "third_party": [
-        { "platform": "trustpilot", "url": "https://trustpilot.com/review/acmerunning.com", "rating": 4.5 },
-        { "platform": "google", "rating": 4.7 }
-      ]
-    },
-    "faq": {
-      "url": "https://acmerunning.com/api/v1/faq",
-      "format": "json",
-      "topics": ["shipping", "returns", "sizing", "product_care", "warranty"]
-    },
-    "structured_content": {
-      "schema_org": "https://acmerunning.com/schema/organization.jsonld",
-      "json_ld_pages": [
-        "https://acmerunning.com/about",
-        "https://acmerunning.com/contact"
-      ]
-    }
-  },
-  "support": {
-    "order_tracking": {
-      "endpoint": "https://acmerunning.com/api/v1/orders/{order_id}/tracking",
-      "method": "GET",
-      "authentication": "bearer"
-    },
-    "returns": {
-      "initiate_endpoint": "https://acmerunning.com/api/v1/returns",
-      "method": "POST",
-      "authentication": "bearer",
-      "required_fields": ["order_id", "items", "reason"]
-    },
-    "contact": {
-      "channels": [
-        {
-          "type": "chat",
-          "url": "https://acmerunning.com/api/v1/support/chat",
-          "protocol": "websocket",
-          "hours": "24/7",
-          "agent_compatible": true
-        },
-        {
-          "type": "email",
-          "address": "support@acmerunning.com",
-          "expected_response_time": "4_hours"
-        },
-        {
-          "type": "phone",
-          "number": "+1-800-555-0101",
-          "hours": { "timezone": "America/Los_Angeles", "weekdays": "08:00-20:00", "weekends": "10:00-18:00" },
-          "agent_compatible": false
-        }
-      ],
-      "mcp_server": {
-        "url": "https://acmerunning.com/mcp/support",
-        "capabilities": ["order_status", "return_initiation", "faq_query", "size_exchange"]
-      }
-    },
-    "webhooks": {
-      "available_events": ["order.confirmed", "order.shipped", "order.delivered", "return.approved", "return.refunded", "subscription.renewed"],
-      "registration_endpoint": "https://acmerunning.com/api/v1/webhooks",
-      "documentation": "https://docs.acmerunning.com/webhooks"
-    }
-  },
-  "agent_policies": {
-    "allow_automated_purchases": true,
-    "require_human_confirmation": {
-      "purchases_above": 500.00,
-      "currency": "USD",
-      "subscription_signups": true,
-      "account_changes": true
-    },
-    "rate_limits": {
-      "search": { "requests": 60, "period": "minute" },
-      "product_details": { "requests": 120, "period": "minute" },
-      "transactions": { "requests": 10, "period": "minute" }
-    },
-    "authentication": {
-      "methods": ["api_key", "oauth2"],
-      "registration_url": "https://developers.acmerunning.com/register",
-      "documentation": "https://docs.acmerunning.com/auth"
-    },
-    "data_usage": {
-      "allow_caching": true,
-      "cache_ttl_seconds": 3600,
-      "allow_comparison": true,
-      "allow_price_tracking": true,
-      "allow_training": false
-    },
-    "preferred_agent_identification": {
-      "header": "X-Agent-Id",
-      "user_agent_prefix": "NOD-Agent/"
-    },
-    "human_fallback": {
-      "url": "https://acmerunning.com",
-      "description": "Direct the user to our website for actions that require human interaction"
-    }
+    "naics_code": "458210",
+    "gbp_primary_category": "Shoe Store"
   },
   "extensions": {
     "ai.opennod.ecommerce": {
@@ -411,9 +176,560 @@
       "size_guide_url": "https://acmerunning.com/size-guide",
       "virtual_try_on": false,
       "sustainability": {
-        "certifications": ["bluesign", "climate_neutral"],
+        "certifications": [
+          "bluesign",
+          "climate_neutral"
+        ],
         "recycling_program": true,
         "recycling_url": "https://acmerunning.com/recycle"
+      }
+    },
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "allow_automated_purchases": true,
+        "rate_limits": {
+          "search": {
+            "requests": 60,
+            "period": "minute"
+          },
+          "product_details": {
+            "requests": 120,
+            "period": "minute"
+          },
+          "transactions": {
+            "requests": 10,
+            "period": "minute"
+          }
+        },
+        "authentication": {
+          "methods": [
+            "api_key",
+            "oauth2"
+          ],
+          "registration_url": "https://developers.acmerunning.com/register",
+          "documentation": "https://docs.acmerunning.com/auth"
+        },
+        "data_usage": {
+          "allow_caching": true,
+          "cache_ttl_seconds": 3600,
+          "allow_comparison": true,
+          "allow_price_tracking": true,
+          "allow_training": false
+        },
+        "preferred_agent_identification": {
+          "header": "X-Agent-Id",
+          "user_agent_prefix": "NOD-Agent/"
+        },
+        "human_fallback": {
+          "url": "https://acmerunning.com",
+          "description": "Direct the user to our website for actions that require human interaction"
+        },
+        "confirmation_requirements": {
+          "purchases_above": 500.0,
+          "currency": "USD",
+          "subscription_signups": true,
+          "account_changes": true
+        }
+      },
+      "discovery": {
+        "catalog": {
+          "type": "product_feed",
+          "format": "json",
+          "url": "https://acmerunning.com/feeds/products.json",
+          "total_items": 1250,
+          "updated_at": "2026-03-23T06:00:00Z",
+          "schema": "https://schema.org/Product",
+          "pagination": {
+            "type": "cursor",
+            "page_size": 100
+          }
+        },
+        "search": {
+          "endpoint": "https://acmerunning.com/api/v1/search",
+          "method": "GET",
+          "parameters": {
+            "q": {
+              "type": "string",
+              "required": true,
+              "description": "Search query"
+            },
+            "category": {
+              "type": "string",
+              "required": false,
+              "description": "Filter by category slug"
+            },
+            "brand": {
+              "type": "string",
+              "required": false,
+              "description": "Filter by brand name"
+            },
+            "min_price": {
+              "type": "number",
+              "required": false
+            },
+            "max_price": {
+              "type": "number",
+              "required": false
+            },
+            "size": {
+              "type": "string",
+              "required": false,
+              "description": "Shoe size (e.g., '10', '10.5')"
+            },
+            "width": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "narrow",
+                "standard",
+                "wide",
+                "extra_wide"
+              ]
+            },
+            "gender": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "mens",
+                "womens",
+                "unisex"
+              ]
+            },
+            "in_stock": {
+              "type": "boolean",
+              "required": false,
+              "default": true
+            },
+            "sort": {
+              "type": "string",
+              "enum": [
+                "relevance",
+                "price_asc",
+                "price_desc",
+                "newest",
+                "best_selling",
+                "top_rated"
+              ],
+              "default": "relevance"
+            },
+            "page": {
+              "type": "integer",
+              "default": 1
+            },
+            "per_page": {
+              "type": "integer",
+              "default": 20,
+              "max": 100
+            }
+          },
+          "response_format": "application/json",
+          "rate_limit": {
+            "requests": 60,
+            "period": "minute"
+          },
+          "authentication": "none"
+        },
+        "categories": [
+          {
+            "name": "Running Shoes",
+            "slug": "running-shoes",
+            "url": "https://acmerunning.com/category/running-shoes",
+            "item_count": 340,
+            "subcategories": [
+              {
+                "name": "Road Running",
+                "slug": "road-running",
+                "item_count": 180
+              },
+              {
+                "name": "Trail Running",
+                "slug": "trail-running",
+                "item_count": 95
+              },
+              {
+                "name": "Racing",
+                "slug": "racing",
+                "item_count": 65
+              }
+            ]
+          },
+          {
+            "name": "Apparel",
+            "slug": "apparel",
+            "url": "https://acmerunning.com/category/apparel",
+            "item_count": 580,
+            "subcategories": [
+              {
+                "name": "Tops",
+                "slug": "tops",
+                "item_count": 210
+              },
+              {
+                "name": "Bottoms",
+                "slug": "bottoms",
+                "item_count": 175
+              },
+              {
+                "name": "Outerwear",
+                "slug": "outerwear",
+                "item_count": 95
+              },
+              {
+                "name": "Accessories",
+                "slug": "accessories",
+                "item_count": 100
+              }
+            ]
+          },
+          {
+            "name": "Gear",
+            "slug": "gear",
+            "url": "https://acmerunning.com/category/gear",
+            "item_count": 330,
+            "subcategories": [
+              {
+                "name": "Watches & GPS",
+                "slug": "watches-gps",
+                "item_count": 45
+              },
+              {
+                "name": "Hydration",
+                "slug": "hydration",
+                "item_count": 80
+              },
+              {
+                "name": "Recovery",
+                "slug": "recovery",
+                "item_count": 65
+              },
+              {
+                "name": "Bags & Packs",
+                "slug": "bags-packs",
+                "item_count": 140
+              }
+            ]
+          }
+        ],
+        "sitemap": "https://acmerunning.com/sitemap.xml",
+        "openapi": "https://acmerunning.com/api/openapi.yaml",
+        "mcp_server": {
+          "url": "https://acmerunning.com/mcp",
+          "capabilities": [
+            "search",
+            "product_details",
+            "inventory_check",
+            "size_recommendation"
+          ],
+          "authentication": "api_key",
+          "documentation": "https://docs.acmerunning.com/mcp"
+        },
+        "feeds": {
+          "new_arrivals": {
+            "url": "https://acmerunning.com/feeds/new-arrivals.json",
+            "format": "json",
+            "update_frequency": "daily"
+          },
+          "deals": {
+            "url": "https://acmerunning.com/feeds/deals.json",
+            "format": "json",
+            "update_frequency": "hourly"
+          },
+          "bestsellers": {
+            "url": "https://acmerunning.com/feeds/bestsellers.json",
+            "format": "json",
+            "update_frequency": "daily"
+          }
+        },
+        "llms_txt": {
+          "url": "https://acmewidgets.com/.well-known/llms.txt",
+          "full_url": "https://acmewidgets.com/llms-full.txt",
+          "description": "Product catalog, ordering policies, and return information for AI systems"
+        }
+      },
+      "information": {
+        "inventory": {
+          "endpoint": "https://acmerunning.com/api/v1/inventory/{sku}",
+          "method": "GET",
+          "authentication": "none",
+          "freshness": "real_time",
+          "response_schema": {
+            "sku": "string",
+            "in_stock": "boolean",
+            "quantity": "integer",
+            "sizes_available": "array",
+            "estimated_restock": "string|null"
+          }
+        },
+        "pricing": {
+          "endpoint": "https://acmerunning.com/api/v1/products/{id}/price",
+          "method": "GET",
+          "authentication": "none",
+          "includes_tax": false,
+          "currency": "USD"
+        },
+        "hours": {
+          "endpoint": "https://acmerunning.com/api/v1/locations/{id}/hours",
+          "method": "GET",
+          "response_includes": [
+            "regular_hours",
+            "holiday_hours",
+            "current_status"
+          ]
+        },
+        "reviews": {
+          "endpoint": "https://acmerunning.com/api/v1/products/{id}/reviews",
+          "method": "GET",
+          "aggregation": {
+            "average_rating": 4.6,
+            "total_reviews": 12847,
+            "rating_distribution": {
+              "5": 8234,
+              "4": 2891,
+              "3": 1102,
+              "2": 387,
+              "1": 233
+            }
+          },
+          "third_party": [
+            {
+              "platform": "trustpilot",
+              "url": "https://trustpilot.com/review/acmerunning.com",
+              "rating": 4.5
+            },
+            {
+              "platform": "google",
+              "rating": 4.7
+            }
+          ]
+        },
+        "faq": {
+          "url": "https://acmerunning.com/api/v1/faq",
+          "format": "json",
+          "topics": [
+            "shipping",
+            "returns",
+            "sizing",
+            "product_care",
+            "warranty"
+          ]
+        },
+        "structured_content": {
+          "schema_org": "https://acmerunning.com/schema/organization.jsonld",
+          "json_ld_pages": [
+            "https://acmerunning.com/about",
+            "https://acmerunning.com/contact"
+          ]
+        }
+      },
+      "support": {
+        "order_tracking": {
+          "endpoint": "https://acmerunning.com/api/v1/orders/{order_id}/tracking",
+          "method": "GET",
+          "authentication": "bearer"
+        },
+        "returns": {
+          "initiate_endpoint": "https://acmerunning.com/api/v1/returns",
+          "method": "POST",
+          "authentication": "bearer",
+          "required_fields": [
+            "order_id",
+            "items",
+            "reason"
+          ]
+        },
+        "contact": {
+          "channels": [
+            {
+              "type": "chat",
+              "url": "https://acmerunning.com/api/v1/support/chat",
+              "protocol": "websocket",
+              "hours": "24/7",
+              "agent_compatible": true
+            },
+            {
+              "type": "email",
+              "address": "support@acmerunning.com",
+              "expected_response_time": "4_hours"
+            },
+            {
+              "type": "phone",
+              "number": "+1-800-555-0101",
+              "hours": {
+                "timezone": "America/Los_Angeles",
+                "weekdays": "08:00-20:00",
+                "weekends": "10:00-18:00"
+              },
+              "agent_compatible": false
+            }
+          ],
+          "mcp_server": {
+            "url": "https://acmerunning.com/mcp/support",
+            "capabilities": [
+              "order_status",
+              "return_initiation",
+              "faq_query",
+              "size_exchange"
+            ]
+          }
+        },
+        "webhooks": {
+          "available_events": [
+            "order.confirmed",
+            "order.shipped",
+            "order.delivered",
+            "return.approved",
+            "return.refunded",
+            "subscription.renewed"
+          ],
+          "registration_endpoint": "https://acmerunning.com/api/v1/webhooks",
+          "documentation": "https://docs.acmerunning.com/webhooks"
+        }
+      },
+      "transactions": {
+        "capabilities": [
+          "purchase",
+          "subscription"
+        ],
+        "purchase": {
+          "type": "api",
+          "endpoint": "https://acmerunning.com/api/v1/orders",
+          "method": "POST",
+          "authentication": "oauth2",
+          "oauth2": {
+            "authorization_url": "https://acmerunning.com/oauth/authorize",
+            "token_url": "https://acmerunning.com/oauth/token",
+            "scopes": [
+              "read:products",
+              "write:orders",
+              "read:orders",
+              "write:cart"
+            ]
+          },
+          "documentation": "https://docs.acmerunning.com/api/orders",
+          "cart_api": {
+            "add": {
+              "method": "POST",
+              "endpoint": "/api/v1/cart/items"
+            },
+            "remove": {
+              "method": "DELETE",
+              "endpoint": "/api/v1/cart/items/{item_id}"
+            },
+            "update": {
+              "method": "PATCH",
+              "endpoint": "/api/v1/cart/items/{item_id}"
+            },
+            "view": {
+              "method": "GET",
+              "endpoint": "/api/v1/cart"
+            },
+            "checkout": {
+              "method": "POST",
+              "endpoint": "/api/v1/cart/checkout"
+            }
+          },
+          "payment_methods": [
+            {
+              "rail": "card"
+            },
+            {
+              "rail": "paypal"
+            },
+            {
+              "rail": "apple_pay"
+            },
+            {
+              "rail": "google_pay"
+            },
+            {
+              "rail": "shop_pay"
+            }
+          ],
+          "currencies": [
+            "USD"
+          ],
+          "tax_handling": "calculated_at_checkout",
+          "shipping": {
+            "methods_endpoint": "/api/v1/shipping/methods",
+            "estimate_endpoint": "/api/v1/shipping/estimate",
+            "regions": [
+              "US",
+              "CA"
+            ],
+            "free_shipping_threshold": {
+              "amount": 75.0,
+              "currency": "USD"
+            }
+          }
+        },
+        "subscription": {
+          "type": "api",
+          "endpoint": "https://acmerunning.com/api/v1/subscriptions",
+          "plans_endpoint": "https://acmerunning.com/api/v1/subscriptions/plans",
+          "authentication": "oauth2",
+          "oauth2": {
+            "authorization_url": "https://acmerunning.com/oauth/authorize",
+            "token_url": "https://acmerunning.com/oauth/token",
+            "scopes": [
+              "read:subscriptions",
+              "write:subscriptions"
+            ]
+          }
+        },
+        "promotions": {
+          "coupon_validation": {
+            "endpoint": "/api/v1/coupons/validate",
+            "method": "POST"
+          },
+          "active_promotions_feed": "https://acmerunning.com/feeds/promotions.json"
+        },
+        "terms_of_service": "https://acmerunning.com/terms",
+        "privacy_policy": "https://acmerunning.com/privacy",
+        "transaction_policies": {
+          "returns": {
+            "url": "https://acmerunning.com/policies/returns",
+            "summary": "30-day returns on unworn items with tags attached",
+            "window_days": 30,
+            "conditions": [
+              "unworn",
+              "tags_attached",
+              "original_packaging"
+            ],
+            "refund_method": "original_payment",
+            "restocking_fee_percent": 0
+          },
+          "cancellation": {
+            "url": "https://acmerunning.com/policies/cancellation",
+            "summary": "Orders can be cancelled within 1 hour of placement",
+            "window_minutes": 60
+          },
+          "price_match": {
+            "available": true,
+            "url": "https://acmerunning.com/policies/price-match",
+            "summary": "We match verified lower prices from authorized retailers"
+          }
+        }
+      }
+    },
+    "ai.opennod.merchant-voice": {
+      "positioning_statement": "Premium running shoes and gear, hand-fit by people who actually run.",
+      "ideal_customer": "Runners logging 20+ miles per week who care about gait, terrain match, and not blowing out their knees.",
+      "specialties": [
+        "road running shoes",
+        "trail running shoes",
+        "racing flats",
+        "in-store gait analysis"
+      ]
+    },
+    "ai.opennod.schema-org-extension": {
+      "schema_org_type": "ShoeStore",
+      "properties": {
+        "currenciesAccepted": "USD",
+        "paymentAccepted": [
+          "Cash",
+          "CreditCard"
+        ],
+        "priceRange": "$$"
       }
     }
   }
