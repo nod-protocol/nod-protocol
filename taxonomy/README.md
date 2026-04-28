@@ -61,10 +61,16 @@ child's description.
 
 When Census publishes a new NAICS revision (next expected: NAICS 2027):
 
-1. Update the source URLs in `scripts/build_naics.py` (committed alongside
-   this directory in a future revision; for v0.2 the build script lives at
-   the PR description for reproducibility).
-2. Re-run the parser, replacing this file.
+1. Update the source URLs in `scripts/build-naics.py` (Census version path
+   in particular — they change with each revision).
+2. Re-run the parser, replacing this file:
+   ```sh
+   pip install openpyxl
+   curl -sSL -o /tmp/naics-codes.xlsx 'https://www.census.gov/naics/<NEW>/...'
+   curl -sSL -o /tmp/naics-descs.xlsx 'https://www.census.gov/naics/<NEW>/...'
+   NAICS_CODES=/tmp/naics-codes.xlsx NAICS_DESCS=/tmp/naics-descs.xlsx \
+     python3 scripts/build-naics.py
+   ```
 3. Bump the protocol version — adding/removing/renaming codes is a breaking
    change for any merchant whose `naics_code` is removed or whose
    classification path shifts.
