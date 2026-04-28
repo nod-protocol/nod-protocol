@@ -1,0 +1,581 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opennod.ai/schema/extensions/agent-commerce/v0.1.json",
+  "title": "Nod Agent-Commerce Extension v0.1",
+  "description": "The full agent-commerce surface of a nod manifest. Lives at extensions[\"ai.opennod.agent-commerce\"]. This is OpenNOD's distinctive contribution: everything about how an agent interacts with the merchant — discovery, transactions, real-time information, support, and the policies governing those interactions. Core nod fields cover the merchant's identity, classification, and basic metadata; this extension covers the agent contract. Adopting this extension is what makes a nod manifest agent-ready.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "policies": { "$ref": "#/$defs/policies" },
+    "discovery": { "$ref": "#/$defs/discovery" },
+    "transactions": { "$ref": "#/$defs/transactions" },
+    "information": { "$ref": "#/$defs/information" },
+    "support": { "$ref": "#/$defs/support" },
+    "authorization_levels": {
+      "type": "object",
+      "description": "Per-action authorization matrix. Finer-grained than policies.confirmation_requirements (which is a single threshold). Keys are action names; values describe whether agents may perform that action autonomously, with human confirmation, or not at all. Unlisted actions inherit policies.confirmation_requirements.",
+      "additionalProperties": { "$ref": "#/$defs/authorization_entry" }
+    },
+    "automated_booking_capabilities": {
+      "type": "array",
+      "description": "Per-service-type structured booking capabilities. Use when different bookable service types have different agent rules — e.g. a hotel taking room bookings autonomously but requiring human confirmation for spa appointments. If all bookings have identical rules, omit this and use transactions.booking + authorization_levels.",
+      "items": { "$ref": "#/$defs/booking_capability" }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "Free-text guidance for agents: things a well-informed agent should know before transacting that don't fit a structured field. Examples: 'Reservations for 8+ require a callback to confirm', 'We do not ship to PO boxes despite what address validators allow'. Operational facts, not marketing."
+    }
+  },
+  "$defs": {
+    "policies": {
+      "type": "object",
+      "description": "Rules governing how agents may interact with this merchant.",
+      "additionalProperties": true,
+      "properties": {
+        "allow_automated_purchases": { "type": "boolean" },
+        "confirmation_requirements": {
+          "type": "object",
+          "description": "When the merchant requires explicit human confirmation. Coarse-grained baseline; per-action overrides go in authorization_levels.",
+          "additionalProperties": true,
+          "properties": {
+            "purchases_above": { "type": "number", "minimum": 0 },
+            "currency": { "type": "string" },
+            "subscription_signups": { "type": "boolean" },
+            "account_changes": { "type": "boolean" }
+          }
+        },
+        "rate_limits": {
+          "type": "object",
+          "description": "Per-endpoint or per-action rate limits.",
+          "additionalProperties": { "$ref": "#/$defs/rate_limit" }
+        },
+        "authentication": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "methods": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["none", "api_key", "oauth2", "bearer"]
+              }
+            },
+            "registration_url": { "type": "string", "format": "uri" },
+            "documentation": { "type": "string", "format": "uri" }
+          }
+        },
+        "data_usage": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "allow_caching": { "type": "boolean" },
+            "cache_ttl_seconds": { "type": "integer", "minimum": 0 },
+            "allow_comparison": { "type": "boolean" },
+            "allow_price_tracking": { "type": "boolean" },
+            "allow_training": { "type": "boolean" }
+          }
+        },
+        "preferred_agent_identification": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "header": { "type": "string" },
+            "user_agent_prefix": { "type": "string" }
+          }
+        },
+        "human_fallback": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "description": { "type": "string" }
+          }
+        }
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "description": "How agents find what the merchant offers.",
+      "additionalProperties": true,
+      "properties": {
+        "catalog": { "$ref": "#/$defs/catalog" },
+        "search": { "$ref": "#/$defs/search" },
+        "categories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/category" }
+        },
+        "sitemap": { "type": "string", "format": "uri" },
+        "openapi": { "type": "string", "format": "uri" },
+        "graphql": { "type": "string", "format": "uri" },
+        "mcp_server": { "$ref": "#/$defs/mcp_server" },
+        "feeds": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/feed" }
+        }
+      }
+    },
+    "transactions": {
+      "type": "object",
+      "description": "How agents may transact with this merchant.",
+      "additionalProperties": true,
+      "properties": {
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["purchase", "booking", "subscription", "quote", "auction", "donation", "custom"]
+          }
+        },
+        "purchase": { "$ref": "#/$defs/transaction_config" },
+        "booking": { "$ref": "#/$defs/transaction_config_nullable" },
+        "subscription": { "$ref": "#/$defs/transaction_config" },
+        "quote": { "$ref": "#/$defs/transaction_config" },
+        "auction": { "$ref": "#/$defs/transaction_config" },
+        "donation": { "$ref": "#/$defs/transaction_config" },
+        "custom": { "$ref": "#/$defs/transaction_config" },
+        "promotions": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "coupon_validation": {
+              "type": "object",
+              "properties": {
+                "endpoint": { "type": "string" },
+                "method": { "type": "string" }
+              }
+            },
+            "active_promotions_feed": { "type": "string", "format": "uri" }
+          }
+        },
+        "transaction_policies": { "$ref": "#/$defs/transaction_policies" },
+        "terms_of_service": { "type": "string", "format": "uri" },
+        "privacy_policy": { "type": "string", "format": "uri" }
+      }
+    },
+    "information": {
+      "type": "object",
+      "description": "Real-time data endpoints agents may query.",
+      "additionalProperties": true,
+      "properties": {
+        "inventory": { "$ref": "#/$defs/info_endpoint" },
+        "pricing": { "$ref": "#/$defs/info_endpoint" },
+        "hours": { "$ref": "#/$defs/info_endpoint" },
+        "reviews": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "aggregation": {
+              "type": "object",
+              "properties": {
+                "average_rating": { "type": "number" },
+                "total_reviews": { "type": "integer" },
+                "rating_distribution": { "type": "object" }
+              }
+            },
+            "third_party": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "platform": { "type": "string" },
+                  "url": { "type": "string", "format": "uri" },
+                  "rating": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "faq": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "format": { "type": "string" },
+            "topics": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "structured_content": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "schema_org": { "type": "string", "format": "uri" },
+            "json_ld_pages": {
+              "type": "array",
+              "items": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "description": "Post-transaction and customer support interfaces.",
+      "additionalProperties": true,
+      "properties": {
+        "order_tracking": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "authentication": { "type": "string" }
+          }
+        },
+        "returns": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "initiate_endpoint": { "type": "string", "format": "uri" },
+            "method": { "type": "string" },
+            "authentication": { "type": "string" },
+            "required_fields": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "channels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "type": { "type": "string" },
+                  "url": { "type": "string", "format": "uri" },
+                  "address": { "type": "string" },
+                  "number": { "type": "string" },
+                  "protocol": { "type": "string" },
+                  "hours": {},
+                  "expected_response_time": { "type": "string" },
+                  "agent_compatible": { "type": "boolean" }
+                }
+              }
+            },
+            "mcp_server": { "$ref": "#/$defs/mcp_server" }
+          }
+        },
+        "webhooks": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "available_events": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "registration_endpoint": { "type": "string", "format": "uri" },
+            "documentation": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    },
+    "catalog": {
+      "type": "object",
+      "required": ["type", "format", "url"],
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["product_feed", "service_list", "menu", "inventory", "custom"]
+        },
+        "format": {
+          "type": "string",
+          "enum": ["json", "xml", "csv", "jsonld"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "total_items": { "type": "integer", "minimum": 0 },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "schema": { "type": "string", "format": "uri" },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "page_size": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "required": ["endpoint", "method", "parameters", "response_format", "authentication"],
+      "additionalProperties": true,
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri" },
+        "method": { "type": "string", "enum": ["GET", "POST"] },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "required": { "type": "boolean" },
+              "description": { "type": "string" },
+              "enum": { "type": "array" },
+              "default": {},
+              "min": {},
+              "max": {}
+            }
+          }
+        },
+        "response_format": { "type": "string" },
+        "rate_limit": { "$ref": "#/$defs/rate_limit" },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        }
+      }
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "item_count": { "type": "integer", "minimum": 0 },
+        "subcategories": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/category" }
+        }
+      }
+    },
+    "mcp_server": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "documentation": { "type": "string", "format": "uri" }
+      }
+    },
+    "feed": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "format": {
+          "type": "string",
+          "enum": ["json", "xml", "csv", "jsonld"]
+        },
+        "update_frequency": { "type": "string" }
+      }
+    },
+    "rate_limit": {
+      "type": "object",
+      "properties": {
+        "requests": { "type": "integer", "minimum": 1 },
+        "period": { "type": "string" }
+      }
+    },
+    "transaction_config": {
+      "type": "object",
+      "description": "Configuration for one transaction type (purchase, booking, subscription, etc.).",
+      "additionalProperties": true,
+      "properties": {
+        "type": { "type": "string" },
+        "endpoint": { "type": "string", "format": "uri" },
+        "method": { "type": "string" },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "oauth2": {
+          "type": "object",
+          "properties": {
+            "authorization_url": { "type": "string", "format": "uri" },
+            "token_url": { "type": "string", "format": "uri" },
+            "scopes": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "required": ["authorization_url", "token_url", "scopes"]
+        },
+        "documentation": { "type": "string", "format": "uri" },
+        "cart_api": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "method": { "type": "string" },
+              "endpoint": { "type": "string" }
+            }
+          }
+        },
+        "payment_methods": {
+          "type": "array",
+          "description": "Payment rails accepted for this transaction type. Each entry describes one rail and its agent-relevant parameters.",
+          "items": { "$ref": "#/$defs/payment_method" }
+        },
+        "currencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tax_handling": { "type": "string" },
+        "shipping": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "methods_endpoint": { "type": "string" },
+            "estimate_endpoint": { "type": "string" },
+            "regions": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "plans_endpoint": { "type": "string", "format": "uri" }
+      }
+    },
+    "transaction_config_nullable": {
+      "oneOf": [
+        { "$ref": "#/$defs/transaction_config" },
+        { "type": "null" }
+      ]
+    },
+    "transaction_policies": {
+      "type": "object",
+      "description": "Returns / cancellation / price-match policies. (Renamed from 'policies' in v0.1 of the legacy core schema to avoid clash with the new top-level policies block.)",
+      "additionalProperties": true,
+      "properties": {
+        "returns": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "window_days": { "type": "integer", "minimum": 0 },
+            "conditions": { "type": "array", "items": { "type": "string" } },
+            "refund_method": { "type": "string" },
+            "restocking_fee_percent": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        },
+        "cancellation": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "window_minutes": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "price_match": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "available": { "type": "boolean" },
+            "url": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" }
+          }
+        }
+      }
+    },
+    "info_endpoint": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri" },
+        "method": { "type": "string" },
+        "authentication": {
+          "type": "string",
+          "enum": ["none", "api_key", "oauth2", "bearer"]
+        },
+        "freshness": { "type": "string" },
+        "response_schema": { "type": "object" },
+        "includes_tax": { "type": "boolean" },
+        "currency": { "type": "string" },
+        "response_includes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "payment_method": {
+      "type": "object",
+      "required": ["rail"],
+      "additionalProperties": true,
+      "properties": {
+        "rail": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifier for the payment rail. Free string with well-known values: 'card', 'ach', 'wire', 'stablecoin-usdc', 'stablecoin-usdt', 'x402', 'l402', 'pay-by-bank', 'open-banking', 'evm-direct', 'solana-direct', 'ap2', 'stripe-agent-toolkit'. Use the most specific identifier."
+        },
+        "supported": { "type": "boolean", "default": true },
+        "agent_endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Rail-specific endpoint or address (e.g. wallet address for stablecoin, x402 endpoint, AP2 settlement URL)."
+        },
+        "min_amount": { "type": "number", "minimum": 0 },
+        "max_amount": { "type": "number", "minimum": 0 },
+        "currencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "settlement_window": {
+          "type": "string",
+          "description": "Human-readable expected settlement time, e.g. 'instant', '1-3 business days', 'T+1'."
+        }
+      }
+    },
+    "authorization_entry": {
+      "type": "object",
+      "required": ["level"],
+      "additionalProperties": true,
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["autonomous", "requires_human_confirmation", "prohibited"]
+        },
+        "threshold": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "amount_above": { "type": "number", "minimum": 0 },
+            "currency": { "type": "string" },
+            "applies_to_categories": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "rationale": { "type": "string" }
+      }
+    },
+    "booking_capability": {
+      "type": "object",
+      "required": ["service_type", "can_book_directly"],
+      "additionalProperties": true,
+      "properties": {
+        "service_type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifier for the bookable service. Well-known values: 'restaurant_reservation', 'appointment', 'event_ticket', 'lodging_room', 'rental_vehicle', 'service_call', 'class_session', 'consultation'."
+        },
+        "can_book_directly": { "type": "boolean" },
+        "endpoint": { "type": "string", "format": "uri" },
+        "max_booking_window_days": { "type": "integer", "minimum": 0 },
+        "min_lead_time_minutes": { "type": "integer", "minimum": 0 },
+        "modification_allowed": { "type": "boolean" },
+        "cancellation_window_minutes": { "type": "integer", "minimum": 0 },
+        "max_party_size": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

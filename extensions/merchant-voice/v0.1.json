@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opennod.ai/schema/extensions/merchant-voice/v0.1.json",
+  "title": "Nod Merchant-Voice Extension v0.1",
+  "description": "Free-text narrative fields a merchant uses to express positioning, story, and specialties. Distinct from structured business metadata. Lives at extensions[\"ai.opennod.merchant-voice\"] in a manifest. Agents may surface these to humans verbatim or use them to inform recommendations; protocol does not constrain interpretation.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "positioning_statement": {
+      "type": "string",
+      "maxLength": 280,
+      "description": "One-sentence statement of how the merchant positions itself. Length-capped to enforce concision; longer statements belong in 'story'."
+    },
+    "ideal_customer": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Plain-language description of the customer the merchant is built for. Used by agents during recommendation tasks; merchants should write the customer they actually serve, not an aspirational one."
+    },
+    "story": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "Longer-form narrative: founding, what makes this merchant different, why it exists. May be used by agents for human-facing summaries."
+    },
+    "specialties": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": "Things this merchant is unusually good at, as short noun phrases. Examples: 'wood-fired Neapolitan pizza', 'IRS audit defense for small businesses'. Avoid generic claims that any competitor would also list."
+    },
+    "accommodations": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "description": "Customer accommodations the merchant explicitly offers, as short noun phrases. Examples: 'wheelchair-accessible entrance and restroom', 'gluten-free kitchen', 'after-hours appointments by request', 'on-site interpreter for ASL'. Use for capabilities a customer might filter on; not a marketing list."
+    }
+  }
+}
