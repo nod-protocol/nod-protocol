@@ -1,15 +1,20 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "Whitfield & Associates",
+    "naics_code": "541110",
+    "gbp_primary_category": "Law Firm",
+    "url": "https://whitfieldlaw.com",
     "legal_name": "Whitfield & Associates LLP",
     "description": "Full-service law firm specializing in corporate law, intellectual property, employment law, and startup advisory. Serving businesses from formation through IPO across the Midwest and nationally.",
-    "type": "professional_services",
-    "categories": ["legal", "corporate_law", "intellectual_property", "employment_law"],
-    "naics_codes": ["541110"],
-    "url": "https://whitfieldlaw.com",
+    "categories": [
+      "legal",
+      "corporate_law",
+      "intellectual_property",
+      "employment_law"
+    ],
     "logo": "https://whitfieldlaw.com/assets/logo.svg",
     "founded": "2008",
     "locations": [
@@ -30,19 +35,56 @@
         "hours": {
           "timezone": "America/Chicago",
           "regular": {
-            "monday": { "open": "08:30", "close": "18:00" },
-            "tuesday": { "open": "08:30", "close": "18:00" },
-            "wednesday": { "open": "08:30", "close": "18:00" },
-            "thursday": { "open": "08:30", "close": "18:00" },
-            "friday": { "open": "08:30", "close": "17:00" },
-            "saturday": { "status": "closed" },
-            "sunday": { "status": "closed" }
+            "monday": {
+              "open": "08:30",
+              "close": "18:00"
+            },
+            "tuesday": {
+              "open": "08:30",
+              "close": "18:00"
+            },
+            "wednesday": {
+              "open": "08:30",
+              "close": "18:00"
+            },
+            "thursday": {
+              "open": "08:30",
+              "close": "18:00"
+            },
+            "friday": {
+              "open": "08:30",
+              "close": "17:00"
+            },
+            "saturday": {
+              "status": "closed"
+            },
+            "sunday": {
+              "status": "closed"
+            }
           },
           "exceptions": [
-            { "date": "2026-12-25", "status": "closed", "reason": "Christmas Day" },
-            { "date": "2026-12-24", "status": "modified", "open": "08:30", "close": "12:00", "reason": "Christmas Eve (half day)" },
-            { "date": "2026-11-26", "status": "closed", "reason": "Thanksgiving" },
-            { "date": "2026-07-03", "status": "closed", "reason": "Independence Day (observed)" }
+            {
+              "date": "2026-12-25",
+              "status": "closed",
+              "reason": "Christmas Day"
+            },
+            {
+              "date": "2026-12-24",
+              "status": "modified",
+              "open": "08:30",
+              "close": "12:00",
+              "reason": "Christmas Eve (half day)"
+            },
+            {
+              "date": "2026-11-26",
+              "status": "closed",
+              "reason": "Thanksgiving"
+            },
+            {
+              "date": "2026-07-03",
+              "status": "closed",
+              "reason": "Independence Day (observed)"
+            }
           ]
         },
         "phone": "+1-312-555-0700",
@@ -65,13 +107,32 @@
         "hours": {
           "timezone": "America/Chicago",
           "regular": {
-            "monday": { "open": "09:00", "close": "17:30" },
-            "tuesday": { "open": "09:00", "close": "17:30" },
-            "wednesday": { "open": "09:00", "close": "17:30" },
-            "thursday": { "open": "09:00", "close": "17:30" },
-            "friday": { "open": "09:00", "close": "17:00" },
-            "saturday": { "status": "closed" },
-            "sunday": { "status": "closed" }
+            "monday": {
+              "open": "09:00",
+              "close": "17:30"
+            },
+            "tuesday": {
+              "open": "09:00",
+              "close": "17:30"
+            },
+            "wednesday": {
+              "open": "09:00",
+              "close": "17:30"
+            },
+            "thursday": {
+              "open": "09:00",
+              "close": "17:30"
+            },
+            "friday": {
+              "open": "09:00",
+              "close": "17:00"
+            },
+            "saturday": {
+              "status": "closed"
+            },
+            "sunday": {
+              "status": "closed"
+            }
           }
         },
         "phone": "+1-414-555-0710",
@@ -79,11 +140,24 @@
       }
     ],
     "contacts": {
-      "general": { "email": "info@whitfieldlaw.com", "phone": "+1-312-555-0700" },
-      "new_clients": { "email": "intake@whitfieldlaw.com", "phone": "+1-312-555-0701" },
-      "billing": { "email": "billing@whitfieldlaw.com", "phone": "+1-312-555-0702" },
-      "careers": { "email": "careers@whitfieldlaw.com" },
-      "press": { "email": "press@whitfieldlaw.com" }
+      "general": {
+        "email": "info@whitfieldlaw.com",
+        "phone": "+1-312-555-0700"
+      },
+      "new_clients": {
+        "email": "intake@whitfieldlaw.com",
+        "phone": "+1-312-555-0701"
+      },
+      "billing": {
+        "email": "billing@whitfieldlaw.com",
+        "phone": "+1-312-555-0702"
+      },
+      "careers": {
+        "email": "careers@whitfieldlaw.com"
+      },
+      "press": {
+        "email": "press@whitfieldlaw.com"
+      }
     },
     "social": {
       "linkedin": "https://linkedin.com/company/whitfield-associates",
@@ -92,267 +166,6 @@
     "schema_org": "https://whitfieldlaw.com/schema/organization.jsonld",
     "identifiers": {
       "duns": "456789012"
-    }
-  },
-  "discovery": {
-    "catalog": {
-      "type": "service_list",
-      "format": "json",
-      "url": "https://whitfieldlaw.com/api/v1/practice-areas",
-      "total_items": 18,
-      "updated_at": "2026-03-01T00:00:00Z",
-      "schema": "https://schema.org/Service"
-    },
-    "search": {
-      "endpoint": "https://whitfieldlaw.com/api/v1/search",
-      "method": "GET",
-      "parameters": {
-        "q": { "type": "string", "required": true, "description": "Search practice areas, attorneys, publications, and insights" },
-        "type": { "type": "string", "required": false, "enum": ["practice_areas", "attorneys", "publications", "case_studies"], "description": "Filter by content type" },
-        "practice_area": { "type": "string", "required": false, "description": "Filter by practice area slug" },
-        "industry": { "type": "string", "required": false, "description": "Filter by industry focus" },
-        "page": { "type": "integer", "default": 1 },
-        "per_page": { "type": "integer", "default": 20, "max": 50 }
-      },
-      "response_format": "application/json",
-      "rate_limit": { "requests": 20, "period": "minute" },
-      "authentication": "none"
-    },
-    "categories": [
-      {
-        "name": "Corporate & Business Law",
-        "slug": "corporate",
-        "url": "https://whitfieldlaw.com/practice-areas/corporate",
-        "item_count": 5,
-        "subcategories": [
-          { "name": "Mergers & Acquisitions", "slug": "mergers-acquisitions", "item_count": 1 },
-          { "name": "Business Formation", "slug": "business-formation", "item_count": 1 },
-          { "name": "Corporate Governance", "slug": "corporate-governance", "item_count": 1 },
-          { "name": "Securities", "slug": "securities", "item_count": 1 },
-          { "name": "Venture Capital & Startup", "slug": "venture-capital-startup", "item_count": 1 }
-        ]
-      },
-      {
-        "name": "Intellectual Property",
-        "slug": "intellectual-property",
-        "url": "https://whitfieldlaw.com/practice-areas/intellectual-property",
-        "item_count": 4,
-        "subcategories": [
-          { "name": "Patents", "slug": "patents", "item_count": 1 },
-          { "name": "Trademarks", "slug": "trademarks", "item_count": 1 },
-          { "name": "Copyright", "slug": "copyright", "item_count": 1 },
-          { "name": "Trade Secrets", "slug": "trade-secrets", "item_count": 1 }
-        ]
-      },
-      {
-        "name": "Employment Law",
-        "slug": "employment-law",
-        "url": "https://whitfieldlaw.com/practice-areas/employment-law",
-        "item_count": 4,
-        "subcategories": [
-          { "name": "Employment Agreements", "slug": "employment-agreements", "item_count": 1 },
-          { "name": "Workplace Disputes", "slug": "workplace-disputes", "item_count": 1 },
-          { "name": "Regulatory Compliance", "slug": "regulatory-compliance", "item_count": 1 },
-          { "name": "Executive Compensation", "slug": "executive-compensation", "item_count": 1 }
-        ]
-      },
-      {
-        "name": "Litigation",
-        "slug": "litigation",
-        "url": "https://whitfieldlaw.com/practice-areas/litigation",
-        "item_count": 3
-      },
-      {
-        "name": "Real Estate",
-        "slug": "real-estate",
-        "url": "https://whitfieldlaw.com/practice-areas/real-estate",
-        "item_count": 2
-      }
-    ],
-    "sitemap": "https://whitfieldlaw.com/sitemap.xml",
-    "mcp_server": {
-      "url": "https://whitfieldlaw.com/mcp",
-      "capabilities": ["practice_area_lookup", "attorney_search", "consultation_scheduling", "conflict_check"],
-      "authentication": "api_key",
-      "documentation": "https://whitfieldlaw.com/developers/mcp"
-    },
-    "feeds": {
-      "insights": {
-        "url": "https://whitfieldlaw.com/feeds/insights.json",
-        "format": "json",
-        "update_frequency": "weekly"
-      },
-      "attorneys": {
-        "url": "https://whitfieldlaw.com/feeds/attorneys.json",
-        "format": "json",
-        "update_frequency": "monthly"
-      }
-    },
-    "llms_txt": {
-      "url": "https://sterling-law.com/.well-known/llms.txt",
-      "full_url": "https://sterling-law.com/llms-full.txt",
-      "description": "Practice areas, attorney profiles, and legal resources for AI systems"
-    }
-  },
-  "transactions": {
-    "capabilities": ["booking", "quote"],
-    "booking": {
-      "type": "api",
-      "endpoint": "https://whitfieldlaw.com/api/v1/consultations",
-      "method": "POST",
-      "authentication": "api_key",
-      "documentation": "https://whitfieldlaw.com/developers/api/consultations",
-      "required_fields": ["contact_name", "company_name", "email", "phone", "practice_area", "preferred_date", "preferred_time", "brief_description"],
-      "optional_fields": ["preferred_attorney", "urgency", "referral_source", "location_preference", "meeting_type"],
-      "availability_endpoint": {
-        "url": "https://whitfieldlaw.com/api/v1/consultations/availability",
-        "method": "GET",
-        "parameters": {
-          "practice_area": { "type": "string", "required": true },
-          "attorney_id": { "type": "string", "required": false },
-          "date_from": { "type": "date", "required": true },
-          "date_to": { "type": "date", "required": false },
-          "meeting_type": { "type": "string", "required": false, "enum": ["in_person", "video", "phone"] }
-        }
-      },
-      "cancellation_endpoint": {
-        "url": "https://whitfieldlaw.com/api/v1/consultations/{consultation_id}",
-        "method": "DELETE"
-      },
-      "consultation_fee": {
-        "initial": { "amount": 0.00, "currency": "USD", "duration_minutes": 30, "description": "Free initial consultation for most practice areas" }
-      }
-    },
-    "quote": {
-      "type": "api",
-      "endpoint": "https://whitfieldlaw.com/api/v1/engagement-requests",
-      "method": "POST",
-      "authentication": "api_key",
-      "required_fields": ["contact_name", "company_name", "email", "practice_area", "matter_description"],
-      "optional_fields": ["budget_range", "timeline", "preferred_billing_structure"],
-      "documentation": "https://whitfieldlaw.com/developers/api/engagement-requests"
-    },
-    "policies": {
-      "cancellation": {
-        "url": "https://whitfieldlaw.com/policies/cancellation",
-        "summary": "Please cancel or reschedule consultations at least 24 hours in advance.",
-        "window_hours": 24
-      }
-    },
-    "terms_of_service": "https://whitfieldlaw.com/terms",
-    "privacy_policy": "https://whitfieldlaw.com/privacy"
-  },
-  "information": {
-    "pricing": {
-      "endpoint": "https://whitfieldlaw.com/api/v1/pricing",
-      "method": "GET",
-      "authentication": "none",
-      "includes_tax": false,
-      "currency": "USD"
-    },
-    "hours": {
-      "endpoint": "https://whitfieldlaw.com/api/v1/locations/{id}/hours",
-      "method": "GET",
-      "response_includes": ["regular_hours", "holiday_hours", "current_status"]
-    },
-    "reviews": {
-      "endpoint": "https://whitfieldlaw.com/api/v1/testimonials",
-      "method": "GET",
-      "aggregation": {
-        "average_rating": 4.9,
-        "total_reviews": 287
-      },
-      "third_party": [
-        { "platform": "google", "rating": 4.8, "total_reviews": 198 },
-        { "platform": "avvo", "url": "https://avvo.com/attorneys/whitfield-associates.html", "rating": 5.0 },
-        { "platform": "martindale", "url": "https://martindale.com/whitfield-associates", "rating": 5.0 }
-      ]
-    },
-    "faq": {
-      "url": "https://whitfieldlaw.com/api/v1/faq",
-      "format": "json",
-      "topics": ["consultations", "fees", "practice_areas", "billing", "client_portal", "confidentiality"]
-    },
-    "structured_content": {
-      "schema_org": "https://whitfieldlaw.com/schema/organization.jsonld",
-      "json_ld_pages": [
-        "https://whitfieldlaw.com/about",
-        "https://whitfieldlaw.com/attorneys",
-        "https://whitfieldlaw.com/practice-areas"
-      ]
-    }
-  },
-  "support": {
-    "contact": {
-      "channels": [
-        {
-          "type": "phone",
-          "number": "+1-312-555-0700",
-          "hours": { "timezone": "America/Chicago", "weekdays": "08:30-18:00" },
-          "agent_compatible": false
-        },
-        {
-          "type": "email",
-          "address": "info@whitfieldlaw.com",
-          "expected_response_time": "4_hours"
-        },
-        {
-          "type": "chat",
-          "url": "https://whitfieldlaw.com/api/v1/support/chat",
-          "protocol": "websocket",
-          "hours": { "timezone": "America/Chicago", "weekdays": "08:30-18:00" },
-          "agent_compatible": true
-        },
-        {
-          "type": "client_portal",
-          "url": "https://portal.whitfieldlaw.com",
-          "capabilities": ["secure_messaging", "document_sharing", "billing_history", "matter_status"],
-          "agent_compatible": false
-        }
-      ],
-      "mcp_server": {
-        "url": "https://whitfieldlaw.com/mcp/support",
-        "capabilities": ["consultation_status", "practice_area_inquiry", "attorney_availability", "general_inquiry"]
-      }
-    },
-    "webhooks": {
-      "available_events": ["consultation.confirmed", "consultation.cancelled", "engagement.proposal_sent", "document.shared"],
-      "registration_endpoint": "https://whitfieldlaw.com/api/v1/webhooks",
-      "documentation": "https://whitfieldlaw.com/developers/webhooks"
-    }
-  },
-  "agent_policies": {
-    "allow_automated_purchases": false,
-    "require_human_confirmation": {
-      "all_bookings": true,
-      "engagement_requests": true,
-      "account_changes": true,
-      "document_access": true
-    },
-    "rate_limits": {
-      "search": { "requests": 20, "period": "minute" },
-      "attorney_details": { "requests": 30, "period": "minute" },
-      "transactions": { "requests": 5, "period": "minute" }
-    },
-    "authentication": {
-      "methods": ["api_key"],
-      "registration_url": "https://whitfieldlaw.com/developers/register",
-      "documentation": "https://whitfieldlaw.com/developers/auth"
-    },
-    "data_usage": {
-      "allow_caching": true,
-      "cache_ttl_seconds": 86400,
-      "allow_comparison": true,
-      "allow_price_tracking": false,
-      "allow_training": false
-    },
-    "preferred_agent_identification": {
-      "header": "X-Agent-Id",
-      "user_agent_prefix": "NOD-Agent/"
-    },
-    "human_fallback": {
-      "url": "https://whitfieldlaw.com",
-      "description": "Visit our website or call for legal consultations, engagement inquiries, or to speak with an attorney"
     }
   },
   "extensions": {
@@ -368,7 +181,13 @@
         "venture_capital",
         "securities"
       ],
-      "industry_focus": ["technology", "healthcare", "manufacturing", "financial_services", "startups"],
+      "industry_focus": [
+        "technology",
+        "healthcare",
+        "manufacturing",
+        "financial_services",
+        "startups"
+      ],
       "attorneys": {
         "total": 28,
         "partners": 8,
@@ -376,22 +195,56 @@
         "of_counsel": 6,
         "feed_url": "https://whitfieldlaw.com/feeds/attorneys.json"
       },
-      "jurisdictions": ["IL", "WI", "IN", "federal"],
-      "bar_admissions": ["Illinois State Bar", "Wisconsin State Bar", "Indiana State Bar", "US Patent and Trademark Office"],
-      "billing_structures": ["hourly", "flat_fee", "contingency", "retainer", "hybrid"],
+      "jurisdictions": [
+        "IL",
+        "WI",
+        "IN",
+        "federal"
+      ],
+      "bar_admissions": [
+        "Illinois State Bar",
+        "Wisconsin State Bar",
+        "Indiana State Bar",
+        "US Patent and Trademark Office"
+      ],
+      "billing_structures": [
+        "hourly",
+        "flat_fee",
+        "contingency",
+        "retainer",
+        "hybrid"
+      ],
       "typical_engagement_sizes": {
-        "small": { "description": "Single matter, flat fee", "range": "$2,500 - $15,000" },
-        "medium": { "description": "Ongoing advisory or multi-matter", "range": "$15,000 - $100,000" },
-        "large": { "description": "M&A, litigation, or complex IP portfolio", "range": "$100,000+" }
+        "small": {
+          "description": "Single matter, flat fee",
+          "range": "$2,500 - $15,000"
+        },
+        "medium": {
+          "description": "Ongoing advisory or multi-matter",
+          "range": "$15,000 - $100,000"
+        },
+        "large": {
+          "description": "M&A, litigation, or complex IP portfolio",
+          "range": "$100,000+"
+        }
       },
       "client_portal": {
         "available": true,
         "url": "https://portal.whitfieldlaw.com",
-        "features": ["secure_messaging", "document_management", "billing", "matter_tracking"]
+        "features": [
+          "secure_messaging",
+          "document_management",
+          "billing",
+          "matter_tracking"
+        ]
       },
       "pro_bono": {
         "committed": true,
-        "areas": ["nonprofit_formation", "immigration", "civil_rights"],
+        "areas": [
+          "nonprofit_formation",
+          "immigration",
+          "civil_rights"
+        ],
         "inquiry_email": "probono@whitfieldlaw.com"
       },
       "awards_rankings": [
@@ -399,7 +252,497 @@
         "Chambers USA 2025 — Corporate/M&A (Illinois)",
         "Super Lawyers — 6 attorneys named 2025"
       ],
-      "languages_spoken": ["english", "spanish", "mandarin"]
+      "languages_spoken": [
+        "english",
+        "spanish",
+        "mandarin"
+      ]
+    },
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "allow_automated_purchases": false,
+        "rate_limits": {
+          "search": {
+            "requests": 20,
+            "period": "minute"
+          },
+          "attorney_details": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "transactions": {
+            "requests": 5,
+            "period": "minute"
+          }
+        },
+        "authentication": {
+          "methods": [
+            "api_key"
+          ],
+          "registration_url": "https://whitfieldlaw.com/developers/register",
+          "documentation": "https://whitfieldlaw.com/developers/auth"
+        },
+        "data_usage": {
+          "allow_caching": true,
+          "cache_ttl_seconds": 86400,
+          "allow_comparison": true,
+          "allow_price_tracking": false,
+          "allow_training": false
+        },
+        "preferred_agent_identification": {
+          "header": "X-Agent-Id",
+          "user_agent_prefix": "NOD-Agent/"
+        },
+        "human_fallback": {
+          "url": "https://whitfieldlaw.com",
+          "description": "Visit our website or call for legal consultations, engagement inquiries, or to speak with an attorney"
+        },
+        "confirmation_requirements": {
+          "all_bookings": true,
+          "engagement_requests": true,
+          "account_changes": true,
+          "document_access": true
+        }
+      },
+      "discovery": {
+        "catalog": {
+          "type": "service_list",
+          "format": "json",
+          "url": "https://whitfieldlaw.com/api/v1/practice-areas",
+          "total_items": 18,
+          "updated_at": "2026-03-01T00:00:00Z",
+          "schema": "https://schema.org/Service"
+        },
+        "search": {
+          "endpoint": "https://whitfieldlaw.com/api/v1/search",
+          "method": "GET",
+          "parameters": {
+            "q": {
+              "type": "string",
+              "required": true,
+              "description": "Search practice areas, attorneys, publications, and insights"
+            },
+            "type": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "practice_areas",
+                "attorneys",
+                "publications",
+                "case_studies"
+              ],
+              "description": "Filter by content type"
+            },
+            "practice_area": {
+              "type": "string",
+              "required": false,
+              "description": "Filter by practice area slug"
+            },
+            "industry": {
+              "type": "string",
+              "required": false,
+              "description": "Filter by industry focus"
+            },
+            "page": {
+              "type": "integer",
+              "default": 1
+            },
+            "per_page": {
+              "type": "integer",
+              "default": 20,
+              "max": 50
+            }
+          },
+          "response_format": "application/json",
+          "rate_limit": {
+            "requests": 20,
+            "period": "minute"
+          },
+          "authentication": "none"
+        },
+        "categories": [
+          {
+            "name": "Corporate & Business Law",
+            "slug": "corporate",
+            "url": "https://whitfieldlaw.com/practice-areas/corporate",
+            "item_count": 5,
+            "subcategories": [
+              {
+                "name": "Mergers & Acquisitions",
+                "slug": "mergers-acquisitions",
+                "item_count": 1
+              },
+              {
+                "name": "Business Formation",
+                "slug": "business-formation",
+                "item_count": 1
+              },
+              {
+                "name": "Corporate Governance",
+                "slug": "corporate-governance",
+                "item_count": 1
+              },
+              {
+                "name": "Securities",
+                "slug": "securities",
+                "item_count": 1
+              },
+              {
+                "name": "Venture Capital & Startup",
+                "slug": "venture-capital-startup",
+                "item_count": 1
+              }
+            ]
+          },
+          {
+            "name": "Intellectual Property",
+            "slug": "intellectual-property",
+            "url": "https://whitfieldlaw.com/practice-areas/intellectual-property",
+            "item_count": 4,
+            "subcategories": [
+              {
+                "name": "Patents",
+                "slug": "patents",
+                "item_count": 1
+              },
+              {
+                "name": "Trademarks",
+                "slug": "trademarks",
+                "item_count": 1
+              },
+              {
+                "name": "Copyright",
+                "slug": "copyright",
+                "item_count": 1
+              },
+              {
+                "name": "Trade Secrets",
+                "slug": "trade-secrets",
+                "item_count": 1
+              }
+            ]
+          },
+          {
+            "name": "Employment Law",
+            "slug": "employment-law",
+            "url": "https://whitfieldlaw.com/practice-areas/employment-law",
+            "item_count": 4,
+            "subcategories": [
+              {
+                "name": "Employment Agreements",
+                "slug": "employment-agreements",
+                "item_count": 1
+              },
+              {
+                "name": "Workplace Disputes",
+                "slug": "workplace-disputes",
+                "item_count": 1
+              },
+              {
+                "name": "Regulatory Compliance",
+                "slug": "regulatory-compliance",
+                "item_count": 1
+              },
+              {
+                "name": "Executive Compensation",
+                "slug": "executive-compensation",
+                "item_count": 1
+              }
+            ]
+          },
+          {
+            "name": "Litigation",
+            "slug": "litigation",
+            "url": "https://whitfieldlaw.com/practice-areas/litigation",
+            "item_count": 3
+          },
+          {
+            "name": "Real Estate",
+            "slug": "real-estate",
+            "url": "https://whitfieldlaw.com/practice-areas/real-estate",
+            "item_count": 2
+          }
+        ],
+        "sitemap": "https://whitfieldlaw.com/sitemap.xml",
+        "mcp_server": {
+          "url": "https://whitfieldlaw.com/mcp",
+          "capabilities": [
+            "practice_area_lookup",
+            "attorney_search",
+            "consultation_scheduling",
+            "conflict_check"
+          ],
+          "authentication": "api_key",
+          "documentation": "https://whitfieldlaw.com/developers/mcp"
+        },
+        "feeds": {
+          "insights": {
+            "url": "https://whitfieldlaw.com/feeds/insights.json",
+            "format": "json",
+            "update_frequency": "weekly"
+          },
+          "attorneys": {
+            "url": "https://whitfieldlaw.com/feeds/attorneys.json",
+            "format": "json",
+            "update_frequency": "monthly"
+          }
+        },
+        "llms_txt": {
+          "url": "https://sterling-law.com/.well-known/llms.txt",
+          "full_url": "https://sterling-law.com/llms-full.txt",
+          "description": "Practice areas, attorney profiles, and legal resources for AI systems"
+        }
+      },
+      "information": {
+        "pricing": {
+          "endpoint": "https://whitfieldlaw.com/api/v1/pricing",
+          "method": "GET",
+          "authentication": "none",
+          "includes_tax": false,
+          "currency": "USD"
+        },
+        "hours": {
+          "endpoint": "https://whitfieldlaw.com/api/v1/locations/{id}/hours",
+          "method": "GET",
+          "response_includes": [
+            "regular_hours",
+            "holiday_hours",
+            "current_status"
+          ]
+        },
+        "reviews": {
+          "endpoint": "https://whitfieldlaw.com/api/v1/testimonials",
+          "method": "GET",
+          "aggregation": {
+            "average_rating": 4.9,
+            "total_reviews": 287
+          },
+          "third_party": [
+            {
+              "platform": "google",
+              "rating": 4.8,
+              "total_reviews": 198
+            },
+            {
+              "platform": "avvo",
+              "url": "https://avvo.com/attorneys/whitfield-associates.html",
+              "rating": 5.0
+            },
+            {
+              "platform": "martindale",
+              "url": "https://martindale.com/whitfield-associates",
+              "rating": 5.0
+            }
+          ]
+        },
+        "faq": {
+          "url": "https://whitfieldlaw.com/api/v1/faq",
+          "format": "json",
+          "topics": [
+            "consultations",
+            "fees",
+            "practice_areas",
+            "billing",
+            "client_portal",
+            "confidentiality"
+          ]
+        },
+        "structured_content": {
+          "schema_org": "https://whitfieldlaw.com/schema/organization.jsonld",
+          "json_ld_pages": [
+            "https://whitfieldlaw.com/about",
+            "https://whitfieldlaw.com/attorneys",
+            "https://whitfieldlaw.com/practice-areas"
+          ]
+        }
+      },
+      "support": {
+        "contact": {
+          "channels": [
+            {
+              "type": "phone",
+              "number": "+1-312-555-0700",
+              "hours": {
+                "timezone": "America/Chicago",
+                "weekdays": "08:30-18:00"
+              },
+              "agent_compatible": false
+            },
+            {
+              "type": "email",
+              "address": "info@whitfieldlaw.com",
+              "expected_response_time": "4_hours"
+            },
+            {
+              "type": "chat",
+              "url": "https://whitfieldlaw.com/api/v1/support/chat",
+              "protocol": "websocket",
+              "hours": {
+                "timezone": "America/Chicago",
+                "weekdays": "08:30-18:00"
+              },
+              "agent_compatible": true
+            },
+            {
+              "type": "client_portal",
+              "url": "https://portal.whitfieldlaw.com",
+              "capabilities": [
+                "secure_messaging",
+                "document_sharing",
+                "billing_history",
+                "matter_status"
+              ],
+              "agent_compatible": false
+            }
+          ],
+          "mcp_server": {
+            "url": "https://whitfieldlaw.com/mcp/support",
+            "capabilities": [
+              "consultation_status",
+              "practice_area_inquiry",
+              "attorney_availability",
+              "general_inquiry"
+            ]
+          }
+        },
+        "webhooks": {
+          "available_events": [
+            "consultation.confirmed",
+            "consultation.cancelled",
+            "engagement.proposal_sent",
+            "document.shared"
+          ],
+          "registration_endpoint": "https://whitfieldlaw.com/api/v1/webhooks",
+          "documentation": "https://whitfieldlaw.com/developers/webhooks"
+        }
+      },
+      "transactions": {
+        "capabilities": [
+          "booking",
+          "quote"
+        ],
+        "booking": {
+          "type": "api",
+          "endpoint": "https://whitfieldlaw.com/api/v1/consultations",
+          "method": "POST",
+          "authentication": "api_key",
+          "documentation": "https://whitfieldlaw.com/developers/api/consultations",
+          "required_fields": [
+            "contact_name",
+            "company_name",
+            "email",
+            "phone",
+            "practice_area",
+            "preferred_date",
+            "preferred_time",
+            "brief_description"
+          ],
+          "optional_fields": [
+            "preferred_attorney",
+            "urgency",
+            "referral_source",
+            "location_preference",
+            "meeting_type"
+          ],
+          "availability_endpoint": {
+            "url": "https://whitfieldlaw.com/api/v1/consultations/availability",
+            "method": "GET",
+            "parameters": {
+              "practice_area": {
+                "type": "string",
+                "required": true
+              },
+              "attorney_id": {
+                "type": "string",
+                "required": false
+              },
+              "date_from": {
+                "type": "date",
+                "required": true
+              },
+              "date_to": {
+                "type": "date",
+                "required": false
+              },
+              "meeting_type": {
+                "type": "string",
+                "required": false,
+                "enum": [
+                  "in_person",
+                  "video",
+                  "phone"
+                ]
+              }
+            }
+          },
+          "cancellation_endpoint": {
+            "url": "https://whitfieldlaw.com/api/v1/consultations/{consultation_id}",
+            "method": "DELETE"
+          },
+          "consultation_fee": {
+            "initial": {
+              "amount": 0.0,
+              "currency": "USD",
+              "duration_minutes": 30,
+              "description": "Free initial consultation for most practice areas"
+            }
+          }
+        },
+        "quote": {
+          "type": "api",
+          "endpoint": "https://whitfieldlaw.com/api/v1/engagement-requests",
+          "method": "POST",
+          "authentication": "api_key",
+          "required_fields": [
+            "contact_name",
+            "company_name",
+            "email",
+            "practice_area",
+            "matter_description"
+          ],
+          "optional_fields": [
+            "budget_range",
+            "timeline",
+            "preferred_billing_structure"
+          ],
+          "documentation": "https://whitfieldlaw.com/developers/api/engagement-requests"
+        },
+        "terms_of_service": "https://whitfieldlaw.com/terms",
+        "privacy_policy": "https://whitfieldlaw.com/privacy",
+        "transaction_policies": {
+          "cancellation": {
+            "url": "https://whitfieldlaw.com/policies/cancellation",
+            "summary": "Please cancel or reschedule consultations at least 24 hours in advance.",
+            "window_hours": 24
+          }
+        }
+      }
+    },
+    "ai.opennod.merchant-voice": {
+      "positioning_statement": "Chicago corporate, IP, and employment law for growth-stage companies.",
+      "ideal_customer": "Founders and operators at venture-backed companies between $5M and $500M ARR.",
+      "specialties": [
+        "corporate transactions",
+        "intellectual property",
+        "employment law",
+        "venture financings"
+      ]
+    },
+    "ai.opennod.schema-org-extension": {
+      "schema_org_type": "LegalService",
+      "properties": {
+        "areaServed": "United States",
+        "knowsAbout": [
+          "corporate_law",
+          "mergers_acquisitions",
+          "intellectual_property",
+          "employment_law",
+          "litigation",
+          "real_estate",
+          "venture_capital",
+          "securities"
+        ]
+      }
     }
   }
 }

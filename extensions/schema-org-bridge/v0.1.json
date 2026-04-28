@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opennod.ai/schema/extensions/schema-org-bridge/v0.1.json",
+  "title": "Nod Schema.org Bridge Extension v0.1",
+  "description": "Meta-schema that lets a merchant declare which Schema.org LocalBusiness subtype applies to them and supply that subtype's industry-specific properties as a structured payload. Lives at extensions[\"ai.opennod.schema-org-extension\"] in a manifest. v0.1 does NOT validate the per-subtype property shape — consumers that wish to validate must apply the appropriate Schema.org subtype's expected shape themselves. Future protocol versions may ship per-subtype JSON Schemas under extensions/schema-org-bridge/types/.",
+  "type": "object",
+  "required": ["schema_org_type", "properties"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_org_type": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]+$",
+      "description": "Name of a Schema.org type that is a subtype of LocalBusiness (directly or transitively). Examples of common direct subtypes: AnimalShelter, AutomotiveBusiness, ChildCare, Dentist, DryCleaningOrLaundry, EmergencyService, EmploymentAgency, EntertainmentBusiness, FinancialService, FoodEstablishment, GovernmentOffice, HealthAndBeautyBusiness, HomeAndConstructionBusiness, LegalService, Library, LodgingBusiness, MedicalBusiness, ProfessionalService, RadioStation, RealEstateAgent, RecyclingCenter, SelfStorage, ShoppingCenter, SportsActivityLocation, Store, TelevisionStation, TouristInformationCenter, TravelAgency. Transitive subtypes are also valid (e.g. Restaurant under FoodEstablishment, Hotel under LodgingBusiness, Hospital under MedicalBusiness). Use the most specific subtype that applies. Canonical list: https://schema.org/LocalBusiness#subtypes"
+    },
+    "schema_org_version": {
+      "type": "string",
+      "description": "Optional Schema.org vocabulary version this declaration was authored against (e.g. '28.0'). Informational — Schema.org does not version subtype properties strictly, but recording the version helps debug field availability across consumers."
+    },
+    "context": {
+      "type": "string",
+      "format": "uri",
+      "default": "https://schema.org",
+      "description": "JSON-LD @context URL. Defaults to https://schema.org. Override only if using a Schema.org extension vocabulary."
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "The merchant's industry-specific Schema.org properties for the declared schema_org_type. v0.1 accepts any object shape — it is the consumer's responsibility to validate against the appropriate Schema.org subtype's expected properties. Examples by subtype: Restaurant uses servesCuisine, acceptsReservations, hasMenu, priceRange; MedicalBusiness uses medicalSpecialty, healthPlanNetworkId; LodgingBusiness uses checkinTime, checkoutTime, numberOfRooms; Store uses currenciesAccepted, paymentAccepted, openingHoursSpecification."
+    }
+  }
+}

@@ -1,13 +1,14 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "CityHealth Clinic",
-    "legal_name": "CityHealth Medical Group PLLC",
-    "type": "healthcare",
-    "description": "Primary care and urgent care clinic serving families in Austin, TX with same-day appointments and telehealth",
+    "naics_code": "621111",
+    "gbp_primary_category": "Medical Clinic",
     "url": "https://cityhealthclinic.com",
+    "legal_name": "CityHealth Medical Group PLLC",
+    "description": "Primary care and urgent care clinic serving families in Austin, TX with same-day appointments and telehealth",
     "locations": [
       {
         "type": "physical",
@@ -22,27 +23,56 @@
         "hours": {
           "timezone": "America/Chicago",
           "regular": {
-            "monday": { "open": "07:00", "close": "19:00" },
-            "tuesday": { "open": "07:00", "close": "19:00" },
-            "wednesday": { "open": "07:00", "close": "19:00" },
-            "thursday": { "open": "07:00", "close": "19:00" },
-            "friday": { "open": "07:00", "close": "17:00" },
-            "saturday": { "open": "08:00", "close": "14:00" },
-            "sunday": { "status": "closed" }
+            "monday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "tuesday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "wednesday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "thursday": {
+              "open": "07:00",
+              "close": "19:00"
+            },
+            "friday": {
+              "open": "07:00",
+              "close": "17:00"
+            },
+            "saturday": {
+              "open": "08:00",
+              "close": "14:00"
+            },
+            "sunday": {
+              "status": "closed"
+            }
           }
         },
         "phone": "+1-512-555-0600"
       }
     ],
     "contacts": {
-      "general": { "email": "info@cityhealthclinic.com", "phone": "+1-512-555-0600" },
-      "appointments": { "phone": "+1-512-555-0601" }
+      "general": {
+        "email": "info@cityhealthclinic.com",
+        "phone": "+1-512-555-0600"
+      },
+      "appointments": {
+        "phone": "+1-512-555-0601"
+      }
     }
   },
-  "agent_policies": {
-    "human_fallback": {
-      "url": "https://cityhealthclinic.com",
-      "description": "Visit our website or call to schedule appointments, access the patient portal, or reach our care team"
+  "extensions": {
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "human_fallback": {
+          "url": "https://cityhealthclinic.com",
+          "description": "Visit our website or call to schedule appointments, access the patient portal, or reach our care team"
+        }
+      }
     }
   }
 }

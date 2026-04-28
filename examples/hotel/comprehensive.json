@@ -1,15 +1,19 @@
 {
-  "$schema": "https://opennod.ai/schema/nod/v0.1.json",
-  "nod_version": "0.1",
+  "$schema": "https://opennod.ai/schema/nod/v0.2.json",
+  "nod_version": "0.2",
   "generated_at": "2026-03-23T12:00:00Z",
   "business": {
     "name": "The Grand Portland",
+    "naics_code": "721110",
+    "gbp_primary_category": "Hotel",
+    "url": "https://thegrandportland.com",
     "legal_name": "Grand Portland Hospitality LLC",
     "description": "Boutique luxury hotel in Portland's historic Pearl District featuring 92 individually designed rooms, rooftop restaurant, spa, and curated local art throughout",
-    "type": "hotel",
-    "categories": ["hospitality", "boutique_hotel", "luxury"],
-    "naics_codes": ["721110"],
-    "url": "https://thegrandportland.com",
+    "categories": [
+      "hospitality",
+      "boutique_hotel",
+      "luxury"
+    ],
     "logo": "https://thegrandportland.com/assets/logo.svg",
     "founded": "2020",
     "locations": [
@@ -25,18 +29,39 @@
         },
         "coordinates": {
           "latitude": 45.5245,
-          "longitude": -122.6830
+          "longitude": -122.683
         },
         "hours": {
           "timezone": "America/Los_Angeles",
           "regular": {
-            "monday": { "open": "00:00", "close": "23:59" },
-            "tuesday": { "open": "00:00", "close": "23:59" },
-            "wednesday": { "open": "00:00", "close": "23:59" },
-            "thursday": { "open": "00:00", "close": "23:59" },
-            "friday": { "open": "00:00", "close": "23:59" },
-            "saturday": { "open": "00:00", "close": "23:59" },
-            "sunday": { "open": "00:00", "close": "23:59" }
+            "monday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "tuesday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "wednesday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "thursday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "friday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "saturday": {
+              "open": "00:00",
+              "close": "23:59"
+            },
+            "sunday": {
+              "open": "00:00",
+              "close": "23:59"
+            }
           },
           "notes": "Front desk and concierge available 24/7"
         },
@@ -45,11 +70,25 @@
       }
     ],
     "contacts": {
-      "general": { "email": "info@thegrandportland.com", "phone": "+1-503-555-0500" },
-      "reservations": { "email": "reservations@thegrandportland.com", "phone": "+1-503-555-0501" },
-      "concierge": { "email": "concierge@thegrandportland.com", "phone": "+1-503-555-0502" },
-      "events": { "email": "events@thegrandportland.com", "phone": "+1-503-555-0503" },
-      "press": { "email": "press@thegrandportland.com" }
+      "general": {
+        "email": "info@thegrandportland.com",
+        "phone": "+1-503-555-0500"
+      },
+      "reservations": {
+        "email": "reservations@thegrandportland.com",
+        "phone": "+1-503-555-0501"
+      },
+      "concierge": {
+        "email": "concierge@thegrandportland.com",
+        "phone": "+1-503-555-0502"
+      },
+      "events": {
+        "email": "events@thegrandportland.com",
+        "phone": "+1-503-555-0503"
+      },
+      "press": {
+        "email": "press@thegrandportland.com"
+      }
     },
     "social": {
       "instagram": "https://instagram.com/thegrandportland",
@@ -62,283 +101,73 @@
       "duns": "345678901"
     }
   },
-  "discovery": {
-    "catalog": {
-      "type": "inventory",
-      "format": "json",
-      "url": "https://thegrandportland.com/api/v1/rooms",
-      "total_items": 6,
-      "updated_at": "2026-03-23T00:00:00Z",
-      "schema": "https://schema.org/HotelRoom"
-    },
-    "search": {
-      "endpoint": "https://thegrandportland.com/api/v1/availability",
-      "method": "GET",
-      "parameters": {
-        "check_in": { "type": "date", "required": true, "description": "Check-in date (YYYY-MM-DD)" },
-        "check_out": { "type": "date", "required": true, "description": "Check-out date (YYYY-MM-DD)" },
-        "guests": { "type": "integer", "required": true, "min": 1, "max": 4, "description": "Number of guests" },
-        "rooms": { "type": "integer", "required": false, "default": 1, "max": 5 },
-        "room_type": { "type": "string", "required": false, "enum": ["standard", "deluxe", "suite", "penthouse"], "description": "Preferred room type" },
-        "min_price": { "type": "number", "required": false },
-        "max_price": { "type": "number", "required": false },
-        "accessible": { "type": "boolean", "required": false, "description": "ADA accessible room required" }
-      },
-      "response_format": "application/json",
-      "rate_limit": { "requests": 30, "period": "minute" },
-      "authentication": "none"
-    },
-    "categories": [
-      {
-        "name": "Standard King",
-        "slug": "standard-king",
-        "url": "https://thegrandportland.com/rooms/standard-king",
-        "item_count": 35
-      },
-      {
-        "name": "Deluxe Queen",
-        "slug": "deluxe-queen",
-        "url": "https://thegrandportland.com/rooms/deluxe-queen",
-        "item_count": 25
-      },
-      {
-        "name": "Pearl Suite",
-        "slug": "pearl-suite",
-        "url": "https://thegrandportland.com/rooms/pearl-suite",
-        "item_count": 20
-      },
-      {
-        "name": "Grand Suite",
-        "slug": "grand-suite",
-        "url": "https://thegrandportland.com/rooms/grand-suite",
-        "item_count": 10
-      },
-      {
-        "name": "Penthouse",
-        "slug": "penthouse",
-        "url": "https://thegrandportland.com/rooms/penthouse",
-        "item_count": 2
-      }
-    ],
-    "sitemap": "https://thegrandportland.com/sitemap.xml",
-    "openapi": "https://thegrandportland.com/api/openapi.yaml",
-    "mcp_server": {
-      "url": "https://thegrandportland.com/mcp",
-      "capabilities": ["availability_check", "room_details", "rate_quote", "amenity_info", "local_recommendations"],
-      "authentication": "api_key",
-      "documentation": "https://thegrandportland.com/developers/mcp"
-    },
-    "feeds": {
-      "special_offers": {
-        "url": "https://thegrandportland.com/feeds/special-offers.json",
-        "format": "json",
-        "update_frequency": "weekly"
-      },
-      "events": {
-        "url": "https://thegrandportland.com/feeds/events.json",
-        "format": "json",
-        "update_frequency": "weekly"
-      }
-    },
-    "llms_txt": {
-      "url": "https://grandviewresort.com/.well-known/llms.txt",
-      "full_url": "https://grandviewresort.com/llms-full.txt",
-      "description": "Room types, amenities, booking policies, and local information for AI systems"
-    }
-  },
-  "transactions": {
-    "capabilities": ["booking"],
-    "booking": {
-      "type": "api",
-      "endpoint": "https://thegrandportland.com/api/v1/reservations",
-      "method": "POST",
-      "authentication": "oauth2",
-      "oauth2": {
-        "authorization_url": "https://thegrandportland.com/oauth/authorize",
-        "token_url": "https://thegrandportland.com/oauth/token",
-        "scopes": ["read:rooms", "write:reservations", "read:reservations"]
-      },
-      "documentation": "https://thegrandportland.com/developers/api/reservations",
-      "required_fields": ["check_in", "check_out", "room_type", "guest_name", "email", "phone"],
-      "optional_fields": ["special_requests", "arrival_time", "loyalty_number", "add_ons"],
-      "availability_endpoint": {
-        "url": "https://thegrandportland.com/api/v1/availability",
-        "method": "GET"
-      },
-      "payment_methods": ["credit_card", "apple_pay", "google_pay"],
-      "currencies": ["USD"],
-      "tax_handling": "calculated_at_checkout",
-      "deposit_policy": "First night deposit required at booking. Full prepayment for non-refundable rates."
-    },
-    "promotions": {
-      "coupon_validation": {
-        "endpoint": "/api/v1/promotions/validate",
-        "method": "POST"
-      },
-      "active_promotions_feed": "https://thegrandportland.com/feeds/special-offers.json"
-    },
-    "policies": {
-      "cancellation": {
-        "url": "https://thegrandportland.com/policies/cancellation",
-        "summary": "Free cancellation up to 48 hours before check-in for flexible rates. Non-refundable rates are final.",
-        "window_hours": 48
-      },
-      "returns": {
-        "url": "https://thegrandportland.com/policies/refund",
-        "summary": "Flexible rate bookings refunded in full if cancelled 48+ hours before check-in. Early departure refunds considered on a case-by-case basis.",
-        "refund_method": "original_payment"
-      }
-    },
-    "terms_of_service": "https://thegrandportland.com/terms",
-    "privacy_policy": "https://thegrandportland.com/privacy"
-  },
-  "information": {
-    "inventory": {
-      "endpoint": "https://thegrandportland.com/api/v1/availability/{room_type}",
-      "method": "GET",
-      "authentication": "none",
-      "freshness": "real_time",
-      "response_schema": {
-        "room_type": "string",
-        "available": "boolean",
-        "rooms_remaining": "integer",
-        "rate": "number",
-        "currency": "string"
-      }
-    },
-    "pricing": {
-      "endpoint": "https://thegrandportland.com/api/v1/rates",
-      "method": "GET",
-      "authentication": "none",
-      "includes_tax": false,
-      "currency": "USD"
-    },
-    "hours": {
-      "endpoint": "https://thegrandportland.com/api/v1/hours",
-      "method": "GET",
-      "response_includes": ["front_desk", "restaurant", "spa", "pool", "gym", "bar"]
-    },
-    "reviews": {
-      "endpoint": "https://thegrandportland.com/api/v1/reviews",
-      "method": "GET",
-      "aggregation": {
-        "average_rating": 4.7,
-        "total_reviews": 3420
-      },
-      "third_party": [
-        { "platform": "tripadvisor", "url": "https://tripadvisor.com/grand-portland", "rating": 4.8 },
-        { "platform": "google", "rating": 4.6, "total_reviews": 1890 },
-        { "platform": "booking.com", "rating": 9.1 }
-      ]
-    },
-    "faq": {
-      "url": "https://thegrandportland.com/api/v1/faq",
-      "format": "json",
-      "topics": ["check_in", "parking", "amenities", "dining", "pets", "accessibility", "local_area"]
-    },
-    "structured_content": {
-      "schema_org": "https://thegrandportland.com/schema/hotel.jsonld",
-      "json_ld_pages": [
-        "https://thegrandportland.com/about",
-        "https://thegrandportland.com/rooms",
-        "https://thegrandportland.com/dining"
-      ]
-    }
-  },
-  "support": {
-    "contact": {
-      "channels": [
-        {
-          "type": "phone",
-          "number": "+1-503-555-0500",
-          "hours": "24/7",
-          "agent_compatible": false
-        },
-        {
-          "type": "chat",
-          "url": "https://thegrandportland.com/api/v1/concierge/chat",
-          "protocol": "websocket",
-          "hours": "24/7",
-          "agent_compatible": true
-        },
-        {
-          "type": "email",
-          "address": "concierge@thegrandportland.com",
-          "expected_response_time": "1_hour"
-        }
-      ],
-      "mcp_server": {
-        "url": "https://thegrandportland.com/mcp/support",
-        "capabilities": ["reservation_status", "modification_request", "concierge_inquiry", "billing_inquiry"]
-      }
-    },
-    "webhooks": {
-      "available_events": ["reservation.confirmed", "reservation.modified", "reservation.cancelled", "guest.checked_in", "guest.checked_out"],
-      "registration_endpoint": "https://thegrandportland.com/api/v1/webhooks",
-      "documentation": "https://thegrandportland.com/developers/webhooks"
-    }
-  },
-  "agent_policies": {
-    "allow_automated_purchases": true,
-    "require_human_confirmation": {
-      "purchases_above": 1000.00,
-      "currency": "USD",
-      "reservation_modifications": true,
-      "account_changes": true
-    },
-    "rate_limits": {
-      "search": { "requests": 30, "period": "minute" },
-      "room_details": { "requests": 60, "period": "minute" },
-      "transactions": { "requests": 10, "period": "minute" }
-    },
-    "authentication": {
-      "methods": ["api_key", "oauth2"],
-      "registration_url": "https://thegrandportland.com/developers/register",
-      "documentation": "https://thegrandportland.com/developers/auth"
-    },
-    "data_usage": {
-      "allow_caching": true,
-      "cache_ttl_seconds": 900,
-      "allow_comparison": true,
-      "allow_price_tracking": true,
-      "allow_training": false
-    },
-    "preferred_agent_identification": {
-      "header": "X-Agent-Id",
-      "user_agent_prefix": "NOD-Agent/"
-    },
-    "human_fallback": {
-      "url": "https://thegrandportland.com",
-      "description": "Visit our website or call for complex booking requests, group rates, or event planning"
-    }
-  },
   "extensions": {
     "ai.opennod.hotel": {
       "star_rating": 4,
       "total_rooms": 92,
       "check_in_time": "15:00",
       "check_out_time": "11:00",
-      "early_check_in": { "available": true, "fee": { "amount": 50.00, "currency": "USD" }, "subject_to_availability": true },
-      "late_check_out": { "available": true, "fee": { "amount": 50.00, "currency": "USD" }, "subject_to_availability": true },
+      "early_check_in": {
+        "available": true,
+        "fee": {
+          "amount": 50.0,
+          "currency": "USD"
+        },
+        "subject_to_availability": true
+      },
+      "late_check_out": {
+        "available": true,
+        "fee": {
+          "amount": 50.0,
+          "currency": "USD"
+        },
+        "subject_to_availability": true
+      },
       "amenities": [
-        "wifi", "fitness_center", "spa", "rooftop_restaurant", "rooftop_bar",
-        "room_service", "concierge", "valet_parking", "business_center",
-        "ev_charging", "bike_rental"
+        "wifi",
+        "fitness_center",
+        "spa",
+        "rooftop_restaurant",
+        "rooftop_bar",
+        "room_service",
+        "concierge",
+        "valet_parking",
+        "business_center",
+        "ev_charging",
+        "bike_rental"
       ],
       "room_amenities": [
-        "smart_tv", "mini_bar", "safe", "coffee_maker", "rainfall_shower",
-        "luxury_linens", "blackout_curtains", "usb_charging", "bluetooth_speaker"
+        "smart_tv",
+        "mini_bar",
+        "safe",
+        "coffee_maker",
+        "rainfall_shower",
+        "luxury_linens",
+        "blackout_curtains",
+        "usb_charging",
+        "bluetooth_speaker"
       ],
       "pet_policy": {
         "pets_allowed": true,
-        "fee": { "amount": 75.00, "currency": "USD", "period": "per_stay" },
+        "fee": {
+          "amount": 75.0,
+          "currency": "USD",
+          "period": "per_stay"
+        },
         "max_weight_lbs": 50,
-        "species": ["dogs", "cats"]
+        "species": [
+          "dogs",
+          "cats"
+        ]
       },
       "parking": {
         "available": true,
         "type": "valet",
-        "rate": { "amount": 45.00, "currency": "USD", "period": "per_night" },
+        "rate": {
+          "amount": 45.0,
+          "currency": "USD",
+          "period": "per_night"
+        },
         "ev_charging": true
       },
       "accessibility": {
@@ -348,12 +177,417 @@
         "service_animals": true
       },
       "sustainability": {
-        "certifications": ["leed_gold", "green_key"],
+        "certifications": [
+          "leed_gold",
+          "green_key"
+        ],
         "ev_charging": true
       },
       "loyalty_program": {
         "name": "Grand Rewards",
         "enrollment_url": "https://thegrandportland.com/rewards"
+      }
+    },
+    "ai.opennod.agent-commerce": {
+      "policies": {
+        "allow_automated_purchases": true,
+        "rate_limits": {
+          "search": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "room_details": {
+            "requests": 60,
+            "period": "minute"
+          },
+          "transactions": {
+            "requests": 10,
+            "period": "minute"
+          }
+        },
+        "authentication": {
+          "methods": [
+            "api_key",
+            "oauth2"
+          ],
+          "registration_url": "https://thegrandportland.com/developers/register",
+          "documentation": "https://thegrandportland.com/developers/auth"
+        },
+        "data_usage": {
+          "allow_caching": true,
+          "cache_ttl_seconds": 900,
+          "allow_comparison": true,
+          "allow_price_tracking": true,
+          "allow_training": false
+        },
+        "preferred_agent_identification": {
+          "header": "X-Agent-Id",
+          "user_agent_prefix": "NOD-Agent/"
+        },
+        "human_fallback": {
+          "url": "https://thegrandportland.com",
+          "description": "Visit our website or call for complex booking requests, group rates, or event planning"
+        },
+        "confirmation_requirements": {
+          "purchases_above": 1000.0,
+          "currency": "USD",
+          "reservation_modifications": true,
+          "account_changes": true
+        }
+      },
+      "discovery": {
+        "catalog": {
+          "type": "inventory",
+          "format": "json",
+          "url": "https://thegrandportland.com/api/v1/rooms",
+          "total_items": 6,
+          "updated_at": "2026-03-23T00:00:00Z",
+          "schema": "https://schema.org/HotelRoom"
+        },
+        "search": {
+          "endpoint": "https://thegrandportland.com/api/v1/availability",
+          "method": "GET",
+          "parameters": {
+            "check_in": {
+              "type": "date",
+              "required": true,
+              "description": "Check-in date (YYYY-MM-DD)"
+            },
+            "check_out": {
+              "type": "date",
+              "required": true,
+              "description": "Check-out date (YYYY-MM-DD)"
+            },
+            "guests": {
+              "type": "integer",
+              "required": true,
+              "min": 1,
+              "max": 4,
+              "description": "Number of guests"
+            },
+            "rooms": {
+              "type": "integer",
+              "required": false,
+              "default": 1,
+              "max": 5
+            },
+            "room_type": {
+              "type": "string",
+              "required": false,
+              "enum": [
+                "standard",
+                "deluxe",
+                "suite",
+                "penthouse"
+              ],
+              "description": "Preferred room type"
+            },
+            "min_price": {
+              "type": "number",
+              "required": false
+            },
+            "max_price": {
+              "type": "number",
+              "required": false
+            },
+            "accessible": {
+              "type": "boolean",
+              "required": false,
+              "description": "ADA accessible room required"
+            }
+          },
+          "response_format": "application/json",
+          "rate_limit": {
+            "requests": 30,
+            "period": "minute"
+          },
+          "authentication": "none"
+        },
+        "categories": [
+          {
+            "name": "Standard King",
+            "slug": "standard-king",
+            "url": "https://thegrandportland.com/rooms/standard-king",
+            "item_count": 35
+          },
+          {
+            "name": "Deluxe Queen",
+            "slug": "deluxe-queen",
+            "url": "https://thegrandportland.com/rooms/deluxe-queen",
+            "item_count": 25
+          },
+          {
+            "name": "Pearl Suite",
+            "slug": "pearl-suite",
+            "url": "https://thegrandportland.com/rooms/pearl-suite",
+            "item_count": 20
+          },
+          {
+            "name": "Grand Suite",
+            "slug": "grand-suite",
+            "url": "https://thegrandportland.com/rooms/grand-suite",
+            "item_count": 10
+          },
+          {
+            "name": "Penthouse",
+            "slug": "penthouse",
+            "url": "https://thegrandportland.com/rooms/penthouse",
+            "item_count": 2
+          }
+        ],
+        "sitemap": "https://thegrandportland.com/sitemap.xml",
+        "openapi": "https://thegrandportland.com/api/openapi.yaml",
+        "mcp_server": {
+          "url": "https://thegrandportland.com/mcp",
+          "capabilities": [
+            "availability_check",
+            "room_details",
+            "rate_quote",
+            "amenity_info",
+            "local_recommendations"
+          ],
+          "authentication": "api_key",
+          "documentation": "https://thegrandportland.com/developers/mcp"
+        },
+        "feeds": {
+          "special_offers": {
+            "url": "https://thegrandportland.com/feeds/special-offers.json",
+            "format": "json",
+            "update_frequency": "weekly"
+          },
+          "events": {
+            "url": "https://thegrandportland.com/feeds/events.json",
+            "format": "json",
+            "update_frequency": "weekly"
+          }
+        },
+        "llms_txt": {
+          "url": "https://grandviewresort.com/.well-known/llms.txt",
+          "full_url": "https://grandviewresort.com/llms-full.txt",
+          "description": "Room types, amenities, booking policies, and local information for AI systems"
+        }
+      },
+      "information": {
+        "inventory": {
+          "endpoint": "https://thegrandportland.com/api/v1/availability/{room_type}",
+          "method": "GET",
+          "authentication": "none",
+          "freshness": "real_time",
+          "response_schema": {
+            "room_type": "string",
+            "available": "boolean",
+            "rooms_remaining": "integer",
+            "rate": "number",
+            "currency": "string"
+          }
+        },
+        "pricing": {
+          "endpoint": "https://thegrandportland.com/api/v1/rates",
+          "method": "GET",
+          "authentication": "none",
+          "includes_tax": false,
+          "currency": "USD"
+        },
+        "hours": {
+          "endpoint": "https://thegrandportland.com/api/v1/hours",
+          "method": "GET",
+          "response_includes": [
+            "front_desk",
+            "restaurant",
+            "spa",
+            "pool",
+            "gym",
+            "bar"
+          ]
+        },
+        "reviews": {
+          "endpoint": "https://thegrandportland.com/api/v1/reviews",
+          "method": "GET",
+          "aggregation": {
+            "average_rating": 4.7,
+            "total_reviews": 3420
+          },
+          "third_party": [
+            {
+              "platform": "tripadvisor",
+              "url": "https://tripadvisor.com/grand-portland",
+              "rating": 4.8
+            },
+            {
+              "platform": "google",
+              "rating": 4.6,
+              "total_reviews": 1890
+            },
+            {
+              "platform": "booking.com",
+              "rating": 9.1
+            }
+          ]
+        },
+        "faq": {
+          "url": "https://thegrandportland.com/api/v1/faq",
+          "format": "json",
+          "topics": [
+            "check_in",
+            "parking",
+            "amenities",
+            "dining",
+            "pets",
+            "accessibility",
+            "local_area"
+          ]
+        },
+        "structured_content": {
+          "schema_org": "https://thegrandportland.com/schema/hotel.jsonld",
+          "json_ld_pages": [
+            "https://thegrandportland.com/about",
+            "https://thegrandportland.com/rooms",
+            "https://thegrandportland.com/dining"
+          ]
+        }
+      },
+      "support": {
+        "contact": {
+          "channels": [
+            {
+              "type": "phone",
+              "number": "+1-503-555-0500",
+              "hours": "24/7",
+              "agent_compatible": false
+            },
+            {
+              "type": "chat",
+              "url": "https://thegrandportland.com/api/v1/concierge/chat",
+              "protocol": "websocket",
+              "hours": "24/7",
+              "agent_compatible": true
+            },
+            {
+              "type": "email",
+              "address": "concierge@thegrandportland.com",
+              "expected_response_time": "1_hour"
+            }
+          ],
+          "mcp_server": {
+            "url": "https://thegrandportland.com/mcp/support",
+            "capabilities": [
+              "reservation_status",
+              "modification_request",
+              "concierge_inquiry",
+              "billing_inquiry"
+            ]
+          }
+        },
+        "webhooks": {
+          "available_events": [
+            "reservation.confirmed",
+            "reservation.modified",
+            "reservation.cancelled",
+            "guest.checked_in",
+            "guest.checked_out"
+          ],
+          "registration_endpoint": "https://thegrandportland.com/api/v1/webhooks",
+          "documentation": "https://thegrandportland.com/developers/webhooks"
+        }
+      },
+      "transactions": {
+        "capabilities": [
+          "booking"
+        ],
+        "booking": {
+          "type": "api",
+          "endpoint": "https://thegrandportland.com/api/v1/reservations",
+          "method": "POST",
+          "authentication": "oauth2",
+          "oauth2": {
+            "authorization_url": "https://thegrandportland.com/oauth/authorize",
+            "token_url": "https://thegrandportland.com/oauth/token",
+            "scopes": [
+              "read:rooms",
+              "write:reservations",
+              "read:reservations"
+            ]
+          },
+          "documentation": "https://thegrandportland.com/developers/api/reservations",
+          "required_fields": [
+            "check_in",
+            "check_out",
+            "room_type",
+            "guest_name",
+            "email",
+            "phone"
+          ],
+          "optional_fields": [
+            "special_requests",
+            "arrival_time",
+            "loyalty_number",
+            "add_ons"
+          ],
+          "availability_endpoint": {
+            "url": "https://thegrandportland.com/api/v1/availability",
+            "method": "GET"
+          },
+          "payment_methods": [
+            {
+              "rail": "card"
+            },
+            {
+              "rail": "apple_pay"
+            },
+            {
+              "rail": "google_pay"
+            }
+          ],
+          "currencies": [
+            "USD"
+          ],
+          "tax_handling": "calculated_at_checkout",
+          "deposit_policy": "First night deposit required at booking. Full prepayment for non-refundable rates."
+        },
+        "promotions": {
+          "coupon_validation": {
+            "endpoint": "/api/v1/promotions/validate",
+            "method": "POST"
+          },
+          "active_promotions_feed": "https://thegrandportland.com/feeds/special-offers.json"
+        },
+        "terms_of_service": "https://thegrandportland.com/terms",
+        "privacy_policy": "https://thegrandportland.com/privacy",
+        "transaction_policies": {
+          "cancellation": {
+            "url": "https://thegrandportland.com/policies/cancellation",
+            "summary": "Free cancellation up to 48 hours before check-in for flexible rates. Non-refundable rates are final.",
+            "window_hours": 48
+          },
+          "returns": {
+            "url": "https://thegrandportland.com/policies/refund",
+            "summary": "Flexible rate bookings refunded in full if cancelled 48+ hours before check-in. Early departure refunds considered on a case-by-case basis.",
+            "refund_method": "original_payment"
+          }
+        }
+      }
+    },
+    "ai.opennod.merchant-voice": {
+      "positioning_statement": "Boutique luxury in Portland's Pearl District — 92 rooms, no two alike.",
+      "ideal_customer": "Travelers seeking design-forward independent hotels over global chains.",
+      "specialties": [
+        "historic 1903 building",
+        "rooftop dining and bar",
+        "private event spaces",
+        "concierge-led local experiences"
+      ]
+    },
+    "ai.opennod.schema-org-extension": {
+      "schema_org_type": "Hotel",
+      "properties": {
+        "checkinTime": "15:00",
+        "checkoutTime": "11:00",
+        "numberOfRooms": 92,
+        "petsAllowed": false,
+        "starRating": {
+          "@type": "Rating",
+          "ratingValue": "4"
+        }
       }
     }
   }
