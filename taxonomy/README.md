@@ -77,33 +77,15 @@ When Census publishes a new NAICS revision (next expected: NAICS 2027):
 
 ---
 
-### `gbp-categories.json`
+### `gbp-categories.json` — DEFERRED in v0.2
 
-Google Business Profile categories — the ~4,000 categories merchants are
-familiar with from creating a Google Business Profile listing.
+The path is reserved for Google Business Profile categories, but **no data
+file ships with v0.2**. See `gbp-categories.README.md` in this directory
+for the intended schema, the reason no current authoritative source could
+be vendored, and the v0.3 plan to populate it.
 
-- **Each entry includes:** `gbp_id`, `name`, `parent_path` (Google's own
-  breadcrumb), and `parent_naics_code`.
-- **`parent_naics_code` is intentionally `null` in v0.2.** See below.
-
-#### Why no NAICS mapping?
-
-There is no authoritative GBP→NAICS mapping. Google does not publish one,
-and the publicly-maintained category lists (PlePer, Sterling Sky, BlueShift)
-do not include NAICS codes. A heuristic mapping built in a single pass would
-be wrong often enough that stamping it with the protocol's authority would
-mislead implementers.
-
-We have left `parent_naics_code: null` to make the gap explicit. Filling it
-in is a future, separately-reviewable contribution — community PRs welcome.
-Until that lands, implementations that need to roll a merchant up to a
-NAICS sector should derive it from `naics_code` (which is required on every
-manifest), not from the GBP category.
-
-#### Source
-
-TBD in this PR — see the `gbp-categories.json` file header for the upstream
-list and version used.
+In v0.2, `business.gbp_primary_category` is a free string with no enum
+constraint.
 
 ---
 
@@ -111,6 +93,7 @@ list and version used.
 
 Census NAICS data is in the public domain (US government work).
 
-Google Business Profile category names are factual descriptors not subject
-to copyright; the structured list as compiled here is licensed under the
-same terms as the rest of this repo (MIT — see `/LICENSE`).
+When the GBP category file is added in a future revision, the structured
+list will be licensed under the same terms as the rest of this repo
+(MIT — see `/LICENSE`); category names themselves are factual descriptors
+not subject to copyright.
