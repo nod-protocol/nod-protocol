@@ -1,0 +1,110 @@
+# Taxonomy
+
+Industry classification reference data used by the Nod protocol.
+
+These files are intentionally vendored into the protocol repo (rather than
+fetched at runtime) so that a given protocol version pins a specific
+classification snapshot. Implementations read them as-is.
+
+---
+
+## Files
+
+### `naics-2022.json`
+
+The full North American Industry Classification System (NAICS), 2022 revision,
+as a flat array of entries with explicit parent links.
+
+- **Source:** US Census Bureau, https://www.census.gov/naics/
+- **Source files:**
+  - https://www.census.gov/naics/2022NAICS/2-6%20digit_2022_Codes.xlsx
+  - https://www.census.gov/naics/2022NAICS/2022_NAICS_Descriptions.xlsx
+- **Entries:** 2,125 across five levels:
+  - `sector` (20) — 2-digit codes, e.g. `54` Professional Services. Three
+    sectors are published as ranges (`31-33` Manufacturing, `44-45` Retail
+    Trade, `48-49` Transportation and Warehousing); these appear as their
+    range strings.
+  - `subsector` (96) — 3-digit codes
+  - `industry-group` (308) — 4-digit codes
+  - `industry` (689) — 5-digit codes
+  - `national-industry` (1,012) — 6-digit codes (US-specific)
+
+#### Schema
+
+```json
+{
+  "version": "NAICS 2022",
+  "source": "US Census Bureau",
+  "source_url": "https://www.census.gov/naics/",
+  "source_files": [...],
+  "generated_on": "2026-04-27",
+  "count": 2125,
+  "levels": ["sector", "subsector", "industry-group", "industry", "national-industry"],
+  "entries": [
+    {
+      "code": "722511",
+      "title": "Full-Service Restaurants",
+      "parent_code": "72251",
+      "level": "national-industry",
+      "description": "This industry comprises establishments primarily engaged in providing food services to patrons who order and are served while seated..."
+    }
+  ]
+}
+```
+
+`parent_code` is `null` for sectors. Entries whose Census description was
+just `"See industry description for X."` (common for 5-digit `industry`
+rows that delegate to a single 6-digit child) have been resolved to the
+child's description.
+
+#### How to update
+
+When Census publishes a new NAICS revision (next expected: NAICS 2027):
+
+1. Update the source URLs in `scripts/build_naics.py` (committed alongside
+   this directory in a future revision; for v0.2 the build script lives at
+   the PR description for reproducibility).
+2. Re-run the parser, replacing this file.
+3. Bump the protocol version — adding/removing/renaming codes is a breaking
+   change for any merchant whose `naics_code` is removed or whose
+   classification path shifts.
+
+---
+
+### `gbp-categories.json`
+
+Google Business Profile categories — the ~4,000 categories merchants are
+familiar with from creating a Google Business Profile listing.
+
+- **Each entry includes:** `gbp_id`, `name`, `parent_path` (Google's own
+  breadcrumb), and `parent_naics_code`.
+- **`parent_naics_code` is intentionally `null` in v0.2.** See below.
+
+#### Why no NAICS mapping?
+
+There is no authoritative GBP→NAICS mapping. Google does not publish one,
+and the publicly-maintained category lists (PlePer, Sterling Sky, BlueShift)
+do not include NAICS codes. A heuristic mapping built in a single pass would
+be wrong often enough that stamping it with the protocol's authority would
+mislead implementers.
+
+We have left `parent_naics_code: null` to make the gap explicit. Filling it
+in is a future, separately-reviewable contribution — community PRs welcome.
+Until that lands, implementations that need to roll a merchant up to a
+NAICS sector should derive it from `naics_code` (which is required on every
+manifest), not from the GBP category.
+
+#### Source
+
+TBD in this PR — see the `gbp-categories.json` file header for the upstream
+list and version used.
+
+---
+
+## License
+
+Census NAICS data is in the public domain (US government work).
+
+Google Business Profile category names are factual descriptors not subject
+to copyright; the structured list as compiled here is licensed under the
+same terms as the rest of this repo (MIT — see `/LICENSE`).
