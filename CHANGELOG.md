@@ -8,6 +8,42 @@ root and enforced by [`tests/check_consistency.py`](tests/check_consistency.py).
 
 ---
 
+## [Unreleased] — Taxonomy additions
+
+Non-breaking additions on top of v0.2. `VERSION` stays at `0.2`; no
+schema changes; no version bump. Examples and the v0.2 schema remain
+unchanged.
+
+### Added
+
+- `taxonomy/gbp-categories.json` — 4,045 Google Business Profile
+  categories from PlePer Tools (EN/USA), snapshot dated 2026-04-28.
+  Bare JSON array of `{gcid, name, parent_naics_code, parent_path}`
+  entries. `parent_naics_code` and `parent_path` are reserved and
+  `null` on every entry; no authoritative GBP→NAICS mapping exists yet.
+- `scripts/build-gbp.py` — reproducible parser that converts a
+  PlePer-format TSV into the canonical JSON shape. No external
+  dependencies (standard library only).
+- `taxonomy/sources/gbp-pleper-2026-04-28.tsv` — vendored copy of the
+  source TSV for reproducibility. Future refreshes vendor a
+  date-stamped sibling file.
+- `taxonomy/gbp-categories.README.md` updated to drop the v0.2
+  "deferred" framing now that the file is present, document the
+  shape, and explain how consumers can validate
+  `business.gbp_primary_category` locally.
+
+### Why this isn't v0.3
+
+The v0.2 schema treats `business.gbp_primary_category` as a free
+string. Adding the data file does not change validation behavior —
+existing v0.2 manifests stay valid. v0.3 is the planned point at
+which the schema may tighten `gbp_primary_category` to enum
+validation against this list, alongside other breaking changes
+including delegated verification. Bundling those into a single
+release keeps the breaking-change surface small.
+
+---
+
 ## [0.2] — 2026-04-27
 
 **Breaking change.** Architectural restructure into a layered model.
