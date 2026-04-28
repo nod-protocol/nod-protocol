@@ -1,83 +1,100 @@
-# Google Business Profile categories — DEFERRED in v0.2
+# Google Business Profile categories
 
-This document reserves the path `taxonomy/gbp-categories.json` for a future
-protocol revision. **The data file is intentionally absent from v0.2.**
+This file ships the Google Business Profile (GBP) category list as a
+discovery aid for the protocol's `business.gbp_primary_category` and
+`business.gbp_secondary_categories` fields.
+
+- **Data file:** [`gbp-categories.json`](./gbp-categories.json)
+- **Source TSV (vendored):** [`sources/gbp-pleper-2026-04-28.tsv`](./sources/gbp-pleper-2026-04-28.tsv)
+- **Snapshot:** GBP categories — Apr 2026 snapshot
+- **Source:** [PlePer Tools — GBP Categories](https://pleper.com/index.php?do=tools&sdo=gmb_categories)
+  (English / USA), fetched 2026-04-28
+- **Build script:** [`../scripts/build-gbp.py`](../scripts/build-gbp.py)
 
 ---
 
-## Intended schema
+## Shape
 
-When `gbp-categories.json` is added, it will use this shape:
+The file is a bare JSON array of category entries, sorted by `gcid`:
 
 ```json
-{
-  "version": "<source-list version or fetch date>",
-  "source": "<upstream provider, e.g. PlePer>",
-  "source_url": "<URL of the export tool or list>",
-  "generated_on": "YYYY-MM-DD",
-  "count": <int>,
-  "entries": [
-    {
-      "gbp_id": "gcid:full_service_restaurant",
-      "name": "Restaurant",
-      "parent_path": ["Food and Drink", "Restaurants"],
-      "parent_naics_code": null
-    }
-  ]
-}
+[
+  {
+    "gcid": "pizza_restaurant",
+    "name": "Pizza restaurant",
+    "parent_naics_code": null,
+    "parent_path": null
+  }
+]
 ```
 
 Field semantics:
 
-- **`gbp_id`** — Google's `gcid:` identifier for the category. Stable
-  identifier; prefer over `name` for machine matching.
-- **`name`** — Human-readable category name as Google displays it. Subject
-  to change; not a stable key.
-- **`parent_path`** — Google's own breadcrumb (top-level category → leaf).
-  Useful for grouping in pickers without requiring a NAICS map.
-- **`parent_naics_code`** — `null` in the initial release. See below.
+- **`gcid`** — Google's category identifier (the value following the
+  `gcid:` prefix in Google's APIs). Stable identifier; prefer over
+  `name` for machine matching.
+- **`name`** — Human-readable category name as Google currently
+  displays it. Subject to change; not a stable key.
+- **`parent_naics_code`** — Reserved. `null` on every entry today.
+- **`parent_path`** — Reserved. `null` on every entry today.
+
+`parent_naics_code` and `parent_path` are reserved for a future revision
+that ships authoritative mappings. They stay `null` here because no
+authoritative GBP→NAICS mapping exists, and PlePer's export does not
+carry Google's breadcrumb paths.
+
+## How to use
+
+The v0.2 schema treats `business.gbp_primary_category` as a free
+string — the schema does **not** enforce membership in this list.
+Consumers who want to validate it can do so locally against
+`gcid` values:
+
+```python
+import json
+gcids = {e["gcid"] for e in json.load(open("taxonomy/gbp-categories.json"))}
+assert manifest["business"]["gbp_primary_category"] in gcids
+```
+
+The same check works for every entry of `business.gbp_secondary_categories`.
+
+Treating this file as a discovery aid (not a hard constraint) is
+deliberate: GBP categories evolve roughly monthly, and breaking a
+producer's manifest because Google added or renamed a category would
+be a poor tradeoff in v0.2. v0.3 is the planned point at which the
+schema may tighten `gbp_primary_category` to enum validation against
+this list — alongside other breaking changes — once upstream data
+quality proves stable enough.
 
 ## Why no NAICS mapping?
 
-There is no authoritative GBP→NAICS mapping. Google does not publish one
-and none of the third-party category lists (PlePer, Sterling Sky,
-BlueShift) include NAICS codes. We declined to stamp a heuristic mapping
-with the protocol's authority — see `README.md` in this directory for the
-longer rationale.
+There is no authoritative GBP→NAICS mapping. Google does not publish
+one and none of the third-party category lists (PlePer, Sterling Sky,
+BlueShift) include NAICS codes. We declined to stamp a heuristic
+mapping with the protocol's authority — see [`README.md`](./README.md)
+in this directory for the longer rationale.
 
-Implementations needing a sector rollup should derive it from `naics_code`
-(required on every manifest), not from the GBP category.
+Implementations needing a sector rollup should derive it from
+`naics_code` (required on every manifest), not from the GBP category.
 
-## Why no data file in v0.2?
+## Refreshing the snapshot
 
-Original v0.2 plan was to source GBP categories from PlePer Tools,
-Sterling Sky, or a similar publicly-maintained list. As of the v0.2
-authoring date (2026-04-27):
+GBP categories evolve. To refresh:
 
-- **PlePer's tool** is live and current but offers no machine-readable
-  download — only HTML tables intended for copy-paste into a spreadsheet.
-- **Sterling Sky's "Ultimate List" page returns 404.** It appears to have
-  been retired.
-- **No GitHub repository carrying a current, maintained list was located.**
-  The most-recent candidate (`adviceinteractivegroup/gmb_categories`)
-  was last updated in 2018 and is too stale to ship as authoritative
-  protocol data.
+1. Open [PlePer's tool](https://pleper.com/index.php?do=tools&sdo=gmb_categories)
+   with EN / USA selected and copy the table to a `.tsv` file. The
+   file must have a `GCID<TAB>Category` header.
+2. Save it at `taxonomy/sources/gbp-pleper-<YYYY-MM-DD>.tsv`.
+3. Run the build:
 
-Rather than vendor an obviously-outdated list, v0.2 ships the schema
-field (`business.gbp_primary_category`) as a free string with no enum
-constraint. The protocol does not block on a categorization file that
-isn't blocking the architecture.
+   ```sh
+   GBP_TSV=taxonomy/sources/gbp-pleper-<YYYY-MM-DD>.tsv \
+   GBP_SNAPSHOT=<YYYY-MM-DD> \
+       python3 scripts/build-gbp.py
+   ```
 
-## Plan for v0.3
+4. Update the dates and snapshot label at the top of this README.
+5. Diff `taxonomy/gbp-categories.json` to see what Google added,
+   removed, or renamed. Note any meaningful churn in `CHANGELOG.md`.
 
-A maintainer pulls the current category list from PlePer's export tool
-(~10 minutes of human work — open the tool, select EN/US, copy the
-TSV, paste into a file). A small script in `scripts/` parses the TSV
-into the JSON shape above. The file lands at `taxonomy/gbp-categories.json`.
-
-At that point, `business.gbp_primary_category` *may* tighten to enum
-validation against `gbp_id` values — but only if upstream data quality
-proves stable enough. Otherwise the field stays free-string with the
-data file used as a discovery aid only.
-
-Community PRs adding the data file are welcome at any time.
+Community PRs refreshing the snapshot are welcome at any time.
