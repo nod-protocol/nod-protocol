@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Layer 3 of three-layer remote-verification.
+# Blocks pushes when origin doesn't match .githooks/expected-remote.txt.
+# See opennod-knowledge decisions/2026-05-05-three-layer-remote-verification.md.
+set -euo pipefail
+
+hook_dir="$(cd "$(dirname "$0")" && pwd)"
+expected_file="$hook_dir/expected-remote.txt"
+
+if [[ ! -f "$expected_file" ]]; then
+  echo "pre-push: missing $expected_file — cannot verify remote." >&2
+  exit 1
+fi
+
+expected="$(tr -d '[:space:]' < "$expected_file")"
+actual="$(git remote get-url origin 2>/dev/null || true)"
+
+normalize() {
+  local url="$1"
+  url="${url%.git}"
+  url="${url#git@github.com:}"
+  url="${url#https://github.com/}"
+  url="${url#git://github.com/}"
+  echo "$url"
+}
+
+if [[ "$(normalize "$expected")" != "$(normalize "$actual")" ]]; then
+  echo "" >&2
+  echo "================================================================" >&2
+  echo "  PRE-PUSH BLOCKED: remote mismatch" >&2
+  echo "================================================================" >&2
+  echo "  expected (.githooks/expected-remote.txt): $expected" >&2
+  echo "  actual   (git remote get-url origin):     $actual" >&2
+  echo "" >&2
+  echo "  This directory may be a clone of the wrong remote." >&2
+  echo "  See opennod-knowledge/team/standing-orders.md (Repo discipline)." >&2
+  echo "================================================================" >&2
+  exit 1
+fi
+
+exit 0
